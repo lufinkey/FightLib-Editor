@@ -14,4 +14,8 @@ public:
 	virtual void unloadContent(fgl::AssetManager* assetManager) override;
 	virtual void update(fgl::ApplicationData appData) override;
 	virtual void draw(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
+
+private:
+	fgl::Screen* screen;
+	fgl::TextInputElement* textInputElement;
 };
