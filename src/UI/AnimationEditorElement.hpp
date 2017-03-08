@@ -26,6 +26,9 @@ namespace flui
 
 		void setTracingAnimationVisible(bool visible);
 		bool isTracingAnimationVisible() const;
+		
+		void setAnimationDirection(const fgl::Animation::Direction& direction);
+		const fgl::Animation::Direction& getAnimationDirection() const;
 
 	private:
 		fl::AnimationData* animationData;

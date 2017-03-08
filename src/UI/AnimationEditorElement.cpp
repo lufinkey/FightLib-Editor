@@ -102,4 +102,14 @@ namespace flui
 	{
 		return tracingAnimationElement->isVisible();
 	}
+	
+	void AnimationEditorElement::setAnimationDirection(const fgl::Animation::Direction& direction)
+	{
+		animationElement->setAnimationDirection(direction);
+	}
+	
+	const fgl::Animation::Direction& AnimationEditorElement::getAnimationDirection() const
+	{
+		return animationElement->getAnimationDirection();
+	}
 }
