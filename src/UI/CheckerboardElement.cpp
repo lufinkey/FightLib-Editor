@@ -1,52 +1,52 @@
 
-#include "CheckerboardPatternElement.hpp"
+#include "CheckerboardElement.hpp"
 
 using namespace fgl;
 
 namespace flui
 {
-	CheckerboardPatternElement::CheckerboardPatternElement() : CheckerboardPatternElement(RectangleD(0,0,0,0))
+	CheckerboardElement::CheckerboardElement() : CheckerboardElement(RectangleD(0,0,0,0))
 	{
 		//
 	}
 		
-	CheckerboardPatternElement::CheckerboardPatternElement(const RectangleD&frame)
-		: blockSize(8), block1Color(0,0,0), block2Color(255,0,0)
+	CheckerboardElement::CheckerboardElement(const RectangleD& frame)
+		: ScreenElement(frame), blockSize(8), block1Color(0,0,0), block2Color(255,0,0)
 	{
 		//
 	}
 		
-	void CheckerboardPatternElement::setBlockSize(double size)
+	void CheckerboardElement::setBlockSize(double size)
 	{
 		blockSize = size;
 	}
 		
-	void CheckerboardPatternElement::setFirstBlockColor(const Color&color)
+	void CheckerboardElement::setFirstBlockColor(const Color&color)
 	{
 		block1Color = color;
 	}
 		
-	void CheckerboardPatternElement::setSecondBlockColor(const Color&color)
+	void CheckerboardElement::setSecondBlockColor(const Color&color)
 	{
 		block2Color = color;
 	}
 			
-	double CheckerboardPatternElement::getBlockSize() const
+	double CheckerboardElement::getBlockSize() const
 	{
 		return blockSize;
 	}
 		
-	const Color& CheckerboardPatternElement::getFirstBlockColor() const
+	const Color& CheckerboardElement::getFirstBlockColor() const
 	{
 		return block1Color;
 	}
 		
-	const Color& CheckerboardPatternElement::getSecondBlockColor() const
+	const Color& CheckerboardElement::getSecondBlockColor() const
 	{
 		return block2Color;
 	}
 		
-	void CheckerboardPatternElement::drawMain(ApplicationData appData, Graphics graphics) const
+	void CheckerboardElement::drawMain(ApplicationData appData, Graphics graphics) const
 	{
 		RectangleD frame = getFrame();
 		unsigned int blockTimesX = (unsigned int)Math::ceil(frame.width/blockSize);
@@ -59,8 +59,8 @@ namespace flui
 			blockOn = blockStartOn;
 			for(unsigned int x=0; x<blockTimesX; x++)
 			{
-				double blockX = frame.x + (blockSize*((double)blockTimesX));
-				double blockY = frame.y + (blockSize*((double)blockTimesY));
+				double blockX = frame.x + (blockSize*((double)x));
+				double blockY = frame.y + (blockSize*((double)y));
 				if(blockOn)
 				{
 					graphics.setColor(block1Color);

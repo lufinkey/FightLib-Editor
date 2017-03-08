@@ -5,11 +5,11 @@
 
 namespace flui
 {
-	class CheckerboardPatternElement : public fgl::ScreenElement
+	class CheckerboardElement : public fgl::ScreenElement
 	{
 	public:
-		CheckerboardPatternElement();
-		CheckerboardPatternElement(const fgl::RectangleD&frame);
+		CheckerboardElement();
+		CheckerboardElement(const fgl::RectangleD&frame);
 			
 		void setBlockSize(double size);
 		void setFirstBlockColor(const fgl::Color&color);
