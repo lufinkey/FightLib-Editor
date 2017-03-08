@@ -20,11 +20,11 @@ namespace flui
 		addChildElement(checkerboardBackground);
 
 		tracingAnimationElement->getImageElement()->setDisplayMode(fgl::ImageElement::DISPLAY_FIT_CENTER);
-		tracingAnimationElement->setVisible(false);
+		tracingAnimationElement->setAnimationDirection(fgl::Animation::STOPPED);
 		addChildElement(tracingAnimationElement);
 
 		animationElement->getImageElement()->setDisplayMode(fgl::ImageElement::DISPLAY_FIT_CENTER);
-		animationElement->setVisible(false);
+		animationElement->setAnimationDirection(fgl::Animation::STOPPED);
 		addChildElement(animationElement);
 	}
 
@@ -38,6 +38,16 @@ namespace flui
 	void AnimationEditorElement::setFrame(const fgl::RectangleD& frame)
 	{
 		ScreenElement::setFrame(frame);
+		animationElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
+		tracingAnimationElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
+		if(animationData!=nullptr)
+		{
+			checkerboardBackground->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
+		}
+		else
+		{
+			checkerboardBackground->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
+		}
 	}
 
 	void AnimationEditorElement::setAnimationData(fl::AnimationData* animationData_arg)
@@ -45,25 +55,51 @@ namespace flui
 		animationData = animationData_arg;
 		if(animationData!=nullptr)
 		{
-			tracingAnimationElement->setAnimation(animationData->getAnimation(), fgl::Animation::STOPPED);
-			animationElement->setAnimation(animationData->getAnimation(), fgl::Animation::STOPPED);
+			tracingAnimationElement->setAnimation(animationData->getAnimation(), fgl::Animation::NO_CHANGE);
+			animationElement->setAnimation(animationData->getAnimation(), fgl::Animation::NO_CHANGE);
 			checkerboardBackground->setVisible(true);
 			checkerboardBackground->setFrame(animationElement->getImageElement()->getImageDrawFrame());
-			tracingAnimationElement->setVisible(false);
-			animationElement->setVisible(true);
 		}
 		else
 		{
-			tracingAnimationElement->setAnimation(nullptr, fgl::Animation::STOPPED);
-			animationElement->setAnimation(nullptr, fgl::Animation::STOPPED);
+			tracingAnimationElement->setAnimation(nullptr, fgl::Animation::NO_CHANGE);
+			animationElement->setAnimation(nullptr, fgl::Animation::NO_CHANGE);
 			checkerboardBackground->setVisible(false);
-			tracingAnimationElement->setVisible(false);
-			animationElement->setVisible(false);
 		}
 	}
 
 	fl::AnimationData* AnimationEditorElement::getAnimationData() const
 	{
 		return animationData;
+	}
+
+	void AnimationEditorElement::setAnimationFrame(size_t frameIndex)
+	{
+		animationElement->setAnimationFrame(frameIndex);
+	}
+
+	size_t AnimationEditorElement::getAnimationFrame() const
+	{
+		return animationElement->getAnimationFrame();
+	}
+
+	void AnimationEditorElement::setTracingAnimationFrame(size_t frameIndex)
+	{
+		tracingAnimationElement->setAnimationFrame(frameIndex);
+	}
+
+	size_t AnimationEditorElement::getTracingAnimationFrame() const
+	{
+		return tracingAnimationElement->getAnimationFrame();
+	}
+
+	void AnimationEditorElement::setTracingAnimationVisible(bool visible)
+	{
+		tracingAnimationElement->setVisible(visible);
+	}
+
+	bool AnimationEditorElement::isTracingAnimationVisible() const
+	{
+		return tracingAnimationElement->isVisible();
 	}
 }
