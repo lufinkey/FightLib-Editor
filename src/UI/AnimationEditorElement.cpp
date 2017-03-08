@@ -8,7 +8,7 @@ namespace flui
 		//
 	}
 
-	AnimationEditorElement::AnimationEditorElement(const fgl::RectangleD& frame) : fgl::ScreenElement(frame),
+	AnimationEditorElement::AnimationEditorElement(const fgl::RectangleD& frame) : fgl::TouchElement(frame),
 		animationData(nullptr),
 		animationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		tracingAnimationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
@@ -37,7 +37,7 @@ namespace flui
 
 	void AnimationEditorElement::setFrame(const fgl::RectangleD& frame)
 	{
-		ScreenElement::setFrame(frame);
+		TouchElement::setFrame(frame);
 		animationElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
 		tracingAnimationElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
 		if(animationData!=nullptr)
