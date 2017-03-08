@@ -21,11 +21,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\MainApplication.cpp" />
-    <ClCompile Include="..\..\src\UI\CheckerboardPatternElement.cpp" />
+    <ClCompile Include="..\..\src\UI\AnimationEditorElement.cpp" />
+    <ClCompile Include="..\..\src\UI\CheckerboardElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp" />
-    <ClInclude Include="..\..\src\UI\CheckerboardPatternElement.hpp" />
+    <ClInclude Include="..\..\src\UI\AnimationEditorElement.hpp" />
+    <ClInclude Include="..\..\src\UI\CheckerboardElement.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BBF642A0-873D-4096-AB0F-787CF4094290}</ProjectGuid>

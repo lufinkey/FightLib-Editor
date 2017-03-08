@@ -15,16 +15,22 @@
     <ClCompile Include="..\..\src\MainApplication.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\UI\CheckerboardPatternElement.cpp">
+    <ClCompile Include="..\..\src\UI\AnimationEditorElement.cpp">
+      <Filter>src\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\UI\CheckerboardElement.cpp">
       <Filter>src\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\UI\CheckerboardPatternElement.hpp">
-      <Filter>src\UI</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\MainApplication.hpp">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\AnimationEditorElement.hpp">
+      <Filter>src\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\UI\CheckerboardElement.hpp">
+      <Filter>src\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

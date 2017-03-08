@@ -17,17 +17,22 @@ void MainApplication::initialize()
 	getWindow()->setSize(fgl::Vector2u(800,600));
 
 	textInputElement = new fgl::TextInputElement(fgl::RectangleD(100, 100, 200, 40));
+	animationElement = new flui::AnimationEditorElement(fgl::RectangleD(100, 240, 100, 100));
+	animationElement->setBorderWidth(-1);
 
 	screen = new fgl::Screen(getWindow());
 	screen->getElement()->addChildElement(textInputElement);
+	screen->getElement()->addChildElement(animationElement);
 }
 
-void MainApplication::loadContent(fgl::AssetManager*assetManager)
+void MainApplication::loadContent(fgl::AssetManager* assetManager)
 {
-	//
+	animData = new fl::AnimationData();
+	animData->loadFromFile("external/FightLib/test/assets/animations/idle.plist", assetManager);
+	animationElement->setAnimationData(animData);
 }
 
-void MainApplication::unloadContent(fgl::AssetManager*assetManager)
+void MainApplication::unloadContent(fgl::AssetManager* assetManager)
 {
 	//
 }
