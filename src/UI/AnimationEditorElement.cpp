@@ -35,9 +35,10 @@ namespace flui
 		delete checkerboardBackground;
 	}
 
-	void AnimationEditorElement::setFrame(const fgl::RectangleD& frame)
+	void AnimationEditorElement::layoutChildElements()
 	{
-		ScreenElement::setFrame(frame);
+		ScreenElement::layoutChildElements();
+		fgl::RectangleD frame = getFrame();
 		animationElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
 		tracingAnimationElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
 		if(animationData!=nullptr)

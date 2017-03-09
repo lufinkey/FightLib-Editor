@@ -2,6 +2,7 @@
 #pragma once
 
 #include <fightlib/fightlib.hpp>
+#include <GameLibrary/Screen/UI/TextElement.hpp>
 #include "UI/AnimationEditorElement.hpp"
 
 class MainApplication : public fgl::Application

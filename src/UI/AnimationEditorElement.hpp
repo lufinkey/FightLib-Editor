@@ -13,7 +13,7 @@ namespace flui
 		AnimationEditorElement(const fgl::RectangleD& frame);
 		virtual ~AnimationEditorElement();
 
-		virtual void setFrame(const fgl::RectangleD& frame) override;
+		virtual void layoutChildElements() override;
 
 		void setAnimationData(fl::AnimationData* animationData);
 		fl::AnimationData* getAnimationData() const;

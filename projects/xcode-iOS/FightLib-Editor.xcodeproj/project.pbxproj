@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F15F59EE1E71DEEE00FAFD86 /* HomeScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F59EC1E71DEEE00FAFD86 /* HomeScreen.cpp */; };
+		F15F59F01E71DF7B00FAFD86 /* libGameLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F15F59EF1E71DF7B00FAFD86 /* libGameLibrary.a */; };
 		F16DB58E1E70886200AB31DE /* AnimationEditorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16DB58A1E70886200AB31DE /* AnimationEditorElement.cpp */; };
 		F16DB58F1E70886200AB31DE /* CheckerboardElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F16DB58C1E70886200AB31DE /* CheckerboardElement.cpp */; };
 		F17D978B1E6DCA00003F4D85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F17D978A1E6DCA00003F4D85 /* Assets.xcassets */; };
@@ -28,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F15F59EC1E71DEEE00FAFD86 /* HomeScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HomeScreen.cpp; sourceTree = "<group>"; };
+		F15F59ED1E71DEEE00FAFD86 /* HomeScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HomeScreen.hpp; sourceTree = "<group>"; };
+		F15F59EF1E71DF7B00FAFD86 /* libGameLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGameLibrary.a; path = "../../../../../Library/Developer/Xcode/DerivedData/FightLib-Editor-awuwvjkusxgxovgmyskxzchswsdf/Build/Products/Debug-iphonesimulator/libGameLibrary.a"; sourceTree = "<group>"; };
 		F16DB58A1E70886200AB31DE /* AnimationEditorElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationEditorElement.cpp; sourceTree = "<group>"; };
 		F16DB58B1E70886200AB31DE /* AnimationEditorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationEditorElement.hpp; sourceTree = "<group>"; };
 		F16DB58C1E70886200AB31DE /* CheckerboardElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CheckerboardElement.cpp; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 				F17D97B31E6DCBD1003F4D85 /* OpenGLES.framework in Frameworks */,
 				F17D97B41E6DCBD1003F4D85 /* QuartzCore.framework in Frameworks */,
 				F17D97B51E6DCBD1003F4D85 /* UIKit.framework in Frameworks */,
+				F15F59F01E71DF7B00FAFD86 /* libGameLibrary.a in Frameworks */,
 				F17D979F1E6DCB54003F4D85 /* libFightLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F15F59EB1E71DEE000FAFD86 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F15F59EC1E71DEEE00FAFD86 /* HomeScreen.cpp */,
+				F15F59ED1E71DEEE00FAFD86 /* HomeScreen.hpp */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		F17D97721E6DCA00003F4D85 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +122,7 @@
 		F17D979D1E6DCB54003F4D85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F15F59EF1E71DF7B00FAFD86 /* libGameLibrary.a */,
 				F17D97A01E6DCBD1003F4D85 /* AudioToolbox.framework */,
 				F17D97A11E6DCBD1003F4D85 /* AVFoundation.framework */,
 				F17D97A21E6DCBD1003F4D85 /* CoreGraphics.framework */,
@@ -129,6 +145,7 @@
 				F17D97B71E6DCBF6003F4D85 /* main.cpp */,
 				F17D97B81E6DCBF6003F4D85 /* MainApplication.cpp */,
 				F17D97B91E6DCBF6003F4D85 /* MainApplication.hpp */,
+				F15F59EB1E71DEE000FAFD86 /* Screens */,
 				F17D97BA1E6DCBF6003F4D85 /* UI */,
 			);
 			name = src;
@@ -218,6 +235,7 @@
 			files = (
 				F17D97BD1E6DCBF6003F4D85 /* main.cpp in Sources */,
 				F16DB58E1E70886200AB31DE /* AnimationEditorElement.cpp in Sources */,
+				F15F59EE1E71DEEE00FAFD86 /* HomeScreen.cpp in Sources */,
 				F17D97BE1E6DCBF6003F4D85 /* MainApplication.cpp in Sources */,
 				F16DB58F1E70886200AB31DE /* CheckerboardElement.cpp in Sources */,
 			);
