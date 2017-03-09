@@ -6,7 +6,7 @@
 
 namespace flui
 {
-	class AnimationEditorElement : public fgl::TouchElement
+	class AnimationEditorElement : public fgl::ScreenElement
 	{
 	public:
 		AnimationEditorElement();
