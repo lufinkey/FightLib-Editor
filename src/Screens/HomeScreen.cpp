@@ -1,5 +1,6 @@
 
 #include "HomeScreen.hpp"
+#include "EditAnimationScreen.hpp"
 
 namespace flui
 {
@@ -14,9 +15,12 @@ namespace flui
 				if(animData->loadFromFile(animationPath, assetManager, &error))
 				{
 					//TODO push the animation editor screen
+					EditAnimationScreen* editScreen = new EditAnimationScreen(animData);
+					present(editScreen);
 				}
 				else
 				{
+					delete animData;
 					fgl::MessageBox::show(nullptr, "Error", error);
 				}
 			}

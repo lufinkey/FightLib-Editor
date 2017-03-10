@@ -13,6 +13,7 @@ MainApplication::~MainApplication()
 
 void MainApplication::initialize()
 {
+	setFPS(60);
 	getWindow()->setTitle("MobileBrawler Character Editor");
 	getWindow()->setSize(fgl::Vector2u(800,600));
 	getWindow()->getViewport()->setSize(800, 600);
