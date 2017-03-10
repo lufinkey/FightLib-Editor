@@ -28,6 +28,11 @@ namespace flui
 		openAnimationButton->setBorderWidth(1);
 		openAnimationButton->getTitleElement()->setTextAlignment(fgl::TEXTALIGN_CENTER);
 		
+		openAnimationButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		openAnimationButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 20);
+		openAnimationButton->setLayoutRule(fgl::LAYOUTRULE_TOP, 15);
+		openAnimationButton->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 40);
+		
 		getElement()->addChildElement(openAnimationButton);
 	}
 	

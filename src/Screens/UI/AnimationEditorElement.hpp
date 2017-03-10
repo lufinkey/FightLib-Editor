@@ -2,6 +2,7 @@
 #pragma once
 
 #include <fightlib/fightlib.hpp>
+#include "AnimationMetaPointsElement.hpp"
 #include "CheckerboardElement.hpp"
 
 namespace flui
@@ -14,6 +15,7 @@ namespace flui
 		virtual ~AnimationEditorElement();
 
 		virtual void layoutChildElements() override;
+		virtual void update(fgl::ApplicationData appData) override;
 
 		void setAnimationData(fl::AnimationData* animationData);
 		fl::AnimationData* getAnimationData() const;
@@ -33,8 +35,9 @@ namespace flui
 	private:
 		fl::AnimationData* animationData;
 
-		fgl::AnimationElement* animationElement;
-		fgl::AnimationElement* tracingAnimationElement;
 		CheckerboardElement* checkerboardBackground;
+		fgl::AnimationElement* tracingAnimationElement;
+		fgl::AnimationElement* animationElement;
+		AnimationMetaPointsElement* metaPointsElement;
 	};
 }

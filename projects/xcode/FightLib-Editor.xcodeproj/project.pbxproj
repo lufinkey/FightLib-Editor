@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F11DFDB21E72FDE900465715 /* EditAnimationScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11DFDB01E72FDE900465715 /* EditAnimationScreen.cpp */; };
+		F11DFDCD1E7341E900465715 /* AnimationMetaPointsElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11DFDCB1E7341E900465715 /* AnimationMetaPointsElement.cpp */; };
 		F15F5A2D1E71E0F300FAFD86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15F5A2C1E71E0F300FAFD86 /* Assets.xcassets */; };
 		F15F5A301E71E0F400FAFD86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15F5A2E1E71E0F400FAFD86 /* MainMenu.xib */; };
 		F15F5A431E71E14600FAFD86 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A381E71E14600FAFD86 /* main.cpp */; };
@@ -52,6 +53,8 @@
 /* Begin PBXFileReference section */
 		F11DFDB01E72FDE900465715 /* EditAnimationScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditAnimationScreen.cpp; sourceTree = "<group>"; };
 		F11DFDB11E72FDE900465715 /* EditAnimationScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EditAnimationScreen.hpp; sourceTree = "<group>"; };
+		F11DFDCB1E7341E900465715 /* AnimationMetaPointsElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationMetaPointsElement.cpp; sourceTree = "<group>"; };
+		F11DFDCC1E7341E900465715 /* AnimationMetaPointsElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationMetaPointsElement.hpp; sourceTree = "<group>"; };
 		F15F5A231E71E0F300FAFD86 /* FightLib-Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FightLib-Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15F5A2C1E71E0F300FAFD86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15F5A2F1E71E0F400FAFD86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 		F15F5A861E71F26B00FAFD86 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F11DFDCB1E7341E900465715 /* AnimationMetaPointsElement.cpp */,
+				F11DFDCC1E7341E900465715 /* AnimationMetaPointsElement.hpp */,
 				F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */,
 				F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */,
 				F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */,
@@ -265,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11DFDB21E72FDE900465715 /* EditAnimationScreen.cpp in Sources */,
+				F11DFDCD1E7341E900465715 /* AnimationMetaPointsElement.cpp in Sources */,
 				F15F5A431E71E14600FAFD86 /* main.cpp in Sources */,
 				F15F5A441E71E14600FAFD86 /* MainApplication.cpp in Sources */,
 				F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */,

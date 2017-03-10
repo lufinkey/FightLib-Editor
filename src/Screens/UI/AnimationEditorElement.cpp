@@ -10,9 +10,10 @@ namespace flui
 
 	AnimationEditorElement::AnimationEditorElement(const fgl::RectangleD& frame) : fgl::ScreenElement(frame),
 		animationData(nullptr),
-		animationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
+		checkerboardBackground(new CheckerboardElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		tracingAnimationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
-		checkerboardBackground(new CheckerboardElement(fgl::RectangleD(0, 0, frame.width, frame.height)))
+		animationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
+		metaPointsElement(new AnimationMetaPointsElement(fgl::RectangleD(0, 0, frame.width, frame.height)))
 	{
 		checkerboardBackground->setVisible(false);
 		checkerboardBackground->setFirstBlockColor(fgl::Color(236,236,236));
@@ -26,10 +27,13 @@ namespace flui
 		animationElement->getImageElement()->setDisplayMode(fgl::ImageElement::DISPLAY_FIT_CENTER);
 		animationElement->setAnimationDirection(fgl::Animation::STOPPED);
 		addChildElement(animationElement);
+		
+		addChildElement(metaPointsElement);
 	}
 
 	AnimationEditorElement::~AnimationEditorElement()
 	{
+		delete metaPointsElement;
 		delete animationElement;
 		delete tracingAnimationElement;
 		delete checkerboardBackground;
@@ -43,11 +47,24 @@ namespace flui
 		tracingAnimationElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
 		if(animationData!=nullptr)
 		{
-			checkerboardBackground->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
+			fgl::RectangleD displayFrame = animationElement->getImageElement()->getImageDisplayFrame();
+			checkerboardBackground->setFrame(displayFrame);
+			metaPointsElement->setFrame(displayFrame);
 		}
 		else
 		{
 			checkerboardBackground->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
+			metaPointsElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
+		}
+	}
+	
+	void AnimationEditorElement::update(fgl::ApplicationData appData)
+	{
+		ScreenElement::update(appData);
+		
+		if(animationData!=nullptr && animationElement->getAnimationDirection()!=fgl::Animation::STOPPED)
+		{
+			metaPointsElement->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
 		}
 	}
 
@@ -67,6 +84,8 @@ namespace flui
 			animationElement->setAnimation(nullptr, fgl::Animation::NO_CHANGE);
 			checkerboardBackground->setVisible(false);
 		}
+		metaPointsElement->setAnimationData(animationData_arg);
+		layoutChildElements();
 	}
 
 	fl::AnimationData* AnimationEditorElement::getAnimationData() const
@@ -77,6 +96,8 @@ namespace flui
 	void AnimationEditorElement::setAnimationFrame(size_t frameIndex)
 	{
 		animationElement->setAnimationFrame(frameIndex);
+		metaPointsElement->setAnimationFrame(frameIndex);
+		layoutChildElements();
 	}
 
 	size_t AnimationEditorElement::getAnimationFrame() const
