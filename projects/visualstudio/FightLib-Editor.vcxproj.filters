@@ -4,8 +4,11 @@
     <Filter Include="src">
       <UniqueIdentifier>{3e8c10d0-2899-416f-ace2-94ff073bb21a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\UI">
-      <UniqueIdentifier>{e55c4498-d4b5-4231-896a-ec0515babdea}</UniqueIdentifier>
+    <Filter Include="src\Screen">
+      <UniqueIdentifier>{671ae352-fb3e-4063-bd5d-aef2d837bf35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Screen\UI">
+      <UniqueIdentifier>{9a8450b8-1f27-41a1-b11f-4f6510044c13}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -15,22 +18,28 @@
     <ClCompile Include="..\..\src\MainApplication.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\UI\AnimationEditorElement.cpp">
-      <Filter>src\UI</Filter>
+    <ClCompile Include="..\..\src\Screens\HomeScreen.cpp">
+      <Filter>src\Screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\UI\CheckerboardElement.cpp">
-      <Filter>src\UI</Filter>
+    <ClCompile Include="..\..\src\Screens\UI\AnimationEditorElement.cpp">
+      <Filter>src\Screen\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\CheckerboardElement.cpp">
+      <Filter>src\Screen\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\UI\AnimationEditorElement.hpp">
-      <Filter>src\UI</Filter>
+    <ClInclude Include="..\..\src\Screens\HomeScreen.hpp">
+      <Filter>src\Screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\UI\CheckerboardElement.hpp">
-      <Filter>src\UI</Filter>
+    <ClInclude Include="..\..\src\Screens\UI\AnimationEditorElement.hpp">
+      <Filter>src\Screen\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\CheckerboardElement.hpp">
+      <Filter>src\Screen\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

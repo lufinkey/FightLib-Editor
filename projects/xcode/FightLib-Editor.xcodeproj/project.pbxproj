@@ -12,8 +12,6 @@
 		F15F5A431E71E14600FAFD86 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A381E71E14600FAFD86 /* main.cpp */; };
 		F15F5A441E71E14600FAFD86 /* MainApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A391E71E14600FAFD86 /* MainApplication.cpp */; };
 		F15F5A451E71E14600FAFD86 /* HomeScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A3C1E71E14600FAFD86 /* HomeScreen.cpp */; };
-		F15F5A461E71E14600FAFD86 /* AnimationEditorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A3F1E71E14600FAFD86 /* AnimationEditorElement.cpp */; };
-		F15F5A471E71E14600FAFD86 /* CheckerboardElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A411E71E14600FAFD86 /* CheckerboardElement.cpp */; };
 		F15F5A4F1E71E17E00FAFD86 /* libFightLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A4D1E71E17E00FAFD86 /* libFightLib.a */; };
 		F15F5A501E71E17E00FAFD86 /* libGameLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A4E1E71E17E00FAFD86 /* libGameLibrary.a */; };
 		F15F5A5C1E71E1D200FAFD86 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A511E71E1D200FAFD86 /* AppKit.framework */; };
@@ -31,6 +29,8 @@
 		F15F5A6A1E71E1F000FAFD86 /* FreeType.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A671E71E1F000FAFD86 /* FreeType.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F15F5A6B1E71E1F000FAFD86 /* webp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A681E71E1F000FAFD86 /* webp.framework */; };
 		F15F5A6C1E71E1F000FAFD86 /* webp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A681E71E1F000FAFD86 /* webp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */; };
+		F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,10 +58,6 @@
 		F15F5A3A1E71E14600FAFD86 /* MainApplication.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainApplication.hpp; sourceTree = "<group>"; };
 		F15F5A3C1E71E14600FAFD86 /* HomeScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HomeScreen.cpp; sourceTree = "<group>"; };
 		F15F5A3D1E71E14600FAFD86 /* HomeScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HomeScreen.hpp; sourceTree = "<group>"; };
-		F15F5A3F1E71E14600FAFD86 /* AnimationEditorElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationEditorElement.cpp; sourceTree = "<group>"; };
-		F15F5A401E71E14600FAFD86 /* AnimationEditorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationEditorElement.hpp; sourceTree = "<group>"; };
-		F15F5A411E71E14600FAFD86 /* CheckerboardElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CheckerboardElement.cpp; sourceTree = "<group>"; };
-		F15F5A421E71E14600FAFD86 /* CheckerboardElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CheckerboardElement.hpp; sourceTree = "<group>"; };
 		F15F5A4D1E71E17E00FAFD86 /* libFightLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFightLib.a; path = ../../external/FightLib/projects/xcode/build/Debug/libFightLib.a; sourceTree = "<group>"; };
 		F15F5A4E1E71E17E00FAFD86 /* libGameLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGameLibrary.a; path = ../../external/FightLib/external/GameLibrary/projects/xcode/build/Debug/libGameLibrary.a; sourceTree = "<group>"; };
 		F15F5A511E71E1D200FAFD86 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -77,6 +73,10 @@
 		F15F5A5B1E71E1D200FAFD86 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		F15F5A671E71E1F000FAFD86 /* FreeType.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FreeType.framework; path = ../../external/FightLib/external/GameLibrary/external/SDL/SDL_ttf/Xcode/Frameworks/FreeType.framework; sourceTree = "<group>"; };
 		F15F5A681E71E1F000FAFD86 /* webp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = webp.framework; path = ../../external/FightLib/external/GameLibrary/external/SDL/SDL_image/Xcode/Frameworks/webp.framework; sourceTree = "<group>"; };
+		F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationEditorElement.cpp; sourceTree = "<group>"; };
+		F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationEditorElement.hpp; sourceTree = "<group>"; };
+		F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CheckerboardElement.cpp; sourceTree = "<group>"; };
+		F15F5A8A1E71F26B00FAFD86 /* CheckerboardElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CheckerboardElement.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +140,6 @@
 				F15F5A391E71E14600FAFD86 /* MainApplication.cpp */,
 				F15F5A3A1E71E14600FAFD86 /* MainApplication.hpp */,
 				F15F5A3B1E71E14600FAFD86 /* Screens */,
-				F15F5A3E1E71E14600FAFD86 /* UI */,
 			);
 			name = src;
 			path = ../../src;
@@ -149,21 +148,11 @@
 		F15F5A3B1E71E14600FAFD86 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F15F5A861E71F26B00FAFD86 /* UI */,
 				F15F5A3C1E71E14600FAFD86 /* HomeScreen.cpp */,
 				F15F5A3D1E71E14600FAFD86 /* HomeScreen.hpp */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		F15F5A3E1E71E14600FAFD86 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				F15F5A3F1E71E14600FAFD86 /* AnimationEditorElement.cpp */,
-				F15F5A401E71E14600FAFD86 /* AnimationEditorElement.hpp */,
-				F15F5A411E71E14600FAFD86 /* CheckerboardElement.cpp */,
-				F15F5A421E71E14600FAFD86 /* CheckerboardElement.hpp */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		F15F5A4C1E71E17E00FAFD86 /* Frameworks */ = {
@@ -186,6 +175,17 @@
 				F15F5A4E1E71E17E00FAFD86 /* libGameLibrary.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F15F5A861E71F26B00FAFD86 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */,
+				F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */,
+				F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */,
+				F15F5A8A1E71F26B00FAFD86 /* CheckerboardElement.hpp */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,10 +259,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F15F5A461E71E14600FAFD86 /* AnimationEditorElement.cpp in Sources */,
 				F15F5A431E71E14600FAFD86 /* main.cpp in Sources */,
-				F15F5A471E71E14600FAFD86 /* CheckerboardElement.cpp in Sources */,
 				F15F5A441E71E14600FAFD86 /* MainApplication.cpp in Sources */,
+				F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */,
+				F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */,
 				F15F5A451E71E14600FAFD86 /* HomeScreen.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

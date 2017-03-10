@@ -2,8 +2,7 @@
 #pragma once
 
 #include <fightlib/fightlib.hpp>
-#include <GameLibrary/Screen/UI/TextElement.hpp>
-#include "UI/AnimationEditorElement.hpp"
+#include "Screens/HomeScreen.hpp"
 
 class MainApplication : public fgl::Application
 {
@@ -18,8 +17,6 @@ public:
 	virtual void draw(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 
 private:
-	fl::AnimationData* animData;
-	fgl::Screen* screen;
-	fgl::TextInputElement* textInputElement;
-	flui::AnimationEditorElement* animationElement;
+	fgl::ScreenManager* screenManager;
+	flui::HomeScreen* homeScreen;
 };

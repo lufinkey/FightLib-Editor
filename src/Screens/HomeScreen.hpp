@@ -2,11 +2,17 @@
 #pragma once
 
 #include <GameLibrary/GameLibrary.hpp>
+#include <fightlib/fightlib.hpp>
 
-namespace fgl
+namespace flui
 {
-	class HomeScreen : public Screen
+	class HomeScreen : public fgl::Screen
 	{
-		//
+	public:
+		HomeScreen(fgl::AssetManager* assetManager);
+		virtual ~HomeScreen();
+		
+	private:
+		fgl::ButtonElement* openAnimationButton;
 	};
 }
