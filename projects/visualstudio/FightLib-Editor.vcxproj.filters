@@ -27,6 +27,12 @@
     <ClCompile Include="..\..\src\Screens\UI\CheckerboardElement.cpp">
       <Filter>src\Screen\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Screens\EditAnimationScreen.cpp">
+      <Filter>src\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\AnimationMetaPointsElement.cpp">
+      <Filter>src\Screen\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp">
@@ -39,6 +45,12 @@
       <Filter>src\Screen\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\CheckerboardElement.hpp">
+      <Filter>src\Screen\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\EditAnimationScreen.hpp">
+      <Filter>src\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\AnimationMetaPointsElement.hpp">
       <Filter>src\Screen\UI</Filter>
     </ClInclude>
   </ItemGroup>
