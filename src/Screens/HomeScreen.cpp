@@ -66,5 +66,6 @@ namespace flui
 	HomeScreen::~HomeScreen()
 	{
 		delete openAnimationButton;
+		delete newAnimationButton;
 	}
 }
