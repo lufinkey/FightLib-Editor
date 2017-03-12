@@ -14,5 +14,6 @@ namespace flui
 		
 	private:
 		fgl::ButtonElement* openAnimationButton;
+		fgl::ButtonElement* newAnimationButton;
 	};
 }
