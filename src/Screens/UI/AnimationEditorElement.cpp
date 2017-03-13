@@ -13,7 +13,8 @@ namespace flui
 		checkerboardBackground(new CheckerboardElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		tracingAnimationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		animationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
-		metaPointsElement(new AnimationMetaPointsElement(fgl::RectangleD(0, 0, frame.width, frame.height)))
+		metaPointsElement(new AnimationMetaPointsElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
+		drawnOrientation(fl::ANIMATIONORIENTATION_NEUTRAL)
 	{
 		checkerboardBackground->setVisible(false);
 		checkerboardBackground->setFirstBlockColor(fgl::Color(236,236,236));
@@ -64,9 +65,13 @@ namespace flui
 	{
 		ScreenElement::update(appData);
 		
-		if(animationData!=nullptr && animationElement->getAnimationDirection()!=fgl::Animation::STOPPED)
+		if(animationData!=nullptr)
 		{
-			metaPointsElement->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
+			if(animationElement->getAnimationDirection()!=fgl::Animation::STOPPED)
+			{
+				metaPointsElement->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
+			}
+			animationElement->getImageElement()->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
 		}
 	}
 
@@ -135,5 +140,19 @@ namespace flui
 	const fgl::Animation::Direction& AnimationEditorElement::getAnimationDirection() const
 	{
 		return animationElement->getAnimationDirection();
+	}
+	
+	void AnimationEditorElement::setDrawnOrientation(fl::AnimationOrientation orientation)
+	{
+		drawnOrientation = orientation;
+		if(animationData!=nullptr)
+		{
+			animationElement->getImageElement()->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
+		}
+	}
+	
+	fl::AnimationOrientation AnimationEditorElement::getDrawnOrientation() const
+	{
+		return drawnOrientation;
 	}
 }

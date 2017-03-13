@@ -31,6 +31,9 @@ namespace flui
 		
 		void setAnimationDirection(const fgl::Animation::Direction& direction);
 		const fgl::Animation::Direction& getAnimationDirection() const;
+		
+		void setDrawnOrientation(fl::AnimationOrientation orientation);
+		fl::AnimationOrientation getDrawnOrientation() const;
 
 	private:
 		fl::AnimationData* animationData;
@@ -39,5 +42,6 @@ namespace flui
 		fgl::AnimationElement* tracingAnimationElement;
 		fgl::AnimationElement* animationElement;
 		AnimationMetaPointsElement* metaPointsElement;
+		fl::AnimationOrientation drawnOrientation;
 	};
 }
