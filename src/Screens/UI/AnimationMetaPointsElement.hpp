@@ -23,6 +23,9 @@ namespace flui
 		void setHorizontalMirroringEnabled(bool toggle);
 		bool isHorizontalMirroringEnabled() const;
 		
+		void setMetaPointTypeEnabled(fl::AnimationMetaPoint::Type metaPointType, bool enabled);
+		bool isMetaPointTypeEnabled(fl::AnimationMetaPoint::Type metaPointType) const;
+		
 	protected:
 		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 		
@@ -30,6 +33,7 @@ namespace flui
 		fl::AnimationData* animationData;
 		size_t frameIndex;
 		fl::AnimationOrientation orientation;
+		fgl::BasicDictionary<fl::AnimationMetaPoint::Type,bool> enabledMetaPointTypes;
 		bool mirrorHorizontally;
 	};
 }

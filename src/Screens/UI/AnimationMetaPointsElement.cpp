@@ -57,6 +57,16 @@ namespace flui
 		return mirrorHorizontally;
 	}
 	
+	void AnimationMetaPointsElement::setMetaPointTypeEnabled(fl::AnimationMetaPoint::Type metaPointType, bool enabled)
+	{
+		enabledMetaPointTypes[metaPointType] = enabled;
+	}
+	
+	bool AnimationMetaPointsElement::isMetaPointTypeEnabled(fl::AnimationMetaPoint::Type metaPointType) const
+	{
+		return enabledMetaPointTypes.get(metaPointType, false);
+	}
+	
 	void AnimationMetaPointsElement::drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const
 	{
 		if(animationData!=nullptr)
@@ -67,7 +77,13 @@ namespace flui
 				frame.x = frame.x+frame.width;
 				frame.width = -frame.width;
 			}
-			animationData->drawMetaPoints(frameIndex, frame, graphics, orientation);
+			for(auto& metaPointPair : enabledMetaPointTypes)
+			{
+				if(metaPointPair.second)
+				{
+					animationData->drawMetaPoints(frameIndex, frame, graphics, orientation, metaPointPair.first);
+				}
+			}
 		}
 	}
 }
