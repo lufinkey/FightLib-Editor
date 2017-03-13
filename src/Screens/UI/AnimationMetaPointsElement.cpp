@@ -11,7 +11,8 @@ namespace flui
 	AnimationMetaPointsElement::AnimationMetaPointsElement(const fgl::RectangleD& frame) : fgl::ScreenElement(frame),
 		animationData(nullptr),
 		frameIndex(0),
-		orientation(fl::ANIMATIONORIENTATION_LEFT)
+		orientation(fl::ANIMATIONORIENTATION_LEFT),
+		mirrorHorizontally(false)
 	{
 		setBorderWidth(1);
 	}
@@ -46,11 +47,27 @@ namespace flui
 		return orientation;
 	}
 	
+	void AnimationMetaPointsElement::setHorizontalMirroringEnabled(bool toggle)
+	{
+		mirrorHorizontally = toggle;
+	}
+	
+	bool AnimationMetaPointsElement::isHorizontalMirroringEnabled() const
+	{
+		return mirrorHorizontally;
+	}
+	
 	void AnimationMetaPointsElement::drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const
 	{
 		if(animationData!=nullptr)
 		{
-			animationData->drawMetaPoints(frameIndex, getFrame(), graphics, orientation);
+			fgl::RectangleD frame = getFrame();
+			if(mirrorHorizontally)
+			{
+				frame.x = frame.x+frame.width;
+				frame.width = -frame.width;
+			}
+			animationData->drawMetaPoints(frameIndex, frame, graphics, orientation);
 		}
 	}
 }

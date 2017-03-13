@@ -72,6 +72,7 @@ namespace flui
 				metaPointsElement->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
 			}
 			animationElement->getImageElement()->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
+			metaPointsElement->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
 		}
 	}
 
@@ -148,6 +149,7 @@ namespace flui
 		if(animationData!=nullptr)
 		{
 			animationElement->getImageElement()->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
+			metaPointsElement->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
 		}
 	}
 	

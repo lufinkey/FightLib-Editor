@@ -20,6 +20,9 @@ namespace flui
 		void setAnimationOrientation(fl::AnimationOrientation orientation);
 		fl::AnimationOrientation getAnimationOrientation() const;
 		
+		void setHorizontalMirroringEnabled(bool toggle);
+		bool isHorizontalMirroringEnabled() const;
+		
 	protected:
 		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 		
@@ -27,5 +30,6 @@ namespace flui
 		fl::AnimationData* animationData;
 		size_t frameIndex;
 		fl::AnimationOrientation orientation;
+		bool mirrorHorizontally;
 	};
 }

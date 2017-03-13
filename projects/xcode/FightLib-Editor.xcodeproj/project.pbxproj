@@ -33,6 +33,7 @@
 		F15F5A6C1E71E1F000FAFD86 /* webp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A681E71E1F000FAFD86 /* webp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */; };
 		F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */; };
+		F199D4A01E76CCB5008627BE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = F199D49F1E76CCB5008627BE /* assets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationEditorElement.hpp; sourceTree = "<group>"; };
 		F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CheckerboardElement.cpp; sourceTree = "<group>"; };
 		F15F5A8A1E71F26B00FAFD86 /* CheckerboardElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CheckerboardElement.hpp; sourceTree = "<group>"; };
+		F199D49F1E76CCB5008627BE /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../assets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				F15F5A251E71E0F300FAFD86 /* project_assets */,
+				F199D49F1E76CCB5008627BE /* assets */,
 				F15F5A371E71E14600FAFD86 /* src */,
 				F15F5A241E71E0F300FAFD86 /* Products */,
 				F15F5A4C1E71E17E00FAFD86 /* Frameworks */,
@@ -257,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F199D4A01E76CCB5008627BE /* assets in Resources */,
 				F15F5A2D1E71E0F300FAFD86 /* Assets.xcassets in Resources */,
 				F15F5A301E71E0F400FAFD86 /* MainMenu.xib in Resources */,
 			);
