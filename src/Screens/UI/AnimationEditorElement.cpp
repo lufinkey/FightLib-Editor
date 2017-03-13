@@ -22,6 +22,8 @@ namespace flui
 
 		tracingAnimationElement->getImageElement()->setDisplayMode(fgl::ImageElement::DISPLAY_FIT_CENTER);
 		tracingAnimationElement->setAnimationDirection(fgl::Animation::STOPPED);
+		tracingAnimationElement->setAlpha(0.4);
+		tracingAnimationElement->setVisible(false);
 		addChildElement(tracingAnimationElement);
 
 		animationElement->getImageElement()->setDisplayMode(fgl::ImageElement::DISPLAY_FIT_CENTER);

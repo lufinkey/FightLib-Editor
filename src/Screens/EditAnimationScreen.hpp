@@ -14,6 +14,7 @@ namespace flui
 	private:
 		fl::AnimationData* animationData;
 
+		fgl::TextInputElement* nameInputElement;
 		flui::AnimationEditorElement* animationEditorElement;
 	};
 }
