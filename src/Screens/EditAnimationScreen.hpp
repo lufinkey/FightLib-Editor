@@ -3,6 +3,7 @@
 
 #include <fightlib/fightlib.hpp>
 #include "UI/AnimationEditorElement.hpp"
+#include "UI/MetapointInfoElement.hpp"
 
 namespace flui
 {
@@ -16,7 +17,7 @@ namespace flui
 		
 		void nextFrame();
 		void previousFrame();
-
+		
 	private:
 		fgl::String getFrameIndexLabelString() const;
 		
@@ -28,5 +29,7 @@ namespace flui
 		fgl::TextElement* frameIndexLabel;
 		fgl::ButtonElement* nextFrameButton;
 		fgl::ButtonElement* prevFrameButton;
+		
+		MetapointInfoElement* metaPointInfoElement;
 	};
 }

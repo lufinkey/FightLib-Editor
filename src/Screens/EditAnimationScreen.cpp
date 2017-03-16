@@ -21,7 +21,6 @@ namespace flui
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 100);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
-		//animationEditorElement->setDrawnOrientation(fl::ANIMATIONORIENTATION_RIGHT);
 		
 		frameIndexLabel = new fgl::TextElement();
 		frameIndexLabel->setText(getFrameIndexLabelString());
@@ -56,11 +55,19 @@ namespace flui
 			previousFrame();
 		});
 		
+		metaPointInfoElement = new MetapointInfoElement(assetManager);
+		metaPointInfoElement->setVisible(false);
+		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
+		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 100);
+		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
+		
 		getElement()->addChildElement(animationEditorElement);
 		getElement()->addChildElement(nameInputElement);
 		getElement()->addChildElement(frameIndexLabel);
 		getElement()->addChildElement(nextFrameButton);
 		getElement()->addChildElement(prevFrameButton);
+		getElement()->addChildElement(metaPointInfoElement);
 	}
 	
 	EditAnimationScreen::~EditAnimationScreen()
@@ -70,6 +77,7 @@ namespace flui
 		delete frameIndexLabel;
 		delete nextFrameButton;
 		delete prevFrameButton;
+		delete metaPointInfoElement;
 	}
 	
 	void EditAnimationScreen::update(fgl::ApplicationData appData)

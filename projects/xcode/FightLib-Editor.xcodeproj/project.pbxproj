@@ -33,6 +33,8 @@
 		F15F5A6C1E71E1F000FAFD86 /* webp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A681E71E1F000FAFD86 /* webp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */; };
 		F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */; };
+		F18578EB1E7AF8E900A7BE3B /* MetapointInfoElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F18578E91E7AF8E900A7BE3B /* MetapointInfoElement.cpp */; };
+		F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */; };
 		F199D4A01E76CCB5008627BE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = F199D49F1E76CCB5008627BE /* assets */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,10 @@
 		F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationEditorElement.hpp; sourceTree = "<group>"; };
 		F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CheckerboardElement.cpp; sourceTree = "<group>"; };
 		F15F5A8A1E71F26B00FAFD86 /* CheckerboardElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CheckerboardElement.hpp; sourceTree = "<group>"; };
+		F18578E91E7AF8E900A7BE3B /* MetapointInfoElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetapointInfoElement.cpp; sourceTree = "<group>"; };
+		F18578EA1E7AF8E900A7BE3B /* MetapointInfoElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MetapointInfoElement.hpp; sourceTree = "<group>"; };
+		F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CarouselSelectorElement.cpp; sourceTree = "<group>"; };
+		F18578ED1E7AFA6400A7BE3B /* CarouselSelectorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CarouselSelectorElement.hpp; sourceTree = "<group>"; };
 		F199D49F1E76CCB5008627BE /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../assets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,8 +201,12 @@
 				F11DFDCC1E7341E900465715 /* AnimationMetaPointsElement.hpp */,
 				F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */,
 				F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */,
+				F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */,
+				F18578ED1E7AFA6400A7BE3B /* CarouselSelectorElement.hpp */,
 				F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */,
 				F15F5A8A1E71F26B00FAFD86 /* CheckerboardElement.hpp */,
+				F18578E91E7AF8E900A7BE3B /* MetapointInfoElement.cpp */,
+				F18578EA1E7AF8E900A7BE3B /* MetapointInfoElement.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -273,10 +283,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18578EB1E7AF8E900A7BE3B /* MetapointInfoElement.cpp in Sources */,
 				F11DFDB21E72FDE900465715 /* EditAnimationScreen.cpp in Sources */,
 				F11DFDCD1E7341E900465715 /* AnimationMetaPointsElement.cpp in Sources */,
 				F15F5A431E71E14600FAFD86 /* main.cpp in Sources */,
 				F15F5A441E71E14600FAFD86 /* MainApplication.cpp in Sources */,
+				F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */,
 				F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */,
 				F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */,
 				F15F5A451E71E14600FAFD86 /* HomeScreen.cpp in Sources */,
