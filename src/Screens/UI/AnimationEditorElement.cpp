@@ -157,4 +157,14 @@ namespace flui
 	{
 		return drawnOrientation;
 	}
+	
+	void AnimationEditorElement::setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible)
+	{
+		metaPointsElement->setMetaPointTypeEnabled(metaPointType, visible);
+	}
+	
+	bool AnimationEditorElement::isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const
+	{
+		return metaPointsElement->isMetaPointTypeEnabled(metaPointType);
+	}
 }
