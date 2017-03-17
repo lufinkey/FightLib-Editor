@@ -69,6 +69,16 @@ namespace flui
 		prevFrameButton->setHandler([=]{
 			previousFrame();
 		});
+		
+		metapointCheckboxHeaderLabel = new fgl::TextElement();
+		metapointCheckboxHeaderLabel->setFontSize(18);
+		metapointCheckboxHeaderLabel->setText("Meta Points");
+		metapointCheckboxHeaderLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		metapointCheckboxHeaderLabel->setVerticalAlignment(fgl::VERTICALALIGN_CENTER);
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, 106);
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
 
 		fgl::ArrayList<fl::AnimationMetaPoint::Type> metaPointTypes = {
 			fl::AnimationMetaPoint::POINTTYPE_HITBOX,
@@ -80,7 +90,7 @@ namespace flui
 			fl::AnimationMetaPoint::POINTTYPE_HANDLE
 		};
 
-		double metapointCheckboxY = 100;
+		double metapointCheckboxY = 130;
 		for(auto metaPointType : metaPointTypes)
 		{
 			auto metapointCheckbox = new LabeledCheckboxElement();
@@ -103,6 +113,7 @@ namespace flui
 		rightSidebarContainer->addChildElement(frameIndexLabel);
 		rightSidebarContainer->addChildElement(nextFrameButton);
 		rightSidebarContainer->addChildElement(prevFrameButton);
+		rightSidebarContainer->addChildElement(metapointCheckboxHeaderLabel);
 		for(auto checkboxPair : metapointCheckboxElements)
 		{
 			rightSidebarContainer->addChildElement(checkboxPair.second);
@@ -128,6 +139,7 @@ namespace flui
 		delete nextFrameButton;
 		delete prevFrameButton;
 		delete metaPointInfoElement;
+		delete metapointCheckboxHeaderLabel;
 		for(auto checkboxPair : metapointCheckboxElements)
 		{
 			delete checkboxPair.second;
