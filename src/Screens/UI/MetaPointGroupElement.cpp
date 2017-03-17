@@ -113,7 +113,7 @@ namespace flui
 
 	void MetaPointGroupElement::setHorizontalMirroringEnabled(bool mirror)
 	{
-		horizontalMirroringEnabled;
+		horizontalMirroringEnabled = mirror;
 	}
 
 	bool MetaPointGroupElement::isHorizontalMirroringEnabled() const

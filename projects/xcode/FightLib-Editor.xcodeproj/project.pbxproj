@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F11DFDB21E72FDE900465715 /* EditAnimationScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11DFDB01E72FDE900465715 /* EditAnimationScreen.cpp */; };
-		F11DFDCD1E7341E900465715 /* AnimationMetaPointsElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F11DFDCB1E7341E900465715 /* AnimationMetaPointsElement.cpp */; };
 		F15F5A2D1E71E0F300FAFD86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F15F5A2C1E71E0F300FAFD86 /* Assets.xcassets */; };
 		F15F5A301E71E0F400FAFD86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15F5A2E1E71E0F400FAFD86 /* MainMenu.xib */; };
 		F15F5A431E71E14600FAFD86 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A381E71E14600FAFD86 /* main.cpp */; };
@@ -33,6 +32,9 @@
 		F15F5A6C1E71E1F000FAFD86 /* webp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F15F5A681E71E1F000FAFD86 /* webp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */; };
 		F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */; };
+		F160BB101E7C0B7E005162EB /* LabeledCheckboxElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB0A1E7C0B7E005162EB /* LabeledCheckboxElement.cpp */; };
+		F160BB111E7C0B7E005162EB /* MetaPointElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB0C1E7C0B7E005162EB /* MetaPointElement.cpp */; };
+		F160BB121E7C0B7E005162EB /* MetaPointGroupElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB0E1E7C0B7E005162EB /* MetaPointGroupElement.cpp */; };
 		F18578EB1E7AF8E900A7BE3B /* MetapointInfoElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F18578E91E7AF8E900A7BE3B /* MetapointInfoElement.cpp */; };
 		F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */; };
 		F199D4A01E76CCB5008627BE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = F199D49F1E76CCB5008627BE /* assets */; };
@@ -56,8 +58,6 @@
 /* Begin PBXFileReference section */
 		F11DFDB01E72FDE900465715 /* EditAnimationScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EditAnimationScreen.cpp; sourceTree = "<group>"; };
 		F11DFDB11E72FDE900465715 /* EditAnimationScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EditAnimationScreen.hpp; sourceTree = "<group>"; };
-		F11DFDCB1E7341E900465715 /* AnimationMetaPointsElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimationMetaPointsElement.cpp; sourceTree = "<group>"; };
-		F11DFDCC1E7341E900465715 /* AnimationMetaPointsElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationMetaPointsElement.hpp; sourceTree = "<group>"; };
 		F15F5A231E71E0F300FAFD86 /* FightLib-Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FightLib-Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F15F5A2C1E71E0F300FAFD86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F15F5A2F1E71E0F400FAFD86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -86,6 +86,12 @@
 		F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AnimationEditorElement.hpp; sourceTree = "<group>"; };
 		F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CheckerboardElement.cpp; sourceTree = "<group>"; };
 		F15F5A8A1E71F26B00FAFD86 /* CheckerboardElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CheckerboardElement.hpp; sourceTree = "<group>"; };
+		F160BB0A1E7C0B7E005162EB /* LabeledCheckboxElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LabeledCheckboxElement.cpp; sourceTree = "<group>"; };
+		F160BB0B1E7C0B7E005162EB /* LabeledCheckboxElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LabeledCheckboxElement.hpp; sourceTree = "<group>"; };
+		F160BB0C1E7C0B7E005162EB /* MetaPointElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetaPointElement.cpp; sourceTree = "<group>"; };
+		F160BB0D1E7C0B7E005162EB /* MetaPointElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MetaPointElement.hpp; sourceTree = "<group>"; };
+		F160BB0E1E7C0B7E005162EB /* MetaPointGroupElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetaPointGroupElement.cpp; sourceTree = "<group>"; };
+		F160BB0F1E7C0B7E005162EB /* MetaPointGroupElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MetaPointGroupElement.hpp; sourceTree = "<group>"; };
 		F18578E91E7AF8E900A7BE3B /* MetapointInfoElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MetapointInfoElement.cpp; sourceTree = "<group>"; };
 		F18578EA1E7AF8E900A7BE3B /* MetapointInfoElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MetapointInfoElement.hpp; sourceTree = "<group>"; };
 		F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CarouselSelectorElement.cpp; sourceTree = "<group>"; };
@@ -197,14 +203,18 @@
 		F15F5A861E71F26B00FAFD86 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				F11DFDCB1E7341E900465715 /* AnimationMetaPointsElement.cpp */,
-				F11DFDCC1E7341E900465715 /* AnimationMetaPointsElement.hpp */,
 				F15F5A871E71F26B00FAFD86 /* AnimationEditorElement.cpp */,
 				F15F5A881E71F26B00FAFD86 /* AnimationEditorElement.hpp */,
 				F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */,
 				F18578ED1E7AFA6400A7BE3B /* CarouselSelectorElement.hpp */,
 				F15F5A891E71F26B00FAFD86 /* CheckerboardElement.cpp */,
 				F15F5A8A1E71F26B00FAFD86 /* CheckerboardElement.hpp */,
+				F160BB0A1E7C0B7E005162EB /* LabeledCheckboxElement.cpp */,
+				F160BB0B1E7C0B7E005162EB /* LabeledCheckboxElement.hpp */,
+				F160BB0C1E7C0B7E005162EB /* MetaPointElement.cpp */,
+				F160BB0D1E7C0B7E005162EB /* MetaPointElement.hpp */,
+				F160BB0E1E7C0B7E005162EB /* MetaPointGroupElement.cpp */,
+				F160BB0F1E7C0B7E005162EB /* MetaPointGroupElement.hpp */,
 				F18578E91E7AF8E900A7BE3B /* MetapointInfoElement.cpp */,
 				F18578EA1E7AF8E900A7BE3B /* MetapointInfoElement.hpp */,
 			);
@@ -285,13 +295,15 @@
 			files = (
 				F18578EB1E7AF8E900A7BE3B /* MetapointInfoElement.cpp in Sources */,
 				F11DFDB21E72FDE900465715 /* EditAnimationScreen.cpp in Sources */,
-				F11DFDCD1E7341E900465715 /* AnimationMetaPointsElement.cpp in Sources */,
 				F15F5A431E71E14600FAFD86 /* main.cpp in Sources */,
 				F15F5A441E71E14600FAFD86 /* MainApplication.cpp in Sources */,
+				F160BB111E7C0B7E005162EB /* MetaPointElement.cpp in Sources */,
+				F160BB101E7C0B7E005162EB /* LabeledCheckboxElement.cpp in Sources */,
 				F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */,
 				F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */,
 				F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */,
 				F15F5A451E71E14600FAFD86 /* HomeScreen.cpp in Sources */,
+				F160BB121E7C0B7E005162EB /* MetaPointGroupElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
