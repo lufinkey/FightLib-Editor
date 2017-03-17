@@ -21,6 +21,13 @@ namespace flui
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.2, fgl::LAYOUTVALUE_RATIO);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
+		
+		leftSidebarElement = nullptr;
+		leftSidebarContainer = new fgl::ScreenElement();
+		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.8, fgl::LAYOUTVALUE_RATIO);
+		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
+		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
 
 		rightSidebarContainer = new fgl::ScreenElement();
 		rightSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.8, fgl::LAYOUTVALUE_RATIO);
@@ -101,23 +108,21 @@ namespace flui
 			rightSidebarContainer->addChildElement(checkboxPair.second);
 		}
 		
+		//Left Sidebar
+		
 		metaPointInfoElement = new MetapointInfoElement(assetManager);
-		metaPointInfoElement->setVisible(false);
-		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
-		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
-		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 100);
-		metaPointInfoElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
 		
 		getElement()->addChildElement(animationEditorElement);
 		getElement()->addChildElement(nameInputElement);
+		getElement()->addChildElement(leftSidebarContainer);
 		getElement()->addChildElement(rightSidebarContainer);
-		getElement()->addChildElement(metaPointInfoElement);
 	}
 	
 	EditAnimationScreen::~EditAnimationScreen()
 	{
 		delete nameInputElement;
 		delete animationEditorElement;
+		delete leftSidebarContainer;
 		delete rightSidebarContainer;
 		delete frameIndexLabel;
 		delete nextFrameButton;
@@ -174,5 +179,24 @@ namespace flui
 		size_t frameIndex = animationEditorElement->getAnimationFrame();
 		size_t frameCount = animation->getTotalFrames();
 		return (fgl::String)""+(frameIndex+1)+"/"+frameCount;
+	}
+	
+	void EditAnimationScreen::setLeftSidebarElement(fgl::ScreenElement* element)
+	{
+		if(leftSidebarElement!=nullptr)
+		{
+			leftSidebarElement->removeFromParentElement();
+			leftSidebarElement->removeAllLayoutRules();
+			leftSidebarElement = nullptr;
+		}
+		leftSidebarElement = element;
+		if(leftSidebarElement!=nullptr)
+		{
+			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
+			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
+			leftSidebarContainer->addChildElement(leftSidebarElement);
+		}
 	}
 }

@@ -135,7 +135,6 @@ namespace flui
 				selectedOptionIndex = 0;
 			}
 		}
-		fgl::Console::writeLine((fgl::String)""+selectedOptionIndex);
 		reloadOptionLabelText();
 	}
 	

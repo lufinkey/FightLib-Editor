@@ -21,12 +21,15 @@ namespace flui
 		
 	private:
 		fgl::String getFrameIndexLabelString() const;
+		void setLeftSidebarElement(fgl::ScreenElement* element);
 		
 		fl::AnimationData* animationData;
 
 		fgl::TextInputElement* nameInputElement;
 		flui::AnimationEditorElement* animationEditorElement;
 		
+		fgl::ScreenElement* leftSidebarContainer;
+		fgl::ScreenElement* leftSidebarElement;
 		fgl::ScreenElement* rightSidebarContainer;
 
 		//right sidebar
