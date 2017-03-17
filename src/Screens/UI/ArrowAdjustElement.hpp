@@ -16,7 +16,7 @@ namespace flui
 		void setValueChangeHandler(const std::function<void()>& valueChangeHandler);
 		const std::function<void()>& getValueChangeHandler() const;
 		
-		fgl::TextElement* getValueLabel() const;
+		fgl::TextInputElement* getValueLabel() const;
 		fgl::ButtonElement* getPreviousValueButton() const;
 		fgl::ButtonElement* getNextValueButton() const;
 		
@@ -32,7 +32,7 @@ namespace flui
 		void updateValueLabelString();
 		
 	private:
-		fgl::TextElement* valueLabel;
+		fgl::TextInputElement* valueLabel;
 		fgl::ButtonElement* prevValueButton;
 		fgl::ButtonElement* nextValueButton;
 		

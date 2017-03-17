@@ -10,9 +10,13 @@ namespace flui
 	
 	ArrowAdjustElement::ArrowAdjustElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame) : ScreenElement(frame)
 	{
-		valueLabel = new fgl::TextElement();
-		valueLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		valueLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		valueLabel = new fgl::TextInputElement();
+		valueLabel->setEditable(false);
+		valueLabel->setResigningOnOutsideTouchEnabled(true);
+		valueLabel->setBorderWidth(0);
+		valueLabel->getTextElement()->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		valueLabel->getTextElement()->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		valueLabel->getTextElement()->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		valueLabel->setFontSize(18);
 		valueLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
 		valueLabel->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
@@ -78,7 +82,7 @@ namespace flui
 		return valueChangeHandler;
 	}
 	
-	fgl::TextElement* ArrowAdjustElement::getValueLabel() const
+	fgl::TextInputElement* ArrowAdjustElement::getValueLabel() const
 	{
 		return valueLabel;
 	}
