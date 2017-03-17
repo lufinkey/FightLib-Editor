@@ -8,8 +8,11 @@ namespace flui
 	class MetaPointGroupElement : public fgl::ScreenElement
 	{
 	public:
-		using ScreenElement::ScreenElement;
+		MetaPointGroupElement();
+		MetaPointGroupElement(const fgl::RectangleD& frame);
 		virtual ~MetaPointGroupElement();
+
+		virtual void draw(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 
 		void setMetaPoints(const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints);
 		const fgl::ArrayList<fl::AnimationMetaPoint>& getMetaPoints() const;
@@ -23,11 +26,15 @@ namespace flui
 		void setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible);
 		bool isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const;
 
+		void setHorizontalMirroringEnabled(bool mirror);
+		bool isHorizontalMirroringEnabled() const;
+
 	private:
 		fgl::ArrayList<fl::AnimationMetaPoint> metaPoints;
 		fgl::ArrayList<MetaPointElement*> metaPointElements;
 		std::function<void(size_t)> metaPointChangeHandler;
 		fgl::Vector2d animationSize;
 		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, bool> enabledMetaPointTypes;
+		bool horizontalMirroringEnabled;
 	};
 }

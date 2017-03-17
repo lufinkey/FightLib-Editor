@@ -30,9 +30,6 @@
     <ClCompile Include="..\..\src\Screens\EditAnimationScreen.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Screens\UI\AnimationMetaPointsElement.cpp">
-      <Filter>src\Screens\UI</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\MetapointInfoElement.cpp">
       <Filter>src\Screens\UI</Filter>
     </ClCompile>
@@ -64,9 +61,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\EditAnimationScreen.hpp">
       <Filter>src\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Screens\UI\AnimationMetaPointsElement.hpp">
-      <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\CarouselSelectorElement.hpp">
       <Filter>src\Screens\UI</Filter>

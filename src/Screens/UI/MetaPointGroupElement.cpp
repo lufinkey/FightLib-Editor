@@ -3,12 +3,33 @@
 
 namespace flui
 {
+	MetaPointGroupElement::MetaPointGroupElement() : MetaPointGroupElement(fgl::RectangleD(0,0,0,0))
+	{
+		//
+	}
+
+	MetaPointGroupElement::MetaPointGroupElement(const fgl::RectangleD& frame) : ScreenElement(frame),
+		horizontalMirroringEnabled(false)
+	{
+		//
+	}
+
 	MetaPointGroupElement::~MetaPointGroupElement()
 	{
 		for(auto metaPointElement : metaPointElements)
 		{
 			delete metaPointElement;
 		}
+	}
+
+	void MetaPointGroupElement::draw(fgl::ApplicationData appData, fgl::Graphics graphics) const
+	{
+		fgl::RectangleD frame = getFrame();
+		if(horizontalMirroringEnabled)
+		{
+			graphics.scale(fgl::Vector2d(-1, 1), fgl::Vector2d(frame.x+(frame.width/2), frame.y));
+		}
+		ScreenElement::draw(appData, graphics);
 	}
 
 	void MetaPointGroupElement::setMetaPoints(const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints_arg)
@@ -88,5 +109,15 @@ namespace flui
 	bool MetaPointGroupElement::isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const
 	{
 		return enabledMetaPointTypes.get(metaPointType, false);
+	}
+
+	void MetaPointGroupElement::setHorizontalMirroringEnabled(bool mirror)
+	{
+		horizontalMirroringEnabled;
+	}
+
+	bool MetaPointGroupElement::isHorizontalMirroringEnabled() const
+	{
+		return horizontalMirroringEnabled;
 	}
 }

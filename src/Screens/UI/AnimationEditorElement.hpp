@@ -2,7 +2,7 @@
 #pragma once
 
 #include <fightlib/fightlib.hpp>
-#include "AnimationMetaPointsElement.hpp"
+#include "MetaPointGroupElement.hpp"
 #include "CheckerboardElement.hpp"
 
 namespace flui
@@ -39,12 +39,14 @@ namespace flui
 		bool isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const;
 
 	private:
+		void updateMetaPoints();
+
 		fl::AnimationData* animationData;
 
 		CheckerboardElement* checkerboardBackground;
 		fgl::AnimationElement* tracingAnimationElement;
 		fgl::AnimationElement* animationElement;
-		AnimationMetaPointsElement* metaPointsElement;
+		MetaPointGroupElement* metaPointsElement;
 		fl::AnimationOrientation drawnOrientation;
 	};
 }

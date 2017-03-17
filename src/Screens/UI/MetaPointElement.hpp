@@ -10,8 +10,6 @@ namespace flui
 	public:
 		using ScreenElement::ScreenElement;
 
-		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
-
 		void setMetaPoint(const fl::AnimationMetaPoint& metaPoint);
 		const fl::AnimationMetaPoint& getMetaPoint() const;
 
@@ -20,6 +18,9 @@ namespace flui
 
 		void setMetaPointChangeHandler(const std::function<void(fl::AnimationMetaPoint)>& handler);
 		const std::function<void(fl::AnimationMetaPoint)>& getMetaPointChangeHandler() const;
+
+	protected:
+		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 
 	private:
 		fl::AnimationMetaPoint metaPoint;

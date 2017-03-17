@@ -13,7 +13,7 @@ namespace flui
 		checkerboardBackground(new CheckerboardElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		tracingAnimationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		animationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
-		metaPointsElement(new AnimationMetaPointsElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
+		metaPointsElement(new MetaPointGroupElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		drawnOrientation(fl::ANIMATIONORIENTATION_NEUTRAL)
 	{
 		checkerboardBackground->setVisible(false);
@@ -70,6 +70,7 @@ namespace flui
 			if(animationElement->getAnimationDirection()!=fgl::Animation::STOPPED)
 			{
 				metaPointsElement->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
+				updateMetaPoints();
 			}
 			animationElement->getImageElement()->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
 			metaPointsElement->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
@@ -92,7 +93,7 @@ namespace flui
 			animationElement->setAnimation(nullptr, fgl::Animation::NO_CHANGE);
 			checkerboardBackground->setVisible(false);
 		}
-		metaPointsElement->setAnimationData(animationData_arg);
+		updateMetaPoints();
 		layoutChildElements();
 	}
 
@@ -104,7 +105,7 @@ namespace flui
 	void AnimationEditorElement::setAnimationFrame(size_t frameIndex)
 	{
 		animationElement->setAnimationFrame(frameIndex);
-		metaPointsElement->setAnimationFrame(frameIndex);
+		updateMetaPoints();
 		layoutChildElements();
 	}
 
@@ -160,11 +161,25 @@ namespace flui
 	
 	void AnimationEditorElement::setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible)
 	{
-		metaPointsElement->setMetaPointTypeEnabled(metaPointType, visible);
+		metaPointsElement->setMetaPointTypeVisible(metaPointType, visible);
 	}
 	
 	bool AnimationEditorElement::isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const
 	{
-		return metaPointsElement->isMetaPointTypeEnabled(metaPointType);
+		return metaPointsElement->isMetaPointTypeVisible(metaPointType);
+	}
+
+	void AnimationEditorElement::updateMetaPoints()
+	{
+		if(animationData==nullptr || animationData->getAnimation()==nullptr || animationData->getAnimation()->getTotalFrames()==0)
+		{
+			metaPointsElement->setMetaPoints({});
+			metaPointsElement->setAnimationSize(fgl::Vector2d(0, 0));
+		}
+		else
+		{
+			metaPointsElement->setMetaPoints(animationData->getMetaPoints(animationElement->getAnimationFrame()));
+			metaPointsElement->setAnimationSize(animationData->getSize(animationElement->getAnimationFrame(), 1.0));
+		}
 	}
 }
