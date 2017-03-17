@@ -11,15 +11,18 @@ namespace flui
 	MetaPointInfoElement::MetaPointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame)
 		: ScreenElement(frame)
 	{
+		double offsetY = 10;
+
 		typeLabel = new fgl::TextElement();
 		typeLabel->setText("Type");
-		typeLabel->setFontSize(18);
+		typeLabel->setFontSize(14);
 		typeLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
 		typeLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_BOTTOM);
-		typeLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
+		typeLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		typeLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		typeLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
-		typeLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 22);
+		typeLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
 		
 		fgl::ArrayList<fgl::Number> typeOptionList = {
 									fl::AnimationMetaPoint::POINTTYPE_HITBOX,
@@ -30,34 +33,41 @@ namespace flui
 									fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT,
 									fl::AnimationMetaPoint::POINTTYPE_HANDLE };
 		typeSelectorElement = new CarouselSelectorElement(assetManager, typeOptionList);
+		typeSelectorElement->getValueLabel()->setFontSize(12);
 		typeSelectorElement->setOptionTitleResolver([=](fgl::Number value) -> fgl::String {
 			return getMetaPointTypeName(value.toArithmeticValue<fl::AnimationMetaPoint::Type>());
 		});
 		typeSelectorElement->setSelectedOptionIndex(0);
-		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 32);
+		offsetY += 1;
+		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
-		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 50);
+		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
+		offsetY += 14;
 		
 		radiusLabel = new fgl::TextElement();
 		radiusLabel->setText("Radius");
-		radiusLabel->setFontSize(18);
+		radiusLabel->setFontSize(14);
 		radiusLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
 		radiusLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_BOTTOM);
-		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, 90);
+		offsetY += 10;
+		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
-		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 22);
+		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
 		
 		radiusAdjustElement = new NumberAdjustElement(assetManager);
+		radiusAdjustElement->getValueLabel()->setFontSize(12);
 		radiusAdjustElement->setValue(0);
 		radiusAdjustElement->setMinValue(0);
 		radiusAdjustElement->setMaxValue(9999);
 		radiusAdjustElement->setIncrement(0.5);
-		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 112);
+		offsetY += 1;
+		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
-		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 50);
+		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
 		
 		addChildElement(typeLabel);
 		addChildElement(typeSelectorElement);
