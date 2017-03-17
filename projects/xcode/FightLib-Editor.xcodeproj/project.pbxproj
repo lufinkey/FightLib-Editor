@@ -37,6 +37,7 @@
 		F160BB121E7C0B7E005162EB /* MetaPointGroupElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB0E1E7C0B7E005162EB /* MetaPointGroupElement.cpp */; };
 		F160BB181E7C4D19005162EB /* MetaPointInfoElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB161E7C4D19005162EB /* MetaPointInfoElement.cpp */; };
 		F160BB1E1E7C502E005162EB /* ArrowAdjustElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB1C1E7C502E005162EB /* ArrowAdjustElement.cpp */; };
+		F160BB211E7C635C005162EB /* NumberAdjustElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB1F1E7C635C005162EB /* NumberAdjustElement.cpp */; };
 		F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */; };
 		F199D4A01E76CCB5008627BE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = F199D49F1E76CCB5008627BE /* assets */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,8 @@
 		F160BB171E7C4D19005162EB /* MetaPointInfoElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MetaPointInfoElement.hpp; sourceTree = "<group>"; };
 		F160BB1C1E7C502E005162EB /* ArrowAdjustElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ArrowAdjustElement.cpp; sourceTree = "<group>"; };
 		F160BB1D1E7C502E005162EB /* ArrowAdjustElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ArrowAdjustElement.hpp; sourceTree = "<group>"; };
+		F160BB1F1E7C635C005162EB /* NumberAdjustElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NumberAdjustElement.cpp; sourceTree = "<group>"; };
+		F160BB201E7C635C005162EB /* NumberAdjustElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NumberAdjustElement.hpp; sourceTree = "<group>"; };
 		F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CarouselSelectorElement.cpp; sourceTree = "<group>"; };
 		F18578ED1E7AFA6400A7BE3B /* CarouselSelectorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CarouselSelectorElement.hpp; sourceTree = "<group>"; };
 		F199D49F1E76CCB5008627BE /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../assets; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 				F160BB0F1E7C0B7E005162EB /* MetaPointGroupElement.hpp */,
 				F160BB161E7C4D19005162EB /* MetaPointInfoElement.cpp */,
 				F160BB171E7C4D19005162EB /* MetaPointInfoElement.hpp */,
+				F160BB1F1E7C635C005162EB /* NumberAdjustElement.cpp */,
+				F160BB201E7C635C005162EB /* NumberAdjustElement.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */,
 				F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */,
 				F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */,
+				F160BB211E7C635C005162EB /* NumberAdjustElement.cpp in Sources */,
 				F15F5A451E71E14600FAFD86 /* HomeScreen.cpp in Sources */,
 				F160BB181E7C4D19005162EB /* MetaPointInfoElement.cpp in Sources */,
 				F160BB121E7C0B7E005162EB /* MetaPointGroupElement.cpp in Sources */,
