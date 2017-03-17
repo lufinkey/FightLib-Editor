@@ -27,12 +27,16 @@ namespace flui
 		fgl::TextInputElement* nameInputElement;
 		flui::AnimationEditorElement* animationEditorElement;
 		
+		fgl::ScreenElement* rightSidebarContainer;
+
+		//right sidebar
 		fgl::TextElement* frameIndexLabel;
 		fgl::ButtonElement* nextFrameButton;
 		fgl::ButtonElement* prevFrameButton;
 
 		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, LabeledCheckboxElement*> metapointCheckboxElements;
 		
+		//left sidebar
 		MetapointInfoElement* metaPointInfoElement;
 	};
 }

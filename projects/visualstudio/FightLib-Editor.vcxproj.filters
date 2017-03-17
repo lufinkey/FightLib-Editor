@@ -4,10 +4,10 @@
     <Filter Include="src">
       <UniqueIdentifier>{3e8c10d0-2899-416f-ace2-94ff073bb21a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Screen">
+    <Filter Include="src\Screens">
       <UniqueIdentifier>{671ae352-fb3e-4063-bd5d-aef2d837bf35}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Screen\UI">
+    <Filter Include="src\Screens\UI">
       <UniqueIdentifier>{9a8450b8-1f27-41a1-b11f-4f6510044c13}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -19,28 +19,28 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\HomeScreen.cpp">
-      <Filter>src\Screen</Filter>
+      <Filter>src\Screens</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\AnimationEditorElement.cpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\CheckerboardElement.cpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\EditAnimationScreen.cpp">
-      <Filter>src\Screen</Filter>
+      <Filter>src\Screens</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\AnimationMetaPointsElement.cpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\MetapointInfoElement.cpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\CarouselSelectorElement.cpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\LabeledCheckboxElement.cpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,28 +48,28 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\HomeScreen.hpp">
-      <Filter>src\Screen</Filter>
+      <Filter>src\Screens</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\AnimationEditorElement.hpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\CheckerboardElement.hpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\EditAnimationScreen.hpp">
-      <Filter>src\Screen</Filter>
+      <Filter>src\Screens</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\AnimationMetaPointsElement.hpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\CarouselSelectorElement.hpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\MetapointInfoElement.hpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\LabeledCheckboxElement.hpp">
-      <Filter>src\Screen\UI</Filter>
+      <Filter>src\Screens\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
