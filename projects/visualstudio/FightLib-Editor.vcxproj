@@ -28,6 +28,7 @@
     <ClCompile Include="..\..\src\Screens\UI\CarouselSelectorElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\CheckerboardElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\LabeledCheckboxElement.cpp" />
+    <ClCompile Include="..\..\src\Screens\UI\MetaPointElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\MetapointInfoElement.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +40,7 @@
     <ClInclude Include="..\..\src\Screens\UI\CarouselSelectorElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\CheckerboardElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\LabeledCheckboxElement.hpp" />
+    <ClInclude Include="..\..\src\Screens\UI\MetaPointElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\MetapointInfoElement.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
