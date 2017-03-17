@@ -3,6 +3,7 @@
 
 #include <fightlib/fightlib.hpp>
 #include "CarouselSelectorElement.hpp"
+#include "NumberAdjustElement.hpp"
 
 namespace flui
 {
@@ -19,8 +20,11 @@ namespace flui
 		static fgl::String getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType);
 		
 	private:
-		CarouselSelectorElement* typeSelectorElement;
-		
 		fl::AnimationMetaPoint metaPoint;
+		
+		fgl::TextElement* typeLabel;
+		CarouselSelectorElement* typeSelectorElement;
+		fgl::TextElement* radiusLabel;
+		NumberAdjustElement* radiusAdjustElement;
 	};
 }
