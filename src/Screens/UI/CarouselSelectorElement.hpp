@@ -26,8 +26,8 @@ namespace flui
 		
 		fgl::String getOptionTitle(const fgl::Number& optionValue) const;
 		
-		void setHandler(const std::function<void()>& handler);
-		const std::function<void()>& getHandler() const;
+		void setOptionChangeHandler(const std::function<void()>& optionChangeHandler);
+		const std::function<void()>& getOptionChangeHandler() const;
 		
 		void nextOption();
 		void previousOption();
@@ -46,7 +46,6 @@ namespace flui
 		fgl::ArrayList<fgl::Number> optionList;
 		size_t selectedOptionIndex;
 		std::function<fgl::String(fgl::Number)> optionTitleResolver;
-		
-		std::function<void()> handler;
+		std::function<void()> optionChangeHandler;
 	};
 }

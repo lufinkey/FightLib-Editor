@@ -16,7 +16,7 @@ namespace flui
 
 		labelElement = new fgl::TextElement();
 		labelElement->setTextAlignment(fgl::TEXTALIGN_LEFT);
-		labelElement->setVerticalAlignment(fgl::VERTICALALIGN_CENTER);
+		labelElement->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		labelElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 22);
 		labelElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
 		labelElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
@@ -52,14 +52,14 @@ namespace flui
 		return labelElement->getText();
 	}
 
-	void LabeledCheckboxElement::setHandler(const std::function<void(bool)>& handler)
+	void LabeledCheckboxElement::setToggleHandler(const std::function<void(bool)>& toggleHandler)
 	{
-		checkboxElement->setHandler(handler);
+		checkboxElement->setToggleHandler(toggleHandler);
 	}
 
-	const std::function<void(bool)>& LabeledCheckboxElement::getHandler() const
+	const std::function<void(bool)>& LabeledCheckboxElement::getToggleHandler() const
 	{
-		return checkboxElement->getHandler();
+		return checkboxElement->getToggleHandler();
 	}
 
 	fgl::CheckboxElement* LabeledCheckboxElement::getCheckboxElement() const

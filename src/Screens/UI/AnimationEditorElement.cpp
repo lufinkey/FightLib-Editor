@@ -72,7 +72,7 @@ namespace flui
 				metaPointsElement->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
 				updateMetaPoints();
 			}
-			animationElement->getImageElement()->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
+			animationElement->getImageElement()->setHorizontalImageMirroringEnabled(animationData->isMirrored(drawnOrientation));
 			metaPointsElement->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
 		}
 	}
@@ -102,26 +102,26 @@ namespace flui
 		return animationData;
 	}
 
-	void AnimationEditorElement::setAnimationFrame(size_t frameIndex)
+	void AnimationEditorElement::setAnimationFrameIndex(size_t frameIndex)
 	{
-		animationElement->setAnimationFrame(frameIndex);
+		animationElement->setAnimationFrameIndex(frameIndex);
 		updateMetaPoints();
 		layoutChildElements();
 	}
 
-	size_t AnimationEditorElement::getAnimationFrame() const
+	size_t AnimationEditorElement::getAnimationFrameIndex() const
 	{
-		return animationElement->getAnimationFrame();
+		return animationElement->getAnimationFrameIndex();
 	}
 
-	void AnimationEditorElement::setTracingAnimationFrame(size_t frameIndex)
+	void AnimationEditorElement::setTracingAnimationFrameIndex(size_t frameIndex)
 	{
-		tracingAnimationElement->setAnimationFrame(frameIndex);
+		tracingAnimationElement->setAnimationFrameIndex(frameIndex);
 	}
 
-	size_t AnimationEditorElement::getTracingAnimationFrame() const
+	size_t AnimationEditorElement::getTracingAnimationFrameIndex() const
 	{
-		return tracingAnimationElement->getAnimationFrame();
+		return tracingAnimationElement->getAnimationFrameIndex();
 	}
 
 	void AnimationEditorElement::setTracingAnimationVisible(bool visible)
@@ -149,7 +149,7 @@ namespace flui
 		drawnOrientation = orientation;
 		if(animationData!=nullptr)
 		{
-			animationElement->getImageElement()->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
+			animationElement->getImageElement()->setHorizontalImageMirroringEnabled(animationData->isMirrored(drawnOrientation));
 			metaPointsElement->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
 		}
 	}
@@ -178,8 +178,8 @@ namespace flui
 		}
 		else
 		{
-			metaPointsElement->setMetaPoints(animationData->getMetaPoints(animationElement->getAnimationFrame()));
-			metaPointsElement->setAnimationSize(animationData->getSize(animationElement->getAnimationFrame(), 1.0));
+			metaPointsElement->setMetaPoints(animationData->getMetaPoints(animationElement->getAnimationFrameIndex()));
+			metaPointsElement->setAnimationSize(animationData->getSize(animationElement->getAnimationFrameIndex(), 1.0));
 		}
 	}
 }

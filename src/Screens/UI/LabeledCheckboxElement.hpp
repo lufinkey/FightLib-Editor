@@ -18,8 +18,8 @@ namespace flui
 		void setText(const fgl::String& text);
 		const fgl::String& getText() const;
 
-		void setHandler(const std::function<void(bool)>& handler);
-		const std::function<void(bool)>& getHandler() const;
+		void setToggleHandler(const std::function<void(bool)>& toggleHandler);
+		const std::function<void(bool)>& getToggleHandler() const;
 
 		fgl::CheckboxElement* getCheckboxElement() const;
 		fgl::TextElement* getLabelElement() const;

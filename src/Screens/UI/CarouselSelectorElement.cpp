@@ -19,7 +19,7 @@ namespace flui
 	{
 		optionLabel = new fgl::TextElement();
 		optionLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		optionLabel->setVerticalAlignment(fgl::VERTICALALIGN_CENTER);
+		optionLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		optionLabel->setFontSize(18);
 		optionLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
 		optionLabel->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
@@ -30,12 +30,12 @@ namespace flui
 		
 		prevOptionButton = new fgl::ButtonElement();
 		prevOptionButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
-		prevOptionButton->getImageElement()->setHorizontalMirroringEnabled(true);
-		prevOptionButton->setHandler([=]{
+		prevOptionButton->getImageElement()->setHorizontalImageMirroringEnabled(true);
+		prevOptionButton->setTapHandler([=]{
 			previousOption();
-			if(this->handler)
+			if(this->optionChangeHandler)
 			{
-				this->handler();
+				this->optionChangeHandler();
 			}
 		});
 		prevOptionButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
@@ -45,11 +45,11 @@ namespace flui
 		
 		nextOptionButton = new fgl::ButtonElement();
 		nextOptionButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
-		nextOptionButton->setHandler([=]{
+		nextOptionButton->setTapHandler([=]{
 			nextOption();
-			if(this->handler)
+			if(this->optionChangeHandler)
 			{
-				this->handler();
+				this->optionChangeHandler();
 			}
 		});
 		nextOptionButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
@@ -111,14 +111,14 @@ namespace flui
 		return optionValue.toString();
 	}
 	
-	void CarouselSelectorElement::setHandler(const std::function<void()>& handler_arg)
+	void CarouselSelectorElement::setOptionChangeHandler(const std::function<void()>& optionChangeHandler_arg)
 	{
-		handler = handler_arg;
+		optionChangeHandler = optionChangeHandler_arg;
 	}
 	
-	const std::function<void()>& CarouselSelectorElement::getHandler() const
+	const std::function<void()>& CarouselSelectorElement::getOptionChangeHandler() const
 	{
-		return handler;
+		return optionChangeHandler;
 	}
 	
 	void CarouselSelectorElement::nextOption()

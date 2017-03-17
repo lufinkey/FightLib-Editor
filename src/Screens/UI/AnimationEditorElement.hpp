@@ -20,11 +20,11 @@ namespace flui
 		void setAnimationData(fl::AnimationData* animationData);
 		fl::AnimationData* getAnimationData() const;
 
-		void setAnimationFrame(size_t frameIndex);
-		size_t getAnimationFrame() const;
+		void setAnimationFrameIndex(size_t frameIndex);
+		size_t getAnimationFrameIndex() const;
 
-		void setTracingAnimationFrame(size_t frameIndex);
-		size_t getTracingAnimationFrame() const;
+		void setTracingAnimationFrameIndex(size_t frameIndex);
+		size_t getTracingAnimationFrameIndex() const;
 
 		void setTracingAnimationVisible(bool visible);
 		bool isTracingAnimationVisible() const;

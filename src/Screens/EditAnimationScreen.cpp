@@ -41,7 +41,7 @@ namespace flui
 		frameIndexLabel->setText(getFrameIndexLabelString());
 		frameIndexLabel->setFontSize(24);
 		frameIndexLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		frameIndexLabel->setVerticalAlignment(fgl::VERTICALALIGN_CENTER);
+		frameIndexLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_Y, 30);
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
@@ -55,18 +55,18 @@ namespace flui
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, 50);
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
-		nextFrameButton->setHandler([=]{
+		nextFrameButton->setTapHandler([=]{
 			nextFrame();
 		});
 		
 		prevFrameButton = new fgl::ButtonElement();
 		prevFrameButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
-		prevFrameButton->getImageElement()->setHorizontalMirroringEnabled(true);
+		prevFrameButton->getImageElement()->setHorizontalImageMirroringEnabled(true);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.5, fgl::LAYOUTVALUE_RATIO);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, 50);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
-		prevFrameButton->setHandler([=]{
+		prevFrameButton->setTapHandler([=]{
 			previousFrame();
 		});
 		
@@ -74,7 +74,7 @@ namespace flui
 		metapointCheckboxHeaderLabel->setFontSize(18);
 		metapointCheckboxHeaderLabel->setText("Meta Points");
 		metapointCheckboxHeaderLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		metapointCheckboxHeaderLabel->setVerticalAlignment(fgl::VERTICALALIGN_CENTER);
+		metapointCheckboxHeaderLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, 106);
 		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
 		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
@@ -97,7 +97,7 @@ namespace flui
 			metapointCheckbox->setText(MetapointInfoElement::getMetaPointTypeName(metaPointType));
 			metapointCheckbox->getLabelElement()->setFontSize(14);
 			metapointCheckbox->setToggle(false);
-			metapointCheckbox->setHandler([=](bool value){
+			metapointCheckbox->setToggleHandler([=](bool value){
 				animationEditorElement->setMetaPointTypeVisible(metaPointType, value);
 			});
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, metapointCheckboxY);
@@ -157,12 +157,12 @@ namespace flui
 		fgl::Animation* animation = animationData->getAnimation();
 		if(animation!=nullptr || animation->getTotalFrames() > 0)
 		{
-			size_t frameIndex = animationEditorElement->getAnimationFrame();
+			size_t frameIndex = animationEditorElement->getAnimationFrameIndex();
 			size_t frameCount = animation->getTotalFrames();
 			frameIndex++;
 			if(frameIndex < frameCount)
 			{
-				animationEditorElement->setAnimationFrame(frameIndex);
+				animationEditorElement->setAnimationFrameIndex(frameIndex);
 			}
 		}
 	}
@@ -172,11 +172,11 @@ namespace flui
 		fgl::Animation* animation = animationData->getAnimation();
 		if(animation!=nullptr || animation->getTotalFrames() > 0)
 		{
-			size_t frameIndex = animationEditorElement->getAnimationFrame();
+			size_t frameIndex = animationEditorElement->getAnimationFrameIndex();
 			frameIndex--;
 			if(frameIndex != -1)
 			{
-				animationEditorElement->setAnimationFrame(frameIndex);
+				animationEditorElement->setAnimationFrameIndex(frameIndex);
 			}
 		}
 	}
@@ -188,7 +188,7 @@ namespace flui
 		{
 			return "0/0";
 		}
-		size_t frameIndex = animationEditorElement->getAnimationFrame();
+		size_t frameIndex = animationEditorElement->getAnimationFrameIndex();
 		size_t frameCount = animation->getTotalFrames();
 		return (fgl::String)""+(frameIndex+1)+"/"+frameCount;
 	}
