@@ -4,6 +4,7 @@
 #include <fightlib/fightlib.hpp>
 #include "UI/AnimationEditorElement.hpp"
 #include "UI/MetapointInfoElement.hpp"
+#include "UI/LabeledCheckboxElement.hpp"
 
 namespace flui
 {
@@ -29,6 +30,8 @@ namespace flui
 		fgl::TextElement* frameIndexLabel;
 		fgl::ButtonElement* nextFrameButton;
 		fgl::ButtonElement* prevFrameButton;
+
+		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, LabeledCheckboxElement*> metapointCheckboxElements;
 		
 		MetapointInfoElement* metaPointInfoElement;
 	};

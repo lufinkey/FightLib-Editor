@@ -15,6 +15,8 @@ namespace flui
 		
 		void setMetaPoint(const fl::AnimationMetaPoint& metaPoint);
 		const fl::AnimationMetaPoint& getMetaPoint() const;
+
+		static fgl::String getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType);
 		
 	private:
 		CarouselSelectorElement* typeSelectorElement;

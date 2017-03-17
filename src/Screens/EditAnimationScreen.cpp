@@ -54,6 +54,37 @@ namespace flui
 		prevFrameButton->setHandler([=]{
 			previousFrame();
 		});
+
+		fgl::ArrayList<fl::AnimationMetaPoint::Type> metaPointTypes = {
+			fl::AnimationMetaPoint::POINTTYPE_HITBOX,
+			fl::AnimationMetaPoint::POINTTYPE_HEAD,
+			fl::AnimationMetaPoint::POINTTYPE_LEFTHAND,
+			fl::AnimationMetaPoint::POINTTYPE_RIGHTHAND,
+			fl::AnimationMetaPoint::POINTTYPE_BOUNDS_TOPLEFT,
+			fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT,
+			fl::AnimationMetaPoint::POINTTYPE_HANDLE
+		};
+
+		double metapointCheckboxY = 162;
+		for(auto metaPointType : metaPointTypes)
+		{
+			auto metapointCheckbox = new LabeledCheckboxElement();
+			metapointCheckbox->setText(MetapointInfoElement::getMetaPointTypeName(metaPointType));
+			metapointCheckbox->getLabelElement()->setFontSize(14);
+			metapointCheckbox->setToggle(false);
+			metapointCheckbox->setHandler([=](bool value){
+				animationEditorElement->setMetaPointTypeVisible(metaPointType, value);
+			});
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, metapointCheckboxY);
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 26);
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 98);
+
+			metapointCheckboxElements[metaPointType] = metapointCheckbox;
+			getElement()->addChildElement(metapointCheckbox);
+
+			metapointCheckboxY += 28;
+		}
 		
 		metaPointInfoElement = new MetapointInfoElement(assetManager);
 		metaPointInfoElement->setVisible(false);
@@ -78,6 +109,10 @@ namespace flui
 		delete nextFrameButton;
 		delete prevFrameButton;
 		delete metaPointInfoElement;
+		for(auto checkboxPair : metapointCheckboxElements)
+		{
+			delete checkboxPair.second;
+		}
 	}
 	
 	void EditAnimationScreen::update(fgl::ApplicationData appData)

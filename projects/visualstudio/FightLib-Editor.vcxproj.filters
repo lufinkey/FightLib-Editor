@@ -39,6 +39,9 @@
     <ClCompile Include="..\..\src\Screens\UI\CarouselSelectorElement.cpp">
       <Filter>src\Screen\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\LabeledCheckboxElement.cpp">
+      <Filter>src\Screen\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp">
@@ -63,6 +66,9 @@
       <Filter>src\Screen\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\MetapointInfoElement.hpp">
+      <Filter>src\Screen\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\LabeledCheckboxElement.hpp">
       <Filter>src\Screen\UI</Filter>
     </ClInclude>
   </ItemGroup>
