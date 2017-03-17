@@ -32,6 +32,7 @@ namespace flui
 					this->metaPointChangeHandler(metaPointIndex);
 				}
 			});
+			metaPointElement->setVisible(isMetaPointTypeVisible(metaPoint.type));
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
@@ -55,5 +56,22 @@ namespace flui
 	const std::function<void(size_t)>& MetaPointGroupElement::getMetaPointChangeHandler() const
 	{
 		return metaPointChangeHandler;
+	}
+
+	void MetaPointGroupElement::setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible)
+	{
+		enabledMetaPointTypes[metaPointType] = visible;
+		for(auto metaPointElement : metaPointElements)
+		{
+			if(metaPointElement->getMetaPoint().type==metaPointType)
+			{
+				metaPointElement->setVisible(visible);
+			}
+		}
+	}
+
+	bool MetaPointGroupElement::isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const
+	{
+		return enabledMetaPointTypes.get(metaPointType, false);
 	}
 }
