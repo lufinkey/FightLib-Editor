@@ -1,19 +1,17 @@
 
 #pragma once
 
-#include <functional>
-#include <GameLibrary/GameLibrary.hpp>
+#include "ArrowAdjustElement.hpp"
 
 namespace flui
 {
-	class CarouselSelectorElement : public fgl::ScreenElement
+	class CarouselSelectorElement : public ArrowAdjustElement
 	{
 	public:
 		static const size_t NO_SELECTION = -1;
 		
 		CarouselSelectorElement(fgl::AssetManager* assetManager, const fgl::ArrayList<fgl::Number>& optionList);
 		CarouselSelectorElement(fgl::AssetManager* assetManager, const fgl::ArrayList<fgl::Number>& optionList, const fgl::RectangleD& frame);
-		virtual ~CarouselSelectorElement();
 		
 		void setOptionList(const fgl::ArrayList<fgl::Number>& optionList);
 		const fgl::ArrayList<fgl::Number>& getOptionList() const;
@@ -26,26 +24,18 @@ namespace flui
 		
 		fgl::String getOptionTitle(const fgl::Number& optionValue) const;
 		
-		void setOptionChangeHandler(const std::function<void()>& optionChangeHandler);
-		const std::function<void()>& getOptionChangeHandler() const;
+		virtual void nextValue() override;
+		virtual void previousValue() override;
 		
-		void nextOption();
-		void previousOption();
+	protected:
+		virtual fgl::String getValueString() const override;
 		
-		fgl::TextElement* getOptionLabelElement() const;
-		fgl::ButtonElement* getPreviousOptionButton() const;
-		fgl::ButtonElement* getNextOptionButton() const;
+		virtual bool hasNextValue() const override;
+		virtual bool hasPreviousValue() const override;
 		
 	private:
-		void reloadOptionLabelText();
-		
-		fgl::TextElement* optionLabel;
-		fgl::ButtonElement* prevOptionButton;
-		fgl::ButtonElement* nextOptionButton;
-		
 		fgl::ArrayList<fgl::Number> optionList;
 		size_t selectedOptionIndex;
 		std::function<fgl::String(fgl::Number)> optionTitleResolver;
-		std::function<void()> optionChangeHandler;
 	};
 }

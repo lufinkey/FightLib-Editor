@@ -122,6 +122,7 @@ namespace flui
 		//Left Sidebar
 		
 		metaPointInfoElement = new MetaPointInfoElement(assetManager);
+		setLeftSidebarElement(metaPointInfoElement);
 		
 		getElement()->addChildElement(animationEditorElement);
 		getElement()->addChildElement(nameInputElement);
