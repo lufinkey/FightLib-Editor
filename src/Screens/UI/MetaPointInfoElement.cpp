@@ -17,7 +17,7 @@ namespace flui
 		typeLabel->setText("Type");
 		typeLabel->setFontSize(14);
 		typeLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		typeLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_BOTTOM);
+		typeLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		typeLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		typeLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		typeLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
@@ -49,7 +49,7 @@ namespace flui
 		radiusLabel->setText("Radius");
 		radiusLabel->setFontSize(14);
 		radiusLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		radiusLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_BOTTOM);
+		radiusLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		offsetY += 10;
 		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		radiusLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);

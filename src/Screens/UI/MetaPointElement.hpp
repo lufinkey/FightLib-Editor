@@ -33,6 +33,7 @@ namespace flui
 	private:
 		fgl::Vector2d getMetaPointCenter() const;
 		fgl::Vector2d toMetaPointCoordinates(const fgl::Vector2d& point) const;
+		fgl::Vector2d fromMetaPointCoordinates(const fgl::Vector2d& point) const;
 		bool isTouchPointOnCenter(const fgl::Vector2d& point) const;
 		
 		fl::AnimationMetaPoint metaPoint;

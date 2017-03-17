@@ -10,9 +10,9 @@ namespace flui
 	
 	MetaPointElement::MetaPointElement(const fgl::RectangleD& frame) : TouchElement(frame),
 		createdPoint(false),
-		trackingPoint(true)
+		trackingPoint(false)
 	{
-		setTouchEnabled(false);
+		//
 	}
 	
 	void MetaPointElement::drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const
@@ -88,6 +88,19 @@ namespace flui
 			return fgl::Vector2d(point.x*(animationSize.x/frame.width), point.y*(animationSize.y/frame.height));
 		}
 	}
+
+	fgl::Vector2d MetaPointElement::fromMetaPointCoordinates(const fgl::Vector2d& point) const
+	{
+		if(animationSize.x==0 || animationSize.y==0)
+		{
+			return fgl::Vector2d(0, 0);
+		}
+		else
+		{
+			fgl::RectangleD frame = getFrame();
+			return fgl::Vector2d(point.x*(frame.width/animationSize.x), point.y*(frame.height/animationSize.y));
+		}
+	}
 	
 	bool MetaPointElement::isTouchPointOnCenter(const fgl::Vector2d& point) const
 	{
@@ -107,8 +120,8 @@ namespace flui
 		{
 			createdPoint = true;
 			fgl::Vector2d metaPointCoordinates = toMetaPointCoordinates(touchEvent.getPosition());
-			metaPoint.x = metaPointCoordinates.x;
-			metaPoint.y = metaPointCoordinates.y;
+			metaPoint.x = fgl::Math::roundToMultiple(metaPointCoordinates.x, 0.5);
+			metaPoint.y = fgl::Math::roundToMultiple(metaPointCoordinates.y, 0.5);
 			initialPointTouchOffset = fgl::Vector2d(0,0);
 			trackingPoint = true;
 			if(metaPointChangeHandler)
@@ -129,8 +142,8 @@ namespace flui
 		if(trackingPoint)
 		{
 			fgl::Vector2d metaPointCenter = toMetaPointCoordinates(touchEvent.getPosition()+initialPointTouchOffset);
-			metaPoint.x = metaPointCenter.x;
-			metaPoint.y = metaPointCenter.y;
+			metaPoint.x = fgl::Math::roundToMultiple(metaPointCenter.x, 0.5);
+			metaPoint.y = fgl::Math::roundToMultiple(metaPointCenter.y, 0.5);
 			if(metaPointChangeHandler)
 			{
 				metaPointChangeHandler(metaPoint);
