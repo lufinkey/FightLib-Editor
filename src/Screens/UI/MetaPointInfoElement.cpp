@@ -64,7 +64,7 @@ namespace flui
 			return "hand (R)";
 
 			case fl::AnimationMetaPoint::POINTTYPE_BOUNDS_TOPLEFT:
-			return "bound (TL)";
+			return "bounds (TL)";
 
 			case fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT:
 			return "bounds (BR)";
