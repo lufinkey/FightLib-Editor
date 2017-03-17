@@ -45,6 +45,9 @@
     <ClCompile Include="..\..\src\Screens\UI\MetaPointElement.cpp">
       <Filter>src\Screens\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\MetaPointGroupElement.cpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp">
@@ -75,6 +78,9 @@
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\MetaPointElement.hpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\MetaPointGroupElement.hpp">
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
   </ItemGroup>
