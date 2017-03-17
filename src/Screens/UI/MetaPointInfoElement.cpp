@@ -1,14 +1,14 @@
 
-#include "MetapointInfoElement.hpp"
+#include "MetaPointInfoElement.hpp"
 
 namespace flui
 {
-	MetapointInfoElement::MetapointInfoElement(fgl::AssetManager* assetManager) : MetapointInfoElement(assetManager, fgl::RectangleD(0,0,0,0))
+	MetaPointInfoElement::MetaPointInfoElement(fgl::AssetManager* assetManager) : MetaPointInfoElement(assetManager, fgl::RectangleD(0,0,0,0))
 	{
 		//
 	}
 	
-	MetapointInfoElement::MetapointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame)
+	MetaPointInfoElement::MetaPointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame)
 		: ScreenElement(frame)
 	{
 		fgl::ArrayList<fgl::Number> typeOptionList = {
@@ -32,22 +32,22 @@ namespace flui
 		addChildElement(typeSelectorElement);
 	}
 	
-	MetapointInfoElement::~MetapointInfoElement()
+	MetaPointInfoElement::~MetaPointInfoElement()
 	{
 		delete typeSelectorElement;
 	}
 	
-	void MetapointInfoElement::setMetaPoint(const fl::AnimationMetaPoint& metaPoint_arg)
+	void MetaPointInfoElement::setMetaPoint(const fl::AnimationMetaPoint& metaPoint_arg)
 	{
 		metaPoint = metaPoint_arg;
 	}
 
-	const fl::AnimationMetaPoint& MetapointInfoElement::getMetaPoint() const
+	const fl::AnimationMetaPoint& MetaPointInfoElement::getMetaPoint() const
 	{
 		return metaPoint;
 	}
 
-	fgl::String MetapointInfoElement::getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType)
+	fgl::String MetaPointInfoElement::getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType)
 	{
 		switch(metaPointType)
 		{

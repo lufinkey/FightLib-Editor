@@ -94,7 +94,7 @@ namespace flui
 		for(auto metaPointType : metaPointTypes)
 		{
 			auto metapointCheckbox = new LabeledCheckboxElement();
-			metapointCheckbox->setText(MetapointInfoElement::getMetaPointTypeName(metaPointType));
+			metapointCheckbox->setText(MetaPointInfoElement::getMetaPointTypeName(metaPointType));
 			metapointCheckbox->getLabelElement()->setFontSize(14);
 			metapointCheckbox->setToggle(false);
 			metapointCheckbox->setToggleHandler([=](bool value){
@@ -121,7 +121,7 @@ namespace flui
 		
 		//Left Sidebar
 		
-		metaPointInfoElement = new MetapointInfoElement(assetManager);
+		metaPointInfoElement = new MetaPointInfoElement(assetManager);
 		
 		getElement()->addChildElement(animationEditorElement);
 		getElement()->addChildElement(nameInputElement);

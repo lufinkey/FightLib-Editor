@@ -6,12 +6,12 @@
 
 namespace flui
 {
-	class MetapointInfoElement : public fgl::ScreenElement
+	class MetaPointInfoElement : public fgl::ScreenElement
 	{
 	public:
-		MetapointInfoElement(fgl::AssetManager* assetManager);
-		MetapointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame);
-		virtual ~MetapointInfoElement();
+		MetaPointInfoElement(fgl::AssetManager* assetManager);
+		MetaPointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame);
+		virtual ~MetaPointInfoElement();
 		
 		void setMetaPoint(const fl::AnimationMetaPoint& metaPoint);
 		const fl::AnimationMetaPoint& getMetaPoint() const;
