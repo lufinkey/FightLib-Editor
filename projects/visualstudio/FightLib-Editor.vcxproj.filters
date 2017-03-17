@@ -30,9 +30,6 @@
     <ClCompile Include="..\..\src\Screens\EditAnimationScreen.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Screens\UI\MetapointInfoElement.cpp">
-      <Filter>src\Screens\UI</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\CarouselSelectorElement.cpp">
       <Filter>src\Screens\UI</Filter>
     </ClCompile>
@@ -43,6 +40,15 @@
       <Filter>src\Screens\UI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Screens\UI\MetaPointGroupElement.cpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\MetaPointInfoElement.cpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\NumberAdjustElement.cpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\ArrowAdjustElement.cpp">
       <Filter>src\Screens\UI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,9 +71,6 @@
     <ClInclude Include="..\..\src\Screens\UI\CarouselSelectorElement.hpp">
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Screens\UI\MetapointInfoElement.hpp">
-      <Filter>src\Screens\UI</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\LabeledCheckboxElement.hpp">
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
@@ -75,6 +78,15 @@
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\MetaPointGroupElement.hpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\MetaPointInfoElement.hpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\NumberAdjustElement.hpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\ArrowAdjustElement.hpp">
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
   </ItemGroup>

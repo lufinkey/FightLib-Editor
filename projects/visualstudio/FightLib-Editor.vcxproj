@@ -24,24 +24,28 @@
     <ClCompile Include="..\..\src\Screens\EditAnimationScreen.cpp" />
     <ClCompile Include="..\..\src\Screens\HomeScreen.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\AnimationEditorElement.cpp" />
+    <ClCompile Include="..\..\src\Screens\UI\ArrowAdjustElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\CarouselSelectorElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\CheckerboardElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\LabeledCheckboxElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\MetaPointElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\MetaPointGroupElement.cpp" />
-    <ClCompile Include="..\..\src\Screens\UI\MetapointInfoElement.cpp" />
+    <ClCompile Include="..\..\src\Screens\UI\MetaPointInfoElement.cpp" />
+    <ClCompile Include="..\..\src\Screens\UI\NumberAdjustElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp" />
     <ClInclude Include="..\..\src\Screens\EditAnimationScreen.hpp" />
     <ClInclude Include="..\..\src\Screens\HomeScreen.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\AnimationEditorElement.hpp" />
+    <ClInclude Include="..\..\src\Screens\UI\ArrowAdjustElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\CarouselSelectorElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\CheckerboardElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\LabeledCheckboxElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\MetaPointElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\MetaPointGroupElement.hpp" />
-    <ClInclude Include="..\..\src\Screens\UI\MetapointInfoElement.hpp" />
+    <ClInclude Include="..\..\src\Screens\UI\MetaPointInfoElement.hpp" />
+    <ClInclude Include="..\..\src\Screens\UI\NumberAdjustElement.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BBF642A0-873D-4096-AB0F-787CF4094290}</ProjectGuid>
