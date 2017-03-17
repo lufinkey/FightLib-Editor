@@ -25,6 +25,7 @@ namespace flui
 		for(auto& metaPoint : metaPoints)
 		{
 			auto metaPointElement = new MetaPointElement();
+			metaPointElement->setAnimationSize(animationSize);
 			metaPointElement->setMetaPoint(metaPoint);
 			metaPointElement->setMetaPointChangeHandler([=](fl::AnimationMetaPoint){
 				if(this->metaPointChangeHandler)
@@ -56,6 +57,20 @@ namespace flui
 	const std::function<void(size_t)>& MetaPointGroupElement::getMetaPointChangeHandler() const
 	{
 		return metaPointChangeHandler;
+	}
+
+	void MetaPointGroupElement::setAnimationSize(const fgl::Vector2d& animationSize_arg)
+	{
+		animationSize = animationSize_arg;
+		for(auto metaPointElement : metaPointElements)
+		{
+			metaPointElement->setAnimationSize(animationSize);
+		}
+	}
+
+	const fgl::Vector2d& MetaPointGroupElement::getAnimationSize() const
+	{
+		return animationSize;
 	}
 
 	void MetaPointGroupElement::setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible)
