@@ -82,6 +82,11 @@ namespace flui
 		return metaPoints;
 	}
 
+	const fl::AnimationMetaPoint& MetaPointGroupElement::getMetaPoint(size_t index) const
+	{
+		return metaPoints[index];
+	}
+
 	void MetaPointGroupElement::setMetaPointChangeHandler(const std::function<void(size_t)>& handler)
 	{
 		metaPointChangeHandler = handler;

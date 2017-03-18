@@ -17,6 +17,7 @@ namespace flui
 		void setMetaPoints(const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints);
 		void setMetaPoint(size_t index, const fl::AnimationMetaPoint& metaPoint);
 		const fgl::ArrayList<fl::AnimationMetaPoint>& getMetaPoints() const;
+		const fl::AnimationMetaPoint& getMetaPoint(size_t index) const;
 
 		void setMetaPointChangeHandler(const std::function<void(size_t index)>& handler);
 		const std::function<void(size_t)>& getMetaPointChangeHandler() const;
