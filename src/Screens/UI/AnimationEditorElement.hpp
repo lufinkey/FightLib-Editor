@@ -38,6 +38,9 @@ namespace flui
 		void setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible);
 		bool isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const;
 
+		void setMetaPointSelectHandler(const std::function<void(size_t index)>& handler);
+		const std::function<void(size_t)>& getMetaPointSelectHandler() const;
+
 	private:
 		void updateMetaPoints();
 

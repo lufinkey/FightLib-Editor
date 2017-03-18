@@ -169,6 +169,16 @@ namespace flui
 		return metaPointsElement->isMetaPointTypeVisible(metaPointType);
 	}
 
+	void AnimationEditorElement::setMetaPointSelectHandler(const std::function<void(size_t)>& handler)
+	{
+		metaPointsElement->setMetaPointSelectHandler(handler);
+	}
+
+	const std::function<void(size_t)>& AnimationEditorElement::getMetaPointSelectHandler() const
+	{
+		return metaPointsElement->getMetaPointSelectHandler();
+	}
+
 	void AnimationEditorElement::updateMetaPoints()
 	{
 		if(animationData==nullptr || animationData->getAnimation()==nullptr || animationData->getAnimation()->getTotalFrames()==0)
