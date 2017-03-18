@@ -130,6 +130,32 @@ namespace flui
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
+		offsetY += 14;
+
+		rotationLabel = new fgl::TextElement();
+		rotationLabel->setText("Rotation");
+		rotationLabel->setFontSize(14);
+		rotationLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		rotationLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		offsetY += 10;
+		rotationLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		rotationLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		rotationLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		rotationLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
+
+		rotationAdjustElement = new NumberAdjustElement(assetManager);
+		rotationAdjustElement->getValueLabel()->setFontSize(12);
+		rotationAdjustElement->setValue(0);
+		rotationAdjustElement->setMinValue(0);
+		rotationAdjustElement->setMaxValue(160);
+		rotationAdjustElement->setIncrement(1);
+		offsetY += 1;
+		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
+		offsetY += 14;
 		
 		addChildElement(metaPointLabel);
 		addChildElement(typeLabel);
@@ -140,6 +166,8 @@ namespace flui
 		addChildElement(yAdjustElement);
 		addChildElement(radiusLabel);
 		addChildElement(radiusAdjustElement);
+		addChildElement(rotationLabel);
+		addChildElement(rotationAdjustElement);
 	}
 	
 	MetaPointInfoElement::~MetaPointInfoElement()
@@ -151,6 +179,8 @@ namespace flui
 		delete yAdjustElement;
 		delete radiusLabel;
 		delete radiusAdjustElement;
+		delete rotationLabel;
+		delete rotationAdjustElement;
 	}
 	
 	void MetaPointInfoElement::setMetaPoint(const fl::AnimationMetaPoint& metaPoint_arg)
