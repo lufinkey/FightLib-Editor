@@ -13,10 +13,22 @@ namespace flui
 	{
 		double offsetY = 10;
 
+		metaPointLabel = new fgl::TextElement();
+		metaPointLabel->setText("Meta Point");
+		metaPointLabel->setFontSize(18);
+		metaPointLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		metaPointLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		offsetY += 20;
+
 		typeLabel = new fgl::TextElement();
 		typeLabel->setText("Type");
 		typeLabel->setFontSize(14);
 		typeLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		offsetY += 2;
 		typeLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		typeLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		typeLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
@@ -44,6 +56,56 @@ namespace flui
 		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
 		offsetY += 14;
+
+		xLabel = new fgl::TextElement();
+		xLabel->setText("X");
+		xLabel->setFontSize(14);
+		xLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		xLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		offsetY += 10;
+		xLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		xLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		xLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		xLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
+
+		xAdjustElement = new NumberAdjustElement(assetManager);
+		xAdjustElement->getValueLabel()->setFontSize(12);
+		xAdjustElement->setValue(0);
+		xAdjustElement->setMinValue(0);
+		xAdjustElement->setMaxValue(0);
+		xAdjustElement->setIncrement(0.5);
+		offsetY += 1;
+		xAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		xAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		xAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		xAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
+		offsetY += 14;
+
+		yLabel = new fgl::TextElement();
+		yLabel->setText("Y");
+		yLabel->setFontSize(14);
+		yLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		yLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		offsetY += 10;
+		yLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		yLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		yLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		yLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
+
+		yAdjustElement = new NumberAdjustElement(assetManager);
+		yAdjustElement->getValueLabel()->setFontSize(12);
+		yAdjustElement->setValue(0);
+		yAdjustElement->setMinValue(0);
+		yAdjustElement->setMaxValue(0);
+		yAdjustElement->setIncrement(0.5);
+		offsetY += 1;
+		yAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		yAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		yAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		yAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
+		offsetY += 14;
 		
 		radiusLabel = new fgl::TextElement();
 		radiusLabel->setText("Radius");
@@ -69,16 +131,24 @@ namespace flui
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
 		
+		addChildElement(metaPointLabel);
 		addChildElement(typeLabel);
 		addChildElement(typeSelectorElement);
+		addChildElement(xLabel);
+		addChildElement(xAdjustElement);
+		addChildElement(yLabel);
+		addChildElement(yAdjustElement);
 		addChildElement(radiusLabel);
 		addChildElement(radiusAdjustElement);
 	}
 	
 	MetaPointInfoElement::~MetaPointInfoElement()
 	{
+		delete metaPointLabel;
 		delete typeLabel;
 		delete typeSelectorElement;
+		delete xAdjustElement;
+		delete yAdjustElement;
 		delete radiusLabel;
 		delete radiusAdjustElement;
 	}

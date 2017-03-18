@@ -21,10 +21,18 @@ namespace flui
 		
 	private:
 		fl::AnimationMetaPoint metaPoint;
+
+		fgl::TextElement* metaPointLabel;
 		
 		fgl::TextElement* typeLabel;
 		CarouselSelectorElement* typeSelectorElement;
+		fgl::TextElement* xLabel;
+		NumberAdjustElement* xAdjustElement;
+		fgl::TextElement* yLabel;
+		NumberAdjustElement* yAdjustElement;
 		fgl::TextElement* radiusLabel;
 		NumberAdjustElement* radiusAdjustElement;
+		fgl::TextElement* rotationLabel;
+		NumberAdjustElement* rotationAdjustElement;
 	};
 }
