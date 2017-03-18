@@ -31,6 +31,10 @@ namespace flui
 		animationElement->setAnimationDirection(fgl::Animation::STOPPED);
 		addChildElement(animationElement);
 		
+		metaPointsElement->setMetaPointChangeHandler([=](size_t index) {
+			auto& metaPoint = this->metaPointsElement->getMetaPoint(index);
+			this->animationData->setMetaPoint(getAnimationFrameIndex(), index, metaPoint);
+		});
 		addChildElement(metaPointsElement);
 	}
 
@@ -177,6 +181,34 @@ namespace flui
 	const std::function<void(size_t)>& AnimationEditorElement::getMetaPointSelectHandler() const
 	{
 		return metaPointsElement->getMetaPointSelectHandler();
+	}
+
+	void AnimationEditorElement::setMetaPoints(size_t frameIndex, const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints)
+	{
+		animationData->setMetaPoints(frameIndex, metaPoints);
+		if(frameIndex==getAnimationFrameIndex())
+		{
+			updateMetaPoints();
+		}
+	}
+
+	fgl::ArrayList<fl::AnimationMetaPoint> AnimationEditorElement::getMetaPoints(size_t frameIndex) const
+	{
+		return animationData->getMetaPoints(frameIndex);
+	}
+
+	void AnimationEditorElement::setMetaPoint(size_t frameIndex, size_t metaPointIndex, const fl::AnimationMetaPoint& metaPoint)
+	{
+		animationData->setMetaPoint(frameIndex, metaPointIndex, metaPoint);
+		if(frameIndex==getAnimationFrameIndex())
+		{
+			metaPointsElement->setMetaPoint(metaPointIndex, metaPoint);
+		}
+	}
+
+	const fl::AnimationMetaPoint& AnimationEditorElement::getMetaPoint(size_t frameIndex, size_t metaPointIndex) const
+	{
+		return animationData->getMetaPoint(frameIndex, metaPointIndex);
 	}
 
 	void AnimationEditorElement::updateMetaPoints()
