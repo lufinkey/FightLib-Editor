@@ -46,6 +46,9 @@ namespace flui
 		void setMetaPointSelectHandler(const std::function<void(size_t index)>& handler);
 		const std::function<void(size_t)>& getMetaPointSelectHandler() const;
 
+		void setMetaPointChangeHandler(const std::function<void(size_t index)>& handler);
+		const std::function<void(size_t)>& getMetaPointChangeHandler() const;
+
 	private:
 		void updateMetaPoints();
 
@@ -56,5 +59,7 @@ namespace flui
 		fgl::AnimationElement* animationElement;
 		MetaPointGroupElement* metaPointsElement;
 		fl::AnimationOrientation drawnOrientation;
+
+		std::function<void(size_t)> metaPointChangeHandler;
 	};
 }
