@@ -3,6 +3,7 @@
 
 #include <fightlib/fightlib.hpp>
 #include "CarouselSelectorElement.hpp"
+#include "LabeledCheckboxElement.hpp"
 #include "NumberAdjustElement.hpp"
 
 namespace flui
@@ -34,5 +35,7 @@ namespace flui
 		NumberAdjustElement* radiusAdjustElement;
 		fgl::TextElement* rotationLabel;
 		NumberAdjustElement* rotationAdjustElement;
+		LabeledCheckboxElement* behindCheckbox;
+		LabeledCheckboxElement* visibleCheckbox;
 	};
 }

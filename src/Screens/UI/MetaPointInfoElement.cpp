@@ -156,6 +156,26 @@ namespace flui
 		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
 		offsetY += 14;
+
+		behindCheckbox = new LabeledCheckboxElement();
+		behindCheckbox->setText("Behind");
+		behindCheckbox->getLabelElement()->setFontSize(14);
+		offsetY += 10;
+		behindCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		behindCheckbox->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		behindCheckbox->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
+		behindCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		offsetY += 20;
+
+		visibleCheckbox = new LabeledCheckboxElement();
+		visibleCheckbox->setText("Visible");
+		visibleCheckbox->getLabelElement()->setFontSize(14);
+		offsetY += 10;
+		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
+		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		offsetY += 20;
 		
 		addChildElement(metaPointLabel);
 		addChildElement(typeLabel);
@@ -168,6 +188,8 @@ namespace flui
 		addChildElement(radiusAdjustElement);
 		addChildElement(rotationLabel);
 		addChildElement(rotationAdjustElement);
+		addChildElement(behindCheckbox);
+		addChildElement(visibleCheckbox);
 	}
 	
 	MetaPointInfoElement::~MetaPointInfoElement()
@@ -181,6 +203,8 @@ namespace flui
 		delete radiusAdjustElement;
 		delete rotationLabel;
 		delete rotationAdjustElement;
+		delete behindCheckbox;
+		delete visibleCheckbox;
 	}
 	
 	void MetaPointInfoElement::setMetaPoint(const fl::AnimationMetaPoint& metaPoint_arg)
