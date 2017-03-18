@@ -50,6 +50,13 @@ namespace flui
 			return getMetaPointTypeName(value.toArithmeticValue<fl::AnimationMetaPoint::Type>());
 		});
 		typeSelectorElement->setSelectedOptionIndex(0);
+		typeSelectorElement->setValueChangeHandler([=]{
+			this->metaPoint.type = typeSelectorElement->getOptionList()[typeSelectorElement->getSelectedOptionIndex()].toArithmeticValue<fl::AnimationMetaPoint::Type>();
+			if(this->metaPointChangeHandler)
+			{
+				this->metaPointChangeHandler(this->metaPoint);
+			}
+		});
 		offsetY += 1;
 		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
@@ -75,6 +82,13 @@ namespace flui
 		xAdjustElement->setMinValue(0);
 		xAdjustElement->setMaxValue(0);
 		xAdjustElement->setIncrement(0.5);
+		xAdjustElement->setValueChangeHandler([=] {
+			this->metaPoint.x = xAdjustElement->getValue().toArithmeticValue<float>();
+			if(this->metaPointChangeHandler)
+			{
+				this->metaPointChangeHandler(this->metaPoint);
+			}
+		});
 		offsetY += 1;
 		xAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		xAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
@@ -100,6 +114,13 @@ namespace flui
 		yAdjustElement->setMinValue(0);
 		yAdjustElement->setMaxValue(0);
 		yAdjustElement->setIncrement(0.5);
+		yAdjustElement->setValueChangeHandler([=]{
+			this->metaPoint.y = yAdjustElement->getValue().toArithmeticValue<float>();
+			if(this->metaPointChangeHandler)
+			{
+				this->metaPointChangeHandler(this->metaPoint);
+			}
+		});
 		offsetY += 1;
 		yAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		yAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
@@ -125,6 +146,13 @@ namespace flui
 		radiusAdjustElement->setMinValue(0);
 		radiusAdjustElement->setMaxValue(9999);
 		radiusAdjustElement->setIncrement(0.5);
+		radiusAdjustElement->setValueChangeHandler([=]{
+			this->metaPoint.radius = radiusAdjustElement->getValue().toArithmeticValue<float>();
+			if(this->metaPointChangeHandler)
+			{
+				this->metaPointChangeHandler(this->metaPoint);
+			}
+		});
 		offsetY += 1;
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		radiusAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
@@ -150,6 +178,13 @@ namespace flui
 		rotationAdjustElement->setMinValue(0);
 		rotationAdjustElement->setMaxValue(160);
 		rotationAdjustElement->setIncrement(1);
+		rotationAdjustElement->setValueChangeHandler([=]{
+			this->metaPoint.rotation = rotationAdjustElement->getValue().toArithmeticValue<float>();
+			if(this->metaPointChangeHandler)
+			{
+				this->metaPointChangeHandler(this->metaPoint);
+			}
+		});
 		offsetY += 1;
 		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
@@ -160,6 +195,13 @@ namespace flui
 		behindCheckbox = new LabeledCheckboxElement();
 		behindCheckbox->setText("Behind");
 		behindCheckbox->getLabelElement()->setFontSize(14);
+		behindCheckbox->setToggleHandler([=](bool toggle){
+			this->metaPoint.behind = toggle;
+			if(this->metaPointChangeHandler)
+			{
+				this->metaPointChangeHandler(this->metaPoint);
+			}
+		});
 		offsetY += 10;
 		behindCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		behindCheckbox->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
@@ -170,6 +212,13 @@ namespace flui
 		visibleCheckbox = new LabeledCheckboxElement();
 		visibleCheckbox->setText("Visible");
 		visibleCheckbox->getLabelElement()->setFontSize(14);
+		visibleCheckbox->setToggleHandler([=](bool toggle){
+			this->metaPoint.visible = toggle;
+			if(this->metaPointChangeHandler)
+			{
+				this->metaPointChangeHandler(this->metaPoint);
+			}
+		});
 		offsetY += 10;
 		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
 		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
@@ -212,12 +261,27 @@ namespace flui
 		metaPoint = metaPoint_arg;
 		size_t metaPointTypeIndex = typeSelectorElement->getOptionList().indexOf(metaPoint.type);
 		typeSelectorElement->setSelectedOptionIndex(metaPointTypeIndex);
+		xAdjustElement->setValue(metaPoint.x);
+		yAdjustElement->setValue(metaPoint.y);
 		radiusAdjustElement->setValue(metaPoint.radius);
+		rotationAdjustElement->setValue(metaPoint.rotation);
+		behindCheckbox->setToggle(metaPoint.behind);
+		visibleCheckbox->setToggle(metaPoint.visible);
 	}
 
 	const fl::AnimationMetaPoint& MetaPointInfoElement::getMetaPoint() const
 	{
 		return metaPoint;
+	}
+
+	void MetaPointInfoElement::setMetaPointChangeHandler(const std::function<void(fl::AnimationMetaPoint)>& handler)
+	{
+		metaPointChangeHandler = handler;
+	}
+
+	const std::function<void(fl::AnimationMetaPoint)>& MetaPointInfoElement::getMetaPointChangeHandler() const
+	{
+		return metaPointChangeHandler;
 	}
 
 	fgl::String MetaPointInfoElement::getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType)

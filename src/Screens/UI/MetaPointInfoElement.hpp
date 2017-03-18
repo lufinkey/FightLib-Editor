@@ -18,10 +18,14 @@ namespace flui
 		void setMetaPoint(const fl::AnimationMetaPoint& metaPoint);
 		const fl::AnimationMetaPoint& getMetaPoint() const;
 
+		void setMetaPointChangeHandler(const std::function<void(fl::AnimationMetaPoint)>& handler);
+		const std::function<void(fl::AnimationMetaPoint)>& getMetaPointChangeHandler() const;
+
 		static fgl::String getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType);
 		
 	private:
 		fl::AnimationMetaPoint metaPoint;
+		std::function<void(fl::AnimationMetaPoint)> metaPointChangeHandler;
 
 		fgl::TextElement* metaPointLabel;
 		
