@@ -54,6 +54,12 @@ namespace flui
 					this->metaPointChangeHandler(metaPointIndex);
 				}
 			});
+			metaPointElement->setSelectHandler([=]{
+				if(this->metaPointSelectHandler)
+				{
+					this->metaPointSelectHandler(metaPointIndex);
+				}
+			});
 			metaPointElement->setVisible(isMetaPointTypeVisible(metaPoint.type));
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
@@ -78,6 +84,16 @@ namespace flui
 	const std::function<void(size_t)>& MetaPointGroupElement::getMetaPointChangeHandler() const
 	{
 		return metaPointChangeHandler;
+	}
+
+	void MetaPointGroupElement::setMetaPointSelectHandler(const std::function<void(size_t)>& handler)
+	{
+		metaPointSelectHandler = handler;
+	}
+
+	const std::function<void(size_t)>& MetaPointGroupElement::getMetaPointSelectHandler() const
+	{
+		return metaPointSelectHandler;
 	}
 
 	void MetaPointGroupElement::setAnimationSize(const fgl::Vector2d& animationSize_arg)

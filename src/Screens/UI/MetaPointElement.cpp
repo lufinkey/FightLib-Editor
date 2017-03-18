@@ -81,6 +81,16 @@ namespace flui
 	{
 		return metaPointChangeHandler;
 	}
+
+	void MetaPointElement::setSelectHandler(const std::function<void()>& handler)
+	{
+		selectHandler = handler;
+	}
+
+	const std::function<void()>& MetaPointElement::getSelectHandler() const
+	{
+		return selectHandler;
+	}
 	
 	fgl::Vector2d MetaPointElement::getMetaPointCenter() const
 	{
@@ -141,6 +151,10 @@ namespace flui
 			fgl::Vector2d metaPointCenter = getMetaPointCenter();
 			initialPointTouchOffset = metaPointCenter-touchEvent.getPosition();
 			trackingPoint = true;
+		}
+		if(selectHandler)
+		{
+			selectHandler();
 		}
 	}
 	

@@ -20,6 +20,9 @@ namespace flui
 		void setMetaPointChangeHandler(const std::function<void(size_t index)>& handler);
 		const std::function<void(size_t)>& getMetaPointChangeHandler() const;
 
+		void setMetaPointSelectHandler(const std::function<void(size_t index)>& handler);
+		const std::function<void(size_t)>& getMetaPointSelectHandler() const;
+
 		void setAnimationSize(const fgl::Vector2d& animationSize);
 		const fgl::Vector2d& getAnimationSize() const;
 
@@ -33,6 +36,7 @@ namespace flui
 		fgl::ArrayList<fl::AnimationMetaPoint> metaPoints;
 		fgl::ArrayList<MetaPointElement*> metaPointElements;
 		std::function<void(size_t)> metaPointChangeHandler;
+		std::function<void(size_t)> metaPointSelectHandler;
 		fgl::Vector2d animationSize;
 		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, bool> enabledMetaPointTypes;
 		bool horizontalMirroringEnabled;
