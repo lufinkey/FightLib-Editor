@@ -40,10 +40,10 @@ namespace flui
 		});
 		typeSelectorElement->setSelectedOptionIndex(0);
 		typeSelectorElement->setValueChangeHandler([=]{
-			this->metaPoint.type = typeSelectorElement->getOptionList()[typeSelectorElement->getSelectedOptionIndex()].toArithmeticValue<fl::AnimationMetaPoint::Type>();
-			if(this->metaPointChangeHandler)
+			metaPoint.type = typeSelectorElement->getOptionList()[typeSelectorElement->getSelectedOptionIndex()].toArithmeticValue<fl::AnimationMetaPoint::Type>();
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(this->metaPoint);
+				metaPointChangeHandler(metaPoint);
 			}
 		});
 		offsetY += 1;
@@ -72,10 +72,10 @@ namespace flui
 		xAdjustElement->setMaxValue(0);
 		xAdjustElement->setIncrement(0.5);
 		xAdjustElement->setValueChangeHandler([=] {
-			this->metaPoint.x = xAdjustElement->getValue().toArithmeticValue<float>();
-			if(this->metaPointChangeHandler)
+			metaPoint.x = xAdjustElement->getValue().toArithmeticValue<float>();
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(this->metaPoint);
+				metaPointChangeHandler(metaPoint);
 			}
 		});
 		offsetY += 1;
@@ -104,10 +104,10 @@ namespace flui
 		yAdjustElement->setMaxValue(0);
 		yAdjustElement->setIncrement(0.5);
 		yAdjustElement->setValueChangeHandler([=]{
-			this->metaPoint.y = yAdjustElement->getValue().toArithmeticValue<float>();
-			if(this->metaPointChangeHandler)
+			metaPoint.y = yAdjustElement->getValue().toArithmeticValue<float>();
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(this->metaPoint);
+				metaPointChangeHandler(metaPoint);
 			}
 		});
 		offsetY += 1;
@@ -136,10 +136,10 @@ namespace flui
 		radiusAdjustElement->setMaxValue(9999);
 		radiusAdjustElement->setIncrement(0.5);
 		radiusAdjustElement->setValueChangeHandler([=]{
-			this->metaPoint.radius = radiusAdjustElement->getValue().toArithmeticValue<float>();
-			if(this->metaPointChangeHandler)
+			metaPoint.radius = radiusAdjustElement->getValue().toArithmeticValue<float>();
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(this->metaPoint);
+				metaPointChangeHandler(metaPoint);
 			}
 		});
 		offsetY += 1;
@@ -168,10 +168,10 @@ namespace flui
 		rotationAdjustElement->setMaxValue(160);
 		rotationAdjustElement->setIncrement(1);
 		rotationAdjustElement->setValueChangeHandler([=]{
-			this->metaPoint.rotation = rotationAdjustElement->getValue().toArithmeticValue<float>();
-			if(this->metaPointChangeHandler)
+			metaPoint.rotation = rotationAdjustElement->getValue().toArithmeticValue<float>();
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(this->metaPoint);
+				metaPointChangeHandler(metaPoint);
 			}
 		});
 		offsetY += 1;
@@ -185,10 +185,10 @@ namespace flui
 		behindCheckbox->setText("Behind");
 		behindCheckbox->getLabelElement()->setFontSize(14);
 		behindCheckbox->setToggleHandler([=](bool toggle){
-			this->metaPoint.behind = toggle;
-			if(this->metaPointChangeHandler)
+			metaPoint.behind = toggle;
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(this->metaPoint);
+				metaPointChangeHandler(metaPoint);
 			}
 		});
 		offsetY += 10;
@@ -202,10 +202,10 @@ namespace flui
 		visibleCheckbox->setText("Visible");
 		visibleCheckbox->getLabelElement()->setFontSize(14);
 		visibleCheckbox->setToggleHandler([=](bool toggle){
-			this->metaPoint.visible = toggle;
-			if(this->metaPointChangeHandler)
+			metaPoint.visible = toggle;
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(this->metaPoint);
+				metaPointChangeHandler(metaPoint);
 			}
 		});
 		offsetY += 10;

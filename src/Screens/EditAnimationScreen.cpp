@@ -4,7 +4,9 @@
 namespace flui
 {
 	EditAnimationScreen::EditAnimationScreen(fgl::AssetManager* assetManager, fl::AnimationData* animationData_arg)
-		: animationData(animationData_arg)
+		: animationData(animationData_arg),
+		selectedMetaPointFrameIndex(-1),
+		selectedMetaPointIndex(-1)
 	{
 		nameInputElement = new fgl::TextInputElement();
 		nameInputElement->setText(animationData->getName());
@@ -17,6 +19,20 @@ namespace flui
 
 		animationEditorElement = new AnimationEditorElement();
 		animationEditorElement->setAnimationData(animationData);
+		animationEditorElement->setMetaPointChangeHandler([=](size_t index){
+			if(selectedMetaPointFrameIndex!=-1 && selectedMetaPointIndex!=-1
+				&& selectedMetaPointFrameIndex==animationEditorElement->getAnimationFrameIndex()
+				&& selectedMetaPointIndex==index)
+			{
+				metaPointInfoElement->setMetaPoint(animationEditorElement->getMetaPoint(selectedMetaPointFrameIndex, selectedMetaPointIndex));
+			}
+		});
+		animationEditorElement->setMetaPointSelectHandler([=](size_t index){
+			selectedMetaPointFrameIndex = animationEditorElement->getAnimationFrameIndex();
+			selectedMetaPointIndex = index;
+			metaPointInfoElement->setMetaPoint(animationEditorElement->getMetaPoint(selectedMetaPointFrameIndex, selectedMetaPointIndex));
+			leftSidebarContainer->setToolboxElement(metaPointInfoElement);
+		});
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.2, fgl::LAYOUTVALUE_RATIO);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.2, fgl::LAYOUTVALUE_RATIO);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
@@ -121,6 +137,12 @@ namespace flui
 		//Left Sidebar
 		
 		metaPointInfoElement = new MetaPointInfoElement(assetManager);
+		metaPointInfoElement->setMetaPointChangeHandler([=](fl::AnimationMetaPoint metaPoint) {
+			if(selectedMetaPointFrameIndex!=-1 && selectedMetaPointIndex!=-1)
+			{
+				animationEditorElement->setMetaPoint(selectedMetaPointFrameIndex, selectedMetaPointIndex, metaPoint);
+			}
+		});
 		
 		getElement()->addChildElement(animationEditorElement);
 		getElement()->addChildElement(nameInputElement);

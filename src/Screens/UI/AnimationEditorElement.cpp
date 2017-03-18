@@ -32,11 +32,11 @@ namespace flui
 		addChildElement(animationElement);
 		
 		metaPointsElement->setMetaPointChangeHandler([=](size_t index) {
-			auto& metaPoint = this->metaPointsElement->getMetaPoint(index);
-			this->animationData->setMetaPoint(getAnimationFrameIndex(), index, metaPoint);
-			if(this->metaPointChangeHandler)
+			auto& metaPoint = metaPointsElement->getMetaPoint(index);
+			animationData->setMetaPoint(getAnimationFrameIndex(), index, metaPoint);
+			if(metaPointChangeHandler)
 			{
-				this->metaPointChangeHandler(index);
+				metaPointChangeHandler(index);
 			}
 		});
 		addChildElement(metaPointsElement);

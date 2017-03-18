@@ -48,16 +48,17 @@ namespace flui
 			auto metaPointElement = new MetaPointElement();
 			metaPointElement->setAnimationSize(animationSize);
 			metaPointElement->setMetaPoint(metaPoint);
-			metaPointElement->setMetaPointChangeHandler([=](fl::AnimationMetaPoint){
-				if(this->metaPointChangeHandler)
+			metaPointElement->setMetaPointChangeHandler([=](fl::AnimationMetaPoint metaPoint){
+				metaPoints[metaPointIndex] = metaPoint;
+				if(metaPointChangeHandler)
 				{
-					this->metaPointChangeHandler(metaPointIndex);
+					metaPointChangeHandler(metaPointIndex);
 				}
 			});
 			metaPointElement->setSelectHandler([=]{
-				if(this->metaPointSelectHandler)
+				if(metaPointSelectHandler)
 				{
-					this->metaPointSelectHandler(metaPointIndex);
+					metaPointSelectHandler(metaPointIndex);
 				}
 			});
 			metaPointElement->setVisible(isMetaPointTypeVisible(metaPoint.type));
