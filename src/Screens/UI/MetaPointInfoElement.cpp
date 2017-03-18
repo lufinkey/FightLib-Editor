@@ -9,20 +9,9 @@ namespace flui
 	}
 	
 	MetaPointInfoElement::MetaPointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame)
-		: ScreenElement(frame)
+		: ToolboxElement(frame)
 	{
 		double offsetY = 10;
-
-		metaPointLabel = new fgl::TextElement();
-		metaPointLabel->setText("Meta Point");
-		metaPointLabel->setFontSize(18);
-		metaPointLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		metaPointLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
-		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
-		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
-		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
-		metaPointLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
-		offsetY += 20;
 
 		typeLabel = new fgl::TextElement();
 		typeLabel->setText("Type");
@@ -226,7 +215,6 @@ namespace flui
 		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		offsetY += 20;
 		
-		addChildElement(metaPointLabel);
 		addChildElement(typeLabel);
 		addChildElement(typeSelectorElement);
 		addChildElement(xLabel);
@@ -243,7 +231,6 @@ namespace flui
 	
 	MetaPointInfoElement::~MetaPointInfoElement()
 	{
-		delete metaPointLabel;
 		delete typeLabel;
 		delete typeSelectorElement;
 		delete xAdjustElement;
@@ -254,6 +241,11 @@ namespace flui
 		delete rotationAdjustElement;
 		delete behindCheckbox;
 		delete visibleCheckbox;
+	}
+
+	fgl::String MetaPointInfoElement::getTitle() const
+	{
+		return "Meta Point";
 	}
 	
 	void MetaPointInfoElement::setMetaPoint(const fl::AnimationMetaPoint& metaPoint_arg)

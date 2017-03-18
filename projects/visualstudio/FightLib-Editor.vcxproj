@@ -32,6 +32,8 @@
     <ClCompile Include="..\..\src\Screens\UI\MetaPointGroupElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\MetaPointInfoElement.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\NumberAdjustElement.cpp" />
+    <ClCompile Include="..\..\src\Screens\UI\ToolboxContainerElement.cpp" />
+    <ClCompile Include="..\..\src\Screens\UI\ToolboxElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp" />
@@ -46,6 +48,8 @@
     <ClInclude Include="..\..\src\Screens\UI\MetaPointGroupElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\MetaPointInfoElement.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\NumberAdjustElement.hpp" />
+    <ClInclude Include="..\..\src\Screens\UI\ToolboxContainerElement.hpp" />
+    <ClInclude Include="..\..\src\Screens\UI\ToolboxElement.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BBF642A0-873D-4096-AB0F-787CF4094290}</ProjectGuid>

@@ -5,6 +5,7 @@
 #include "UI/AnimationEditorElement.hpp"
 #include "UI/MetaPointInfoElement.hpp"
 #include "UI/LabeledCheckboxElement.hpp"
+#include "UI/ToolboxContainerElement.hpp"
 
 namespace flui
 {
@@ -21,15 +22,13 @@ namespace flui
 		
 	private:
 		fgl::String getFrameIndexLabelString() const;
-		void setLeftSidebarElement(fgl::ScreenElement* element);
 		
 		fl::AnimationData* animationData;
 
 		fgl::TextInputElement* nameInputElement;
 		flui::AnimationEditorElement* animationEditorElement;
 		
-		fgl::ScreenElement* leftSidebarContainer;
-		fgl::ScreenElement* leftSidebarElement;
+		ToolboxContainerElement* leftSidebarContainer;
 		fgl::ScreenElement* rightSidebarContainer;
 
 		//right sidebar

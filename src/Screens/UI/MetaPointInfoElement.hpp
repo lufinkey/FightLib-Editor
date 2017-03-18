@@ -2,18 +2,21 @@
 #pragma once
 
 #include <fightlib/fightlib.hpp>
+#include "ToolboxElement.hpp"
 #include "CarouselSelectorElement.hpp"
 #include "LabeledCheckboxElement.hpp"
 #include "NumberAdjustElement.hpp"
 
 namespace flui
 {
-	class MetaPointInfoElement : public fgl::ScreenElement
+	class MetaPointInfoElement : public ToolboxElement
 	{
 	public:
 		MetaPointInfoElement(fgl::AssetManager* assetManager);
 		MetaPointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame);
 		virtual ~MetaPointInfoElement();
+
+		virtual fgl::String getTitle() const override;
 		
 		void setMetaPoint(const fl::AnimationMetaPoint& metaPoint);
 		const fl::AnimationMetaPoint& getMetaPoint() const;
@@ -27,8 +30,6 @@ namespace flui
 		fl::AnimationMetaPoint metaPoint;
 		std::function<void(fl::AnimationMetaPoint)> metaPointChangeHandler;
 
-		fgl::TextElement* metaPointLabel;
-		
 		fgl::TextElement* typeLabel;
 		CarouselSelectorElement* typeSelectorElement;
 		fgl::TextElement* xLabel;

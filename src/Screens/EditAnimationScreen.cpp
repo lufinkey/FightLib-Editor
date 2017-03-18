@@ -22,8 +22,7 @@ namespace flui
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
 		
-		leftSidebarElement = nullptr;
-		leftSidebarContainer = new fgl::ScreenElement();
+		leftSidebarContainer = new ToolboxContainerElement();
 		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.8, fgl::LAYOUTVALUE_RATIO);
 		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
 		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
@@ -122,7 +121,6 @@ namespace flui
 		//Left Sidebar
 		
 		metaPointInfoElement = new MetaPointInfoElement(assetManager);
-		setLeftSidebarElement(metaPointInfoElement);
 		
 		getElement()->addChildElement(animationEditorElement);
 		getElement()->addChildElement(nameInputElement);
@@ -192,24 +190,5 @@ namespace flui
 		size_t frameIndex = animationEditorElement->getAnimationFrameIndex();
 		size_t frameCount = animation->getTotalFrames();
 		return (fgl::String)""+(frameIndex+1)+"/"+frameCount;
-	}
-	
-	void EditAnimationScreen::setLeftSidebarElement(fgl::ScreenElement* element)
-	{
-		if(leftSidebarElement!=nullptr)
-		{
-			leftSidebarElement->removeFromParentElement();
-			leftSidebarElement->removeAllLayoutRules();
-			leftSidebarElement = nullptr;
-		}
-		leftSidebarElement = element;
-		if(leftSidebarElement!=nullptr)
-		{
-			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
-			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
-			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
-			leftSidebarElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
-			leftSidebarContainer->addChildElement(leftSidebarElement);
-		}
 	}
 }

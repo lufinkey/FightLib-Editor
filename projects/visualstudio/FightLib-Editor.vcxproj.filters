@@ -51,6 +51,12 @@
     <ClCompile Include="..\..\src\Screens\UI\ArrowAdjustElement.cpp">
       <Filter>src\Screens\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\ToolboxElement.cpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\ToolboxContainerElement.cpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp">
@@ -87,6 +93,12 @@
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\ArrowAdjustElement.hpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\ToolboxElement.hpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\ToolboxContainerElement.hpp">
       <Filter>src\Screens\UI</Filter>
     </ClInclude>
   </ItemGroup>
