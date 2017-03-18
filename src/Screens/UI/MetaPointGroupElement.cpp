@@ -71,6 +71,12 @@ namespace flui
 		}
 	}
 
+	void MetaPointGroupElement::setMetaPoint(size_t index, const fl::AnimationMetaPoint& metaPoint)
+	{
+		metaPoints[index] = metaPoint;
+		metaPointElements[index]->setMetaPoint(metaPoint);
+	}
+
 	const fgl::ArrayList<fl::AnimationMetaPoint>& MetaPointGroupElement::getMetaPoints() const
 	{
 		return metaPoints;

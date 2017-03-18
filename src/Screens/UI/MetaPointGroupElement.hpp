@@ -15,6 +15,7 @@ namespace flui
 		virtual void draw(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 
 		void setMetaPoints(const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints);
+		void setMetaPoint(size_t index, const fl::AnimationMetaPoint& metaPoint);
 		const fgl::ArrayList<fl::AnimationMetaPoint>& getMetaPoints() const;
 
 		void setMetaPointChangeHandler(const std::function<void(size_t index)>& handler);
