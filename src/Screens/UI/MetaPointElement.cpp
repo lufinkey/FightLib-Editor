@@ -14,6 +14,25 @@ namespace flui
 	{
 		//
 	}
+
+	bool MetaPointElement::isPointInside(const fgl::Vector2d& point) const
+	{
+		if(!createdPoint)
+		{
+			return TouchElement::isPointInside(point);
+		}
+		else
+		{
+			fgl::Vector2d metaPointCenter = getMetaPointCenter();
+			double xoff = metaPointCenter.x-point.x;
+			double yoff = metaPointCenter.y-point.y;
+			if(fgl::Math::abs(xoff) <= 10 && fgl::Math::abs(yoff) <= 10)
+			{
+				return true;
+			}
+			return false;
+		}
+	}
 	
 	void MetaPointElement::drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const
 	{
@@ -102,18 +121,6 @@ namespace flui
 		}
 	}
 	
-	bool MetaPointElement::isTouchPointOnCenter(const fgl::Vector2d& point) const
-	{
-		fgl::Vector2d metaPointCenter = getMetaPointCenter();
-		double xoff = metaPointCenter.x-point.x;
-		double yoff = metaPointCenter.y-point.y;
-		if(fgl::Math::abs(xoff) <= 10 && fgl::Math::abs(yoff) <= 10)
-		{
-			return true;
-		}
-		return false;
-	}
-	
 	void MetaPointElement::onTouchDown(const TouchEvent& touchEvent)
 	{
 		if(!createdPoint)
@@ -129,7 +136,7 @@ namespace flui
 				metaPointChangeHandler(metaPoint);
 			}
 		}
-		else if(isTouchPointOnCenter(touchEvent.getPosition()))
+		else
 		{
 			fgl::Vector2d metaPointCenter = getMetaPointCenter();
 			initialPointTouchOffset = metaPointCenter-touchEvent.getPosition();

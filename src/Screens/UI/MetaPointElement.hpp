@@ -11,6 +11,8 @@ namespace flui
 		MetaPointElement();
 		MetaPointElement(const fgl::RectangleD& frame);
 
+		virtual bool isPointInside(const fgl::Vector2d& point) const override;
+
 		void setMetaPoint(const fl::AnimationMetaPoint& metaPoint);
 		const fl::AnimationMetaPoint& getMetaPoint() const;
 		void clearMetaPoint();
@@ -34,7 +36,6 @@ namespace flui
 		fgl::Vector2d getMetaPointCenter() const;
 		fgl::Vector2d toMetaPointCoordinates(const fgl::Vector2d& point) const;
 		fgl::Vector2d fromMetaPointCoordinates(const fgl::Vector2d& point) const;
-		bool isTouchPointOnCenter(const fgl::Vector2d& point) const;
 		
 		fl::AnimationMetaPoint metaPoint;
 		fgl::Vector2d animationSize;
