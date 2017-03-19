@@ -165,6 +165,22 @@ namespace flui
 			fgl::Vector2d metaPointCenter = toMetaPointCoordinates(touchEvent.getPosition()+initialPointTouchOffset);
 			metaPoint.x = fgl::Math::roundToMultiple(metaPointCenter.x, 0.5);
 			metaPoint.y = fgl::Math::roundToMultiple(metaPointCenter.y, 0.5);
+			if(metaPoint.x < 0)
+			{
+				metaPoint.x = 0;
+			}
+			else if(metaPoint.x > animationSize.x)
+			{
+				metaPoint.x = animationSize.x;
+			}
+			if(metaPoint.y < 0)
+			{
+				metaPoint.y = 0;
+			}
+			else if(metaPoint.y > animationSize.y)
+			{
+				metaPoint.y = animationSize.y;
+			}
 			if(metaPointChangeHandler)
 			{
 				metaPointChangeHandler(metaPoint);
