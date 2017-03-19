@@ -111,7 +111,7 @@ namespace flui
 			auto metapointCheckbox = new LabeledCheckboxElement();
 			metapointCheckbox->setText(MetaPointInfoElement::getMetaPointTypeName(metaPointType));
 			metapointCheckbox->getLabelElement()->setFontSize(14);
-			metapointCheckbox->setToggle(false);
+			metapointCheckbox->setToggle(animationEditorElement->isMetaPointTypeVisible(metaPointType));
 			metapointCheckbox->setToggleHandler([=](bool value){
 				animationEditorElement->setMetaPointTypeVisible(metaPointType, value);
 			});

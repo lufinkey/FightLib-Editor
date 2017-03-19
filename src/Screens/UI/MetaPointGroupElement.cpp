@@ -136,7 +136,7 @@ namespace flui
 
 	bool MetaPointGroupElement::isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const
 	{
-		return enabledMetaPointTypes.get(metaPointType, false);
+		return enabledMetaPointTypes.get(metaPointType, true);
 	}
 
 	void MetaPointGroupElement::setHorizontalMirroringEnabled(bool mirror)
