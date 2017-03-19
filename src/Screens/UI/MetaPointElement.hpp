@@ -17,8 +17,8 @@ namespace flui
 		const fl::AnimationMetaPoint& getMetaPoint() const;
 		void clearMetaPoint();
 
-		void setAnimationSize(const fgl::Vector2d& animationSize);
-		const fgl::Vector2d& getAnimationSize() const;
+		void setAnimationSize(const fgl::Vector2u& animationSize);
+		const fgl::Vector2u& getAnimationSize() const;
 
 		void setMetaPointChangeHandler(const std::function<void(fl::AnimationMetaPoint)>& handler);
 		const std::function<void(fl::AnimationMetaPoint)>& getMetaPointChangeHandler() const;
@@ -41,7 +41,7 @@ namespace flui
 		fgl::Vector2d fromMetaPointCoordinates(const fgl::Vector2d& point) const;
 		
 		fl::AnimationMetaPoint metaPoint;
-		fgl::Vector2d animationSize;
+		fgl::Vector2u animationSize;
 		std::function<void(fl::AnimationMetaPoint)> metaPointChangeHandler;
 		std::function<void()> selectHandler;
 		fgl::Vector2d initialPointTouchOffset;

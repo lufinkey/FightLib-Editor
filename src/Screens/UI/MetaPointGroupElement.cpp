@@ -108,7 +108,7 @@ namespace flui
 		return metaPointSelectHandler;
 	}
 
-	void MetaPointGroupElement::setAnimationSize(const fgl::Vector2d& animationSize_arg)
+	void MetaPointGroupElement::setAnimationSize(const fgl::Vector2u& animationSize_arg)
 	{
 		animationSize = animationSize_arg;
 		for(auto metaPointElement : metaPointElements)
@@ -117,7 +117,7 @@ namespace flui
 		}
 	}
 
-	const fgl::Vector2d& MetaPointGroupElement::getAnimationSize() const
+	const fgl::Vector2u& MetaPointGroupElement::getAnimationSize() const
 	{
 		return animationSize;
 	}

@@ -40,7 +40,7 @@ namespace flui
 		{
 			fgl::RectangleD frame = getFrame();
 			graphics.translate(frame.x, frame.y);
-			graphics.scale(frame.width/animationSize.x, frame.height/animationSize.y);
+			graphics.scale(frame.width/(double)animationSize.x, frame.height/(double)animationSize.y);
 			metaPoint.draw(graphics);
 		}
 	}
@@ -62,12 +62,12 @@ namespace flui
 		metaPoint = fl::AnimationMetaPoint();
 	}
 
-	void MetaPointElement::setAnimationSize(const fgl::Vector2d& animationSize_arg)
+	void MetaPointElement::setAnimationSize(const fgl::Vector2u& animationSize_arg)
 	{
 		animationSize = animationSize_arg;
 	}
 
-	const fgl::Vector2d& MetaPointElement::getAnimationSize() const
+	const fgl::Vector2u& MetaPointElement::getAnimationSize() const
 	{
 		return animationSize;
 	}
@@ -101,7 +101,7 @@ namespace flui
 		else
 		{
 			fgl::RectangleD frame = getFrame();
-			return fgl::Vector2d(metaPoint.x*(frame.width/animationSize.x), metaPoint.y*(frame.height/animationSize.y));
+			return fgl::Vector2d(metaPoint.x*(frame.width/(double)animationSize.x), metaPoint.y*(frame.height/(double)animationSize.y));
 		}
 	}
 	
@@ -114,7 +114,7 @@ namespace flui
 		else
 		{
 			fgl::RectangleD frame = getFrame();
-			return fgl::Vector2d(point.x*(animationSize.x/frame.width), point.y*(animationSize.y/frame.height));
+			return fgl::Vector2d(point.x*((double)animationSize.x/frame.width), point.y*((double)animationSize.y/frame.height));
 		}
 	}
 
@@ -127,7 +127,7 @@ namespace flui
 		else
 		{
 			fgl::RectangleD frame = getFrame();
-			return fgl::Vector2d(point.x*(frame.width/animationSize.x), point.y*(frame.height/animationSize.y));
+			return fgl::Vector2d(point.x*(frame.width/(double)animationSize.x), point.y*(frame.height/(double)animationSize.y));
 		}
 	}
 	

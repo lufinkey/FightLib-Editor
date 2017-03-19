@@ -230,12 +230,12 @@ namespace flui
 		if(animationData==nullptr || animationData->getAnimation()==nullptr || animationData->getAnimation()->getTotalFrames()==0)
 		{
 			metaPointsElement->setMetaPoints({});
-			metaPointsElement->setAnimationSize(fgl::Vector2d(0, 0));
+			metaPointsElement->setAnimationSize(fgl::Vector2u(0, 0));
 		}
 		else
 		{
 			metaPointsElement->setMetaPoints(animationData->getMetaPoints(animationElement->getAnimationFrameIndex()));
-			metaPointsElement->setAnimationSize(animationData->getSize(animationElement->getAnimationFrameIndex(), 1.0));
+			metaPointsElement->setAnimationSize(animationData->getSize(animationElement->getAnimationFrameIndex()));
 		}
 	}
 }
