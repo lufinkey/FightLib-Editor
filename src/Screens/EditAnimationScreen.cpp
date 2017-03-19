@@ -137,6 +137,7 @@ namespace flui
 		//Left Sidebar
 		
 		metaPointInfoElement = new MetaPointInfoElement(assetManager);
+		metaPointInfoElement->setAnimationSize(animationData->getSize(animationEditorElement->getAnimationFrameIndex()));
 		metaPointInfoElement->setMetaPointChangeHandler([=](fl::AnimationMetaPoint metaPoint) {
 			if(selectedMetaPointFrameIndex!=-1 && selectedMetaPointIndex!=-1)
 			{
@@ -184,6 +185,7 @@ namespace flui
 			if(frameIndex < frameCount)
 			{
 				animationEditorElement->setAnimationFrameIndex(frameIndex);
+				metaPointInfoElement->setAnimationSize(animationData->getSize(frameIndex));
 			}
 		}
 	}
@@ -198,6 +200,7 @@ namespace flui
 			if(frameIndex != -1)
 			{
 				animationEditorElement->setAnimationFrameIndex(frameIndex);
+				metaPointInfoElement->setAnimationSize(animationData->getSize(frameIndex));
 			}
 		}
 	}

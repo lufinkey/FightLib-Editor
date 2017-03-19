@@ -24,11 +24,15 @@ namespace flui
 		void setMetaPointChangeHandler(const std::function<void(fl::AnimationMetaPoint)>& handler);
 		const std::function<void(fl::AnimationMetaPoint)>& getMetaPointChangeHandler() const;
 
+		void setAnimationSize(const fgl::Vector2u& animationSize);
+		const fgl::Vector2u& getAnimationSize() const;
+
 		static fgl::String getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType);
 		
 	private:
 		fl::AnimationMetaPoint metaPoint;
 		std::function<void(fl::AnimationMetaPoint)> metaPointChangeHandler;
+		fgl::Vector2u animationSize;
 
 		fgl::TextElement* typeLabel;
 		CarouselSelectorElement* typeSelectorElement;

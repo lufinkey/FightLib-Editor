@@ -276,6 +276,18 @@ namespace flui
 		return metaPointChangeHandler;
 	}
 
+	void MetaPointInfoElement::setAnimationSize(const fgl::Vector2u& animationSize_arg)
+	{
+		animationSize = animationSize_arg;
+		xAdjustElement->setMaxValue(animationSize.x);
+		yAdjustElement->setMaxValue(animationSize.y);
+	}
+
+	const fgl::Vector2u& MetaPointInfoElement::getAnimationSize() const
+	{
+		return animationSize;
+	}
+
 	fgl::String MetaPointInfoElement::getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType)
 	{
 		switch(metaPointType)
