@@ -6,8 +6,17 @@ namespace flui
 	EditAnimationScreen::EditAnimationScreen(fgl::AssetManager* assetManager, fl::AnimationData* animationData_arg)
 		: animationData(animationData_arg),
 		selectedMetaPointFrameIndex(-1),
-		selectedMetaPointIndex(-1)
+		selectedMetaPointIndex(-1),
+		addingMetaPoint(false)
 	{
+		overlayElement = new fgl::TouchElement();
+		overlayElement->setBackgroundColor(fgl::Color::BLACK);
+		overlayElement->setAlpha(0.5);
+		overlayElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		overlayElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		overlayElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
+		overlayElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
+
 		// Name input
 		nameInputElement = new fgl::TextInputElement();
 		nameInputElement->setText(animationData->getName());
@@ -96,7 +105,7 @@ namespace flui
 		addMetapointButton->setTitle("Add Meta Point", fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		addMetapointButton->getTitleElement()->setFontSize(14);
 		addMetapointButton->setTapHandler([=]{
-			animationEditorElement->beginUserAddMetaPoint();
+			beginUserAddMetaPoint();
 		});
 		rOffsetY += 16;
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
@@ -167,14 +176,15 @@ namespace flui
 			}
 		});
 		
-		getElement()->addChildElement(animationEditorElement);
 		getElement()->addChildElement(nameInputElement);
 		getElement()->addChildElement(leftSidebarContainer);
 		getElement()->addChildElement(rightSidebarContainer);
+		getElement()->addChildElement(animationEditorElement);
 	}
 	
 	EditAnimationScreen::~EditAnimationScreen()
 	{
+		delete overlayElement;
 		delete nameInputElement;
 		delete animationEditorElement;
 		delete leftSidebarContainer;
@@ -182,6 +192,7 @@ namespace flui
 		delete frameIndexLabel;
 		delete nextFrameButton;
 		delete prevFrameButton;
+		delete addMetapointButton;
 		delete metaPointInfoElement;
 		delete metapointCheckboxHeaderLabel;
 		for(auto checkboxPair : metapointCheckboxElements)
@@ -225,6 +236,21 @@ namespace flui
 				metaPointInfoElement->setAnimationSize(animationData->getSize(frameIndex));
 			}
 		}
+	}
+
+	void EditAnimationScreen::beginUserAddMetaPoint()
+	{
+		if(addingMetaPoint)
+		{
+			throw fgl::IllegalStateException("already adding meta point");
+		}
+		addingMetaPoint = true;
+		size_t editorElementIndex = getElement()->getChildElements().indexOf(animationEditorElement);
+		getElement()->addChildElement(editorElementIndex, overlayElement);
+		animationEditorElement->beginUserAddMetaPoint([=](fl::AnimationMetaPoint metaPoint){
+			overlayElement->removeFromParentElement();
+			addingMetaPoint = false;
+		});
 	}
 	
 	fgl::String EditAnimationScreen::getFrameIndexLabelString() const

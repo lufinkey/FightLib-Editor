@@ -49,7 +49,7 @@ namespace flui
 		void setMetaPointChangeHandler(const std::function<void(size_t index)>& handler);
 		const std::function<void(size_t)>& getMetaPointChangeHandler() const;
 
-		void beginUserAddMetaPoint();
+		void beginUserAddMetaPoint(const std::function<void(fl::AnimationMetaPoint)>& completion);
 
 	private:
 		void updateMetaPoints();
@@ -64,6 +64,7 @@ namespace flui
 
 		std::function<void(size_t)> metaPointChangeHandler;
 		MetaPointElement* addingMetaPointElement;
+		std::function<void(fl::AnimationMetaPoint)> addingMetaPointCompletionHandler;
 		bool addingMetaPoint;
 	};
 }

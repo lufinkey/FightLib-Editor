@@ -48,15 +48,22 @@ namespace flui
 			if(addingMetaPoint)
 			{
 				size_t frameIndex = getAnimationFrameIndex();
-				size_t metaPointIndex = animationData->addMetaPoint(frameIndex, addingMetaPointElement->getMetaPoint());
+				fl::AnimationMetaPoint metaPoint = addingMetaPointElement->getMetaPoint();
+				size_t metaPointIndex = animationData->addMetaPoint(frameIndex, metaPoint);
 				addingMetaPointElement->clearMetaPoint();
 				addingMetaPointElement->setVisible(false);
 				updateMetaPoints();
+				auto completion = addingMetaPointCompletionHandler;
+				addingMetaPointCompletionHandler = nullptr;
 				addingMetaPoint = false;
 				auto& selectHandler = metaPointsElement->getMetaPointSelectHandler();
 				if(selectHandler)
 				{
 					selectHandler(metaPointIndex);
+				}
+				if(completion)
+				{
+					completion(metaPoint);
 				}
 			}
 		});
@@ -65,6 +72,7 @@ namespace flui
 
 	AnimationEditorElement::~AnimationEditorElement()
 	{
+		delete addingMetaPointElement;
 		delete metaPointsElement;
 		delete animationElement;
 		delete tracingAnimationElement;
@@ -248,13 +256,14 @@ namespace flui
 		return animationData->getMetaPoint(frameIndex, metaPointIndex);
 	}
 
-	void AnimationEditorElement::beginUserAddMetaPoint()
+	void AnimationEditorElement::beginUserAddMetaPoint(const std::function<void(fl::AnimationMetaPoint)>& completion)
 	{
 		if(addingMetaPoint)
 		{
 			throw fgl::IllegalStateException("already adding meta point");
 		}
 		addingMetaPoint = true;
+		addingMetaPointCompletionHandler = completion;
 		addingMetaPointElement->setVisible(true);
 	}
 

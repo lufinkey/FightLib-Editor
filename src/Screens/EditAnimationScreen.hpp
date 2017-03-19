@@ -19,11 +19,15 @@ namespace flui
 		
 		void nextFrame();
 		void previousFrame();
+
+		void beginUserAddMetaPoint();
 		
 	private:
 		fgl::String getFrameIndexLabelString() const;
 		
 		fl::AnimationData* animationData;
+
+		fgl::TouchElement* overlayElement;
 
 		fgl::TextInputElement* nameInputElement;
 		flui::AnimationEditorElement* animationEditorElement;
@@ -44,5 +48,6 @@ namespace flui
 
 		size_t selectedMetaPointFrameIndex;
 		size_t selectedMetaPointIndex;
+		bool addingMetaPoint;
 	};
 }
