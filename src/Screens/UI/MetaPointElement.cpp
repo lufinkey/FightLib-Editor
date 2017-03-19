@@ -91,6 +91,16 @@ namespace flui
 	{
 		return selectHandler;
 	}
+
+	void MetaPointElement::setDeselectHandler(const std::function<void()>& handler)
+	{
+		deselectHandler = handler;
+	}
+
+	const std::function<void()>& MetaPointElement::getDeselectHandler() const
+	{
+		return deselectHandler;
+	}
 	
 	fgl::Vector2d MetaPointElement::getMetaPointCenter() const
 	{
@@ -191,16 +201,37 @@ namespace flui
 	
 	void MetaPointElement::onTouchUpInside(const TouchEvent& touchEvent)
 	{
-		trackingPoint = false;
+		if(trackingPoint)
+		{
+			trackingPoint = false;
+			if(deselectHandler)
+			{
+				deselectHandler();
+			}
+		}
 	}
 	
 	void MetaPointElement::onTouchUpOutside(const TouchEvent& touchEvent)
 	{
-		trackingPoint = false;
+		if(trackingPoint)
+		{
+			trackingPoint = false;
+			if(deselectHandler)
+			{
+				deselectHandler();
+			}
+		}
 	}
 	
 	void MetaPointElement::onTouchCancel(const TouchEvent& touchEvent)
 	{
-		trackingPoint = false;
+		if(trackingPoint)
+		{
+			trackingPoint = false;
+			if(deselectHandler)
+			{
+				deselectHandler();
+			}
+		}
 	}
 }

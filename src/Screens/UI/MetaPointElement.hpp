@@ -26,6 +26,9 @@ namespace flui
 		void setSelectHandler(const std::function<void()>& handler);
 		const std::function<void()>& getSelectHandler() const;
 
+		void setDeselectHandler(const std::function<void()>& handler);
+		const std::function<void()>& getDeselectHandler() const;
+
 	protected:
 		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 		
@@ -44,6 +47,7 @@ namespace flui
 		fgl::Vector2u animationSize;
 		std::function<void(fl::AnimationMetaPoint)> metaPointChangeHandler;
 		std::function<void()> selectHandler;
+		std::function<void()> deselectHandler;
 		fgl::Vector2d initialPointTouchOffset;
 		bool createdPoint;
 		bool trackingPoint;

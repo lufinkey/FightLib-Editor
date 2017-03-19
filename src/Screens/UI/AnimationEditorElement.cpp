@@ -10,11 +10,13 @@ namespace flui
 
 	AnimationEditorElement::AnimationEditorElement(const fgl::RectangleD& frame) : fgl::ScreenElement(frame),
 		animationData(nullptr),
+		drawnOrientation(fl::ANIMATIONORIENTATION_NEUTRAL),
 		checkerboardBackground(new CheckerboardElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		tracingAnimationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		animationElement(new fgl::AnimationElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
 		metaPointsElement(new MetaPointGroupElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
-		drawnOrientation(fl::ANIMATIONORIENTATION_NEUTRAL)
+		addingMetaPointElement(new MetaPointElement(fgl::RectangleD(0, 0, frame.width, frame.height))),
+		addingMetaPoint(false)
 	{
 		checkerboardBackground->setVisible(false);
 		checkerboardBackground->setFirstBlockColor(fgl::Color(236,236,236));
@@ -40,6 +42,25 @@ namespace flui
 			}
 		});
 		addChildElement(metaPointsElement);
+
+		addingMetaPointElement->setVisible(false);
+		addingMetaPointElement->setDeselectHandler([=]{
+			if(addingMetaPoint)
+			{
+				size_t frameIndex = getAnimationFrameIndex();
+				size_t metaPointIndex = animationData->addMetaPoint(frameIndex, addingMetaPointElement->getMetaPoint());
+				addingMetaPointElement->clearMetaPoint();
+				addingMetaPointElement->setVisible(false);
+				updateMetaPoints();
+				addingMetaPoint = false;
+				auto& selectHandler = metaPointsElement->getMetaPointSelectHandler();
+				if(selectHandler)
+				{
+					selectHandler(metaPointIndex);
+				}
+			}
+		});
+		addChildElement(addingMetaPointElement);
 	}
 
 	AnimationEditorElement::~AnimationEditorElement()
@@ -61,11 +82,13 @@ namespace flui
 			fgl::RectangleD displayFrame = animationElement->getImageElement()->getImageDisplayFrame();
 			checkerboardBackground->setFrame(displayFrame);
 			metaPointsElement->setFrame(displayFrame);
+			addingMetaPointElement->setFrame(displayFrame);
 		}
 		else
 		{
 			checkerboardBackground->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
 			metaPointsElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
+			addingMetaPointElement->setFrame(fgl::RectangleD(0, 0, frame.width, frame.height));
 		}
 	}
 	
@@ -225,17 +248,29 @@ namespace flui
 		return animationData->getMetaPoint(frameIndex, metaPointIndex);
 	}
 
+	void AnimationEditorElement::beginUserAddMetaPoint()
+	{
+		if(addingMetaPoint)
+		{
+			throw fgl::IllegalStateException("already adding meta point");
+		}
+		addingMetaPoint = true;
+		addingMetaPointElement->setVisible(true);
+	}
+
 	void AnimationEditorElement::updateMetaPoints()
 	{
 		if(animationData==nullptr || animationData->getAnimation()==nullptr || animationData->getAnimation()->getTotalFrames()==0)
 		{
 			metaPointsElement->setMetaPoints({});
 			metaPointsElement->setAnimationSize(fgl::Vector2u(0, 0));
+			addingMetaPointElement->setAnimationSize(fgl::Vector2u(0, 0));
 		}
 		else
 		{
 			metaPointsElement->setMetaPoints(animationData->getMetaPoints(animationElement->getAnimationFrameIndex()));
 			metaPointsElement->setAnimationSize(animationData->getSize(animationElement->getAnimationFrameIndex()));
+			addingMetaPointElement->setAnimationSize(animationData->getSize(animationElement->getAnimationFrameIndex()));
 		}
 	}
 }

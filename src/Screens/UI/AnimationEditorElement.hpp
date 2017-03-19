@@ -49,17 +49,21 @@ namespace flui
 		void setMetaPointChangeHandler(const std::function<void(size_t index)>& handler);
 		const std::function<void(size_t)>& getMetaPointChangeHandler() const;
 
+		void beginUserAddMetaPoint();
+
 	private:
 		void updateMetaPoints();
 
 		fl::AnimationData* animationData;
+		fl::AnimationOrientation drawnOrientation;
 
 		CheckerboardElement* checkerboardBackground;
 		fgl::AnimationElement* tracingAnimationElement;
 		fgl::AnimationElement* animationElement;
 		MetaPointGroupElement* metaPointsElement;
-		fl::AnimationOrientation drawnOrientation;
 
 		std::function<void(size_t)> metaPointChangeHandler;
+		MetaPointElement* addingMetaPointElement;
+		bool addingMetaPoint;
 	};
 }

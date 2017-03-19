@@ -8,6 +8,7 @@ namespace flui
 		selectedMetaPointFrameIndex(-1),
 		selectedMetaPointIndex(-1)
 	{
+		// Name input
 		nameInputElement = new fgl::TextInputElement();
 		nameInputElement->setText(animationData->getName());
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
@@ -17,6 +18,7 @@ namespace flui
 		nameInputElement->setFontSize(24);
 		nameInputElement->setResigningOnOutsideTouchEnabled(true);
 
+		// Animation editor
 		animationEditorElement = new AnimationEditorElement();
 		animationEditorElement->setAnimationData(animationData);
 		animationEditorElement->setMetaPointChangeHandler([=](size_t index){
@@ -38,6 +40,7 @@ namespace flui
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
 		animationEditorElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
 		
+		// Sidebar containers
 		leftSidebarContainer = new ToolboxContainerElement();
 		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.8, fgl::LAYOUTVALUE_RATIO);
 		leftSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
@@ -50,7 +53,8 @@ namespace flui
 		rightSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_TOP, 52);
 		rightSidebarContainer->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
 		
-		//Right Sidebar
+		// Right sidebar
+		double rOffsetY = 10;
 
 		frameIndexLabel = new fgl::TextElement();
 		frameIndexLabel->setText(getFrameIndexLabelString());
@@ -58,42 +62,60 @@ namespace flui
 		frameIndexLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
 		frameIndexLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
-		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_Y, 30);
+		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_Y, rOffsetY+(40/2));
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
+		rOffsetY += 40;
 		
 		assetManager->loadTexture("assets/images/arrow_button.png");
 		
 		nextFrameButton = new fgl::ButtonElement();
 		nextFrameButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
-		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.5, fgl::LAYOUTVALUE_RATIO);
-		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, 50);
-		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
-		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
-		nextFrameButton->setTapHandler([=]{
+		nextFrameButton->setTapHandler([=] {
 			nextFrame();
 		});
+		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.5, fgl::LAYOUTVALUE_RATIO);
+		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
+		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
 		
 		prevFrameButton = new fgl::ButtonElement();
 		prevFrameButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		prevFrameButton->getImageElement()->setHorizontalImageMirroringEnabled(true);
-		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.5, fgl::LAYOUTVALUE_RATIO);
-		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, 50);
-		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
-		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
 		prevFrameButton->setTapHandler([=]{
 			previousFrame();
 		});
+		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.5, fgl::LAYOUTVALUE_RATIO);
+		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
+		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
+		rOffsetY += 40;
+
+		addMetapointButton = new fgl::ButtonElement();
+		addMetapointButton->setBorderWidth(1);
+		addMetapointButton->setTitle("Add Meta Point", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		addMetapointButton->getTitleElement()->setFontSize(14);
+		addMetapointButton->setTapHandler([=]{
+			animationEditorElement->beginUserAddMetaPoint();
+		});
+		rOffsetY += 16;
+		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		rOffsetY += 20;
 		
 		metapointCheckboxHeaderLabel = new fgl::TextElement();
 		metapointCheckboxHeaderLabel->setFontSize(18);
 		metapointCheckboxHeaderLabel->setText("Meta Points");
 		metapointCheckboxHeaderLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
 		metapointCheckboxHeaderLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
-		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, 106);
+		rOffsetY += 16;
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
 		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
 		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
 		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+		rOffsetY += 24;
 
 		fgl::ArrayList<fl::AnimationMetaPoint::Type> metaPointTypes = {
 			fl::AnimationMetaPoint::POINTTYPE_HITBOX,
@@ -105,7 +127,6 @@ namespace flui
 			fl::AnimationMetaPoint::POINTTYPE_HANDLE
 		};
 
-		double metapointCheckboxY = 130;
 		for(auto metaPointType : metaPointTypes)
 		{
 			auto metapointCheckbox = new LabeledCheckboxElement();
@@ -115,26 +136,27 @@ namespace flui
 			metapointCheckbox->setToggleHandler([=](bool value){
 				animationEditorElement->setMetaPointTypeVisible(metaPointType, value);
 			});
-			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, metapointCheckboxY);
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_LEFT, 4);
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 26);
 
 			metapointCheckboxElements[metaPointType] = metapointCheckbox;
 
-			metapointCheckboxY += 28;
+			rOffsetY += 28;
 		}
 
 		rightSidebarContainer->addChildElement(frameIndexLabel);
 		rightSidebarContainer->addChildElement(nextFrameButton);
 		rightSidebarContainer->addChildElement(prevFrameButton);
+		rightSidebarContainer->addChildElement(addMetapointButton);
 		rightSidebarContainer->addChildElement(metapointCheckboxHeaderLabel);
 		for(auto checkboxPair : metapointCheckboxElements)
 		{
 			rightSidebarContainer->addChildElement(checkboxPair.second);
 		}
 		
-		//Left Sidebar
+		//Left sidebar
 		
 		metaPointInfoElement = new MetaPointInfoElement(assetManager);
 		metaPointInfoElement->setAnimationSize(animationData->getSize(animationEditorElement->getAnimationFrameIndex()));
