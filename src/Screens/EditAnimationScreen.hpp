@@ -18,6 +18,7 @@ namespace flui
 		virtual void update(fgl::ApplicationData appData) override;
 		
 		bool saveAnimationData();
+		bool closeScreen();
 		
 		void nextFrame();
 		void previousFrame();

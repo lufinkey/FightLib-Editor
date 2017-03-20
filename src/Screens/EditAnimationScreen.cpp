@@ -32,25 +32,7 @@ namespace flui
 		closeButtonElement->getTitleElement()->setFontSize(14);
 		closeButtonElement->setBorderWidth(1);
 		closeButtonElement->setTapHandler([=]{
-			if(*animationData != *lastSavedAnimationData)
-			{
-				auto selection = fgl::MessageBox::show(nullptr, "Unsaved Changes", "Would you like to save your changes?", {"Yes", "No", "Cancel"});
-				if(selection==0)
-				{
-					if(!saveAnimationData())
-					{
-						return;
-					}
-				}
-				else if(selection==2)
-				{
-					return;
-				}
-			}
-			if(getParentScreen()!=nullptr)
-			{
-				getParentScreen()->dismiss();
-			}
+			closeScreen();
 		});
 		closeButtonElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		closeButtonElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
@@ -279,6 +261,30 @@ namespace flui
 			fgl::MessageBox::show(nullptr, "Error", error);
 		}
 		return success;
+	}
+	
+	bool EditAnimationScreen::closeScreen()
+	{
+		if(*animationData != *lastSavedAnimationData)
+		{
+			auto selection = fgl::MessageBox::show(nullptr, "Unsaved Changes", "Would you like to save your changes?", {"Yes", "No", "Cancel"});
+			if(selection==0)
+			{
+				if(!saveAnimationData())
+				{
+					return false;
+				}
+			}
+			else if(selection==2)
+			{
+				return false;
+			}
+		}
+		if(getParentScreen()!=nullptr)
+		{
+			getParentScreen()->dismiss();
+		}
+		return true;
 	}
 	
 	void EditAnimationScreen::nextFrame()
