@@ -249,6 +249,7 @@ namespace flui
 	{
 		Screen::update(appData);
 		frameIndexLabel->setText(getFrameIndexLabelString());
+		animationData->setName(nameInputElement->getText());
 	}
 	
 	bool EditAnimationScreen::saveAnimationData()
