@@ -224,6 +224,7 @@ namespace flui
 		delete lastSavedAnimationData;
 		
 		delete overlayElement;
+		delete closeButtonElement;
 		delete saveButtonElement;
 		delete nameInputElement;
 		delete animationEditorElement;
