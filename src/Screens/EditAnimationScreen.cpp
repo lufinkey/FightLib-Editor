@@ -6,10 +6,18 @@ namespace flui
 	EditAnimationScreen::EditAnimationScreen(fgl::AssetManager* assetManager, fl::AnimationData* animationData_arg, const fgl::String& savePath)
 		: animationData(animationData_arg),
 		savePath(savePath),
+		lastSavedAnimationData(nullptr),
 		selectedMetaPointFrameIndex(-1),
 		selectedMetaPointIndex(-1),
 		addingMetaPoint(false)
 	{
+		if(animationData==nullptr)
+		{
+			throw fgl::IllegalArgumentException("animatioData", "cannot be null");
+		}
+		
+		lastSavedAnimationData = new fl::AnimationData(*animationData);
+		
 		overlayElement = new fgl::TouchElement();
 		overlayElement->setBackgroundColor(fgl::Color::BLACK);
 		overlayElement->setAlpha(0.5);
@@ -17,31 +25,57 @@ namespace flui
 		overlayElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
 		overlayElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
 		overlayElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
+		
+		// Close button
+		closeButtonElement = new fgl::ButtonElement();
+		closeButtonElement->setTitle("Close", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		closeButtonElement->getTitleElement()->setFontSize(14);
+		closeButtonElement->setBorderWidth(1);
+		closeButtonElement->setTapHandler([=]{
+			if(*animationData != *lastSavedAnimationData)
+			{
+				auto selection = fgl::MessageBox::show(nullptr, "Unsaved Changes", "Would you like to save your changes?", {"Yes", "No", "Cancel"});
+				if(selection==0)
+				{
+					if(!saveAnimationData())
+					{
+						return;
+					}
+				}
+				else if(selection==2)
+				{
+					return;
+				}
+			}
+			if(getParentScreen()!=nullptr)
+			{
+				getParentScreen()->dismiss();
+			}
+		});
+		closeButtonElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		closeButtonElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
+		closeButtonElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
+		closeButtonElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
 
 		// Save button
 		saveButtonElement = new fgl::ButtonElement();
 		saveButtonElement->setTitle("Save", fgl::ButtonElement::BUTTONSTATE_NORMAL);
-		saveButtonElement->getTitleElement()->setFontSize(16);
+		saveButtonElement->getTitleElement()->setFontSize(14);
 		saveButtonElement->setBorderWidth(1);
 		saveButtonElement->setTapHandler([=]{
-			fgl::String error;
-			bool success = animationData->saveToFile(savePath, &error);
-			if(!success)
-			{
-				fgl::MessageBox::show(nullptr, "Error", error);
-			}
+			saveAnimationData();
 		});
-		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
-		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
+		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 60);
 		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
+		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
 		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
 
 		// Name input
 		nameInputElement = new fgl::TextInputElement();
 		nameInputElement->setText(animationData->getName());
-		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 60);
-		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 110);
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
+		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
 		nameInputElement->setFontSize(24);
 		nameInputElement->setResigningOnOutsideTouchEnabled(true);
@@ -195,6 +229,7 @@ namespace flui
 			}
 		});
 		
+		getElement()->addChildElement(closeButtonElement);
 		getElement()->addChildElement(saveButtonElement);
 		getElement()->addChildElement(nameInputElement);
 		getElement()->addChildElement(leftSidebarContainer);
@@ -204,6 +239,8 @@ namespace flui
 	
 	EditAnimationScreen::~EditAnimationScreen()
 	{
+		delete lastSavedAnimationData;
+		
 		delete overlayElement;
 		delete saveButtonElement;
 		delete nameInputElement;
@@ -226,6 +263,22 @@ namespace flui
 	{
 		Screen::update(appData);
 		frameIndexLabel->setText(getFrameIndexLabelString());
+	}
+	
+	bool EditAnimationScreen::saveAnimationData()
+	{
+		fgl::String error;
+		bool success = animationData->saveToFile(savePath, &error);
+		if(success)
+		{
+			delete lastSavedAnimationData;
+			lastSavedAnimationData = new fl::AnimationData(*animationData);
+		}
+		else
+		{
+			fgl::MessageBox::show(nullptr, "Error", error);
+		}
+		return success;
 	}
 	
 	void EditAnimationScreen::nextFrame()

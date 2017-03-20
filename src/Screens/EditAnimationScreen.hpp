@@ -17,6 +17,8 @@ namespace flui
 		
 		virtual void update(fgl::ApplicationData appData) override;
 		
+		bool saveAnimationData();
+		
 		void nextFrame();
 		void previousFrame();
 
@@ -27,10 +29,13 @@ namespace flui
 		
 		fl::AnimationData* animationData;
 		fgl::String savePath;
+		
+		fl::AnimationData* lastSavedAnimationData;
 
 		fgl::TouchElement* overlayElement;
 
 		//header area
+		fgl::ButtonElement* closeButtonElement;
 		fgl::ButtonElement* saveButtonElement;
 		fgl::TextInputElement* nameInputElement;
 
