@@ -203,7 +203,10 @@ namespace flui
 		//Left sidebar
 		
 		metaPointInfoElement = new MetaPointInfoElement(assetManager);
-		metaPointInfoElement->setAnimationSize(animationData->getSize(animationEditorElement->getAnimationFrameIndex()));
+		if(animationData->getAnimation()->getTotalFrames())
+		{
+			metaPointInfoElement->setAnimationSize(animationData->getSize(animationEditorElement->getAnimationFrameIndex()));
+		}
 		metaPointInfoElement->setMetaPointChangeHandler([=](fl::AnimationMetaPoint metaPoint) {
 			if(selectedMetaPointFrameIndex!=-1 && selectedMetaPointIndex!=-1)
 			{
