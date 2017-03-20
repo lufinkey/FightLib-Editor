@@ -13,7 +13,7 @@ namespace flui
 	{
 		if(animationData==nullptr)
 		{
-			throw fgl::IllegalArgumentException("animatioData", "cannot be null");
+			throw fgl::IllegalArgumentException("animationData", "cannot be null");
 		}
 		
 		lastSavedAnimationData = new fl::AnimationData(*animationData);

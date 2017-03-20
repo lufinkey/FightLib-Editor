@@ -14,7 +14,7 @@ MainApplication::~MainApplication()
 void MainApplication::initialize()
 {
 	setFPS(60);
-	getWindow()->setTitle("MobileBrawler Character Editor");
+	getWindow()->setTitle("FightLib Character Editor");
 	getWindow()->getViewport()->setMatchesWindow(true);
 }
 
