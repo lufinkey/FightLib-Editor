@@ -40,6 +40,8 @@
 		F160BB211E7C635C005162EB /* NumberAdjustElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F160BB1F1E7C635C005162EB /* NumberAdjustElement.cpp */; };
 		F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */; };
 		F199D4A01E76CCB5008627BE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = F199D49F1E76CCB5008627BE /* assets */; };
+		F1A1FAB61E80136900D55FFC /* ToolboxContainerElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A1FAB21E80136900D55FFC /* ToolboxContainerElement.cpp */; };
+		F1A1FAB71E80136900D55FFC /* ToolboxElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A1FAB41E80136900D55FFC /* ToolboxElement.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +105,10 @@
 		F18578EC1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CarouselSelectorElement.cpp; sourceTree = "<group>"; };
 		F18578ED1E7AFA6400A7BE3B /* CarouselSelectorElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CarouselSelectorElement.hpp; sourceTree = "<group>"; };
 		F199D49F1E76CCB5008627BE /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../../assets; sourceTree = "<group>"; };
+		F1A1FAB21E80136900D55FFC /* ToolboxContainerElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolboxContainerElement.cpp; sourceTree = "<group>"; };
+		F1A1FAB31E80136900D55FFC /* ToolboxContainerElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolboxContainerElement.hpp; sourceTree = "<group>"; };
+		F1A1FAB41E80136900D55FFC /* ToolboxElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolboxElement.cpp; sourceTree = "<group>"; };
+		F1A1FAB51E80136900D55FFC /* ToolboxElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolboxElement.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,10 +169,10 @@
 		F15F5A371E71E14600FAFD86 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				F15F5A3B1E71E14600FAFD86 /* Screens */,
 				F15F5A381E71E14600FAFD86 /* main.cpp */,
 				F15F5A391E71E14600FAFD86 /* MainApplication.cpp */,
 				F15F5A3A1E71E14600FAFD86 /* MainApplication.hpp */,
-				F15F5A3B1E71E14600FAFD86 /* Screens */,
 			);
 			name = src;
 			path = ../../src;
@@ -227,6 +233,10 @@
 				F160BB171E7C4D19005162EB /* MetaPointInfoElement.hpp */,
 				F160BB1F1E7C635C005162EB /* NumberAdjustElement.cpp */,
 				F160BB201E7C635C005162EB /* NumberAdjustElement.hpp */,
+				F1A1FAB21E80136900D55FFC /* ToolboxContainerElement.cpp */,
+				F1A1FAB31E80136900D55FFC /* ToolboxContainerElement.hpp */,
+				F1A1FAB41E80136900D55FFC /* ToolboxElement.cpp */,
+				F1A1FAB51E80136900D55FFC /* ToolboxElement.hpp */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -310,11 +320,13 @@
 				F160BB111E7C0B7E005162EB /* MetaPointElement.cpp in Sources */,
 				F160BB101E7C0B7E005162EB /* LabeledCheckboxElement.cpp in Sources */,
 				F18578EE1E7AFA6400A7BE3B /* CarouselSelectorElement.cpp in Sources */,
+				F1A1FAB71E80136900D55FFC /* ToolboxElement.cpp in Sources */,
 				F15F5A8C1E71F26B00FAFD86 /* CheckerboardElement.cpp in Sources */,
 				F15F5A8B1E71F26B00FAFD86 /* AnimationEditorElement.cpp in Sources */,
 				F160BB211E7C635C005162EB /* NumberAdjustElement.cpp in Sources */,
 				F15F5A451E71E14600FAFD86 /* HomeScreen.cpp in Sources */,
 				F160BB181E7C4D19005162EB /* MetaPointInfoElement.cpp in Sources */,
+				F1A1FAB61E80136900D55FFC /* ToolboxContainerElement.cpp in Sources */,
 				F160BB121E7C0B7E005162EB /* MetaPointGroupElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
