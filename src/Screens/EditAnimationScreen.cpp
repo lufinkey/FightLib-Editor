@@ -3,8 +3,9 @@
 
 namespace flui
 {
-	EditAnimationScreen::EditAnimationScreen(fgl::AssetManager* assetManager, fl::AnimationData* animationData_arg)
+	EditAnimationScreen::EditAnimationScreen(fgl::AssetManager* assetManager, fl::AnimationData* animationData_arg, const fgl::String& savePath)
 		: animationData(animationData_arg),
+		savePath(savePath),
 		selectedMetaPointFrameIndex(-1),
 		selectedMetaPointIndex(-1),
 		addingMetaPoint(false)
@@ -17,10 +18,28 @@ namespace flui
 		overlayElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
 		overlayElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 0);
 
+		// Save button
+		saveButtonElement = new fgl::ButtonElement();
+		saveButtonElement->setTitle("Save", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		saveButtonElement->getTitleElement()->setFontSize(16);
+		saveButtonElement->setBorderWidth(1);
+		saveButtonElement->setTapHandler([=]{
+			fgl::String error;
+			bool success = animationData->saveToFile(savePath, &error);
+			if(!success)
+			{
+				fgl::MessageBox::show(nullptr, "Error", error);
+			}
+		});
+		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
+		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
+		saveButtonElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
+
 		// Name input
 		nameInputElement = new fgl::TextInputElement();
 		nameInputElement->setText(animationData->getName());
-		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 60);
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
@@ -176,6 +195,7 @@ namespace flui
 			}
 		});
 		
+		getElement()->addChildElement(saveButtonElement);
 		getElement()->addChildElement(nameInputElement);
 		getElement()->addChildElement(leftSidebarContainer);
 		getElement()->addChildElement(rightSidebarContainer);
@@ -185,6 +205,7 @@ namespace flui
 	EditAnimationScreen::~EditAnimationScreen()
 	{
 		delete overlayElement;
+		delete saveButtonElement;
 		delete nameInputElement;
 		delete animationEditorElement;
 		delete leftSidebarContainer;

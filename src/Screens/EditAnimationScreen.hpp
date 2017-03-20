@@ -12,7 +12,7 @@ namespace flui
 	class EditAnimationScreen : public fgl::Screen
 	{
 	public:
-		EditAnimationScreen(fgl::AssetManager* assetManager, fl::AnimationData* animationData);
+		EditAnimationScreen(fgl::AssetManager* assetManager, fl::AnimationData* animationData, const fgl::String& savePath);
 		virtual ~EditAnimationScreen();
 		
 		virtual void update(fgl::ApplicationData appData) override;
@@ -26,10 +26,14 @@ namespace flui
 		fgl::String getFrameIndexLabelString() const;
 		
 		fl::AnimationData* animationData;
+		fgl::String savePath;
 
 		fgl::TouchElement* overlayElement;
 
+		//header area
+		fgl::ButtonElement* saveButtonElement;
 		fgl::TextInputElement* nameInputElement;
+
 		flui::AnimationEditorElement* animationEditorElement;
 		
 		ToolboxContainerElement* leftSidebarContainer;

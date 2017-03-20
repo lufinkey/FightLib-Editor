@@ -15,7 +15,7 @@ namespace flui
 				if(animData->loadFromFile(animationPath, assetManager, &error))
 				{
 					//TODO delete this animation sometime
-					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData);
+					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
 					present(editScreen);
 				}
 				else
@@ -42,7 +42,7 @@ namespace flui
 				if(animData->saveToFile(animationPath, &error))
 				{
 					//TODO delete this animation sometime
-					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData);
+					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
 					present(editScreen);
 				}
 				else
