@@ -16,12 +16,16 @@ namespace flui
 				{
 					//TODO delete this animation sometime
 					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
-					present(editScreen);
+					editScreen->setCloseHandler([=]{
+						delete editScreen;
+						delete animData;
+					});
+					presentChildScreen(editScreen);
 				}
 				else
 				{
 					delete animData;
-					fgl::MessageBox::show(nullptr, "Error", error);
+					fgl::MessageBox::show(getWindow(), "Error", error);
 				}
 			}
 		});
@@ -43,12 +47,16 @@ namespace flui
 				{
 					//TODO delete this animation sometime
 					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
-					present(editScreen);
+					editScreen->setCloseHandler([=]{
+						delete editScreen;
+						delete animData;
+					});
+					presentChildScreen(editScreen);
 				}
 				else
 				{
 					delete animData;
-					fgl::MessageBox::show(nullptr, "Error", error);
+					fgl::MessageBox::show(getWindow(), "Error", error);
 				}
 			}
 		});

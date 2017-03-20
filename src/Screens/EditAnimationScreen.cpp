@@ -259,7 +259,7 @@ namespace flui
 		}
 		else
 		{
-			fgl::MessageBox::show(nullptr, "Error", error);
+			fgl::MessageBox::show(getWindow(), "Error", error);
 		}
 		return success;
 	}
@@ -268,7 +268,7 @@ namespace flui
 	{
 		if(*animationData != *lastSavedAnimationData)
 		{
-			auto selection = fgl::MessageBox::show(nullptr, "Unsaved Changes", "Would you like to save your changes?", {"Yes", "No", "Cancel"});
+			auto selection = fgl::MessageBox::show(getWindow(), "Unsaved Changes", "Would you like to save your changes?", {"Yes", "No", "Cancel"});
 			if(selection==0)
 			{
 				if(!saveAnimationData())
@@ -281,10 +281,16 @@ namespace flui
 				return false;
 			}
 		}
-		if(getParentScreen()!=nullptr)
+		if(getParentScreen()==nullptr)
 		{
-			getParentScreen()->dismiss();
+			return false;
 		}
+		getParentScreen()->dismissChildScreen([=]{
+			if(closeHandler)
+			{
+				closeHandler();
+			}
+		});
 		return true;
 	}
 	
@@ -332,6 +338,16 @@ namespace flui
 			overlayElement->removeFromParentElement();
 			addingMetaPoint = false;
 		});
+	}
+	
+	void EditAnimationScreen::setCloseHandler(const std::function<void()>& closeHandler_arg)
+	{
+		closeHandler = closeHandler_arg;
+	}
+	
+	const std::function<void()>& EditAnimationScreen::getCloseHandler() const
+	{
+		return closeHandler;
 	}
 	
 	fgl::String EditAnimationScreen::getFrameIndexLabelString() const
