@@ -44,6 +44,7 @@ namespace flui
 		fgl::ButtonElement* closeButtonElement;
 		fgl::ButtonElement* saveButtonElement;
 		fgl::TextInputElement* nameInputElement;
+		fgl::SegmentedSelectorElement* orientationSelectorElement;
 
 		flui::AnimationEditorElement* animationEditorElement;
 		

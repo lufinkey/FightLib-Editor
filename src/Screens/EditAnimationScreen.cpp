@@ -57,10 +57,49 @@ namespace flui
 		nameInputElement->setText(animationData->getName());
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 110);
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
-		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 168);
 		nameInputElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
 		nameInputElement->setFontSize(24);
 		nameInputElement->setResigningOnOutsideTouchEnabled(true);
+		
+		// Orientation selector
+		orientationSelectorElement = new fgl::SegmentedSelectorElement();
+		orientationSelectorElement->setFontSize(14);
+		orientationSelectorElement->setItems({"Left", "Neutral", "Right"});
+		switch(animationData->getOrientation())
+		{
+			case fl::ANIMATIONORIENTATION_LEFT:
+				orientationSelectorElement->setSelectedItemIndex(0);
+				break;
+				
+			case fl::ANIMATIONORIENTATION_NEUTRAL:
+				orientationSelectorElement->setSelectedItemIndex(1);
+				break;
+				
+			case fl::ANIMATIONORIENTATION_RIGHT:
+				orientationSelectorElement->setSelectedItemIndex(2);
+				break;
+		}
+		orientationSelectorElement->setSelectionHandler([=](size_t index){
+			switch(index)
+			{
+				case 0:
+					animationData->setOrientation(fl::ANIMATIONORIENTATION_LEFT);
+					break;
+					
+				case 1:
+					animationData->setOrientation(fl::ANIMATIONORIENTATION_NEUTRAL);
+					break;
+					
+				case 2:
+					animationData->setOrientation(fl::ANIMATIONORIENTATION_RIGHT);
+					break;
+			}
+		});
+		orientationSelectorElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		orientationSelectorElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 10);
+		orientationSelectorElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 148);
+		orientationSelectorElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
 
 		// Animation editor
 		animationEditorElement = new AnimationEditorElement();
@@ -217,6 +256,7 @@ namespace flui
 		getElement()->addChildElement(closeButtonElement);
 		getElement()->addChildElement(saveButtonElement);
 		getElement()->addChildElement(nameInputElement);
+		getElement()->addChildElement(orientationSelectorElement);
 		getElement()->addChildElement(leftSidebarContainer);
 		getElement()->addChildElement(rightSidebarContainer);
 		getElement()->addChildElement(animationEditorElement);
@@ -230,6 +270,7 @@ namespace flui
 		delete closeButtonElement;
 		delete saveButtonElement;
 		delete nameInputElement;
+		delete orientationSelectorElement;
 		delete animationEditorElement;
 		delete leftSidebarContainer;
 		delete rightSidebarContainer;
