@@ -44,6 +44,8 @@ namespace flui
 		NumberAdjustElement* radiusAdjustElement;
 		fgl::TextElement* rotationLabel;
 		NumberAdjustElement* rotationAdjustElement;
+		fgl::TextElement* orientationLabel;
+		fgl::SegmentedSelectorElement* orientationSelector;
 		LabeledCheckboxElement* behindCheckbox;
 		LabeledCheckboxElement* visibleCheckbox;
 	};

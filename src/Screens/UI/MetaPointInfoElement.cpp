@@ -180,6 +180,49 @@ namespace flui
 		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		rotationAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
 		offsetY += 14;
+		
+		orientationLabel = new fgl::TextElement();
+		orientationLabel->setText("Orientation");
+		orientationLabel->setFontSize(14);
+		orientationLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		orientationLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		offsetY += 10;
+		orientationLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		orientationLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		orientationLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		orientationLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
+		
+		orientationSelector = new fgl::SegmentedSelectorElement();
+		orientationSelector->setFontSize(12);
+		orientationSelector->setItems({"Left", "Neutral", "Right"});
+		orientationSelector->setSelectedItemIndex(1);
+		orientationSelector->setSelectionHandler([=](size_t index){
+			switch(index)
+			{
+				case 0:
+					metaPoint.orientation = fl::ANIMATIONORIENTATION_LEFT;
+					break;
+					
+				case 1:
+					metaPoint.orientation = fl::ANIMATIONORIENTATION_NEUTRAL;
+					break;
+					
+				case 2:
+					metaPoint.orientation = fl::ANIMATIONORIENTATION_RIGHT;
+					break;
+			}
+			if(metaPointChangeHandler)
+			{
+				metaPointChangeHandler(metaPoint);
+			}
+		});
+		offsetY += 2;
+		orientationSelector->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		orientationSelector->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		orientationSelector->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		orientationSelector->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
 
 		behindCheckbox = new LabeledCheckboxElement();
 		behindCheckbox->setText("Behind");
@@ -225,6 +268,8 @@ namespace flui
 		addChildElement(radiusAdjustElement);
 		addChildElement(rotationLabel);
 		addChildElement(rotationAdjustElement);
+		addChildElement(orientationLabel);
+		addChildElement(orientationSelector);
 		addChildElement(behindCheckbox);
 		addChildElement(visibleCheckbox);
 	}
@@ -239,6 +284,8 @@ namespace flui
 		delete radiusAdjustElement;
 		delete rotationLabel;
 		delete rotationAdjustElement;
+		delete orientationLabel;
+		delete orientationSelector;
 		delete behindCheckbox;
 		delete visibleCheckbox;
 	}
@@ -257,6 +304,20 @@ namespace flui
 		yAdjustElement->setValue(metaPoint.y);
 		radiusAdjustElement->setValue(metaPoint.radius);
 		rotationAdjustElement->setValue(metaPoint.rotation);
+		switch(metaPoint.orientation)
+		{
+			case fl::ANIMATIONORIENTATION_LEFT:
+				orientationSelector->setSelectedItemIndex(0);
+				break;
+				
+			case fl::ANIMATIONORIENTATION_NEUTRAL:
+				orientationSelector->setSelectedItemIndex(1);
+				break;
+				
+			case fl::ANIMATIONORIENTATION_RIGHT:
+				orientationSelector->setSelectedItemIndex(2);
+				break;
+		}
 		behindCheckbox->setToggle(metaPoint.behind);
 		visibleCheckbox->setToggle(metaPoint.visible);
 	}
