@@ -25,9 +25,6 @@ namespace flui
 
 		void beginUserAddMetaPoint();
 		
-		void setCloseHandler(const std::function<void()>& closeHandler);
-		const std::function<void()>& getCloseHandler() const;
-		
 	private:
 		fgl::String getFrameIndexLabelString() const;
 		
@@ -35,8 +32,6 @@ namespace flui
 		fgl::String savePath;
 		
 		fl::AnimationData* lastSavedAnimationData;
-		
-		std::function<void()> closeHandler;
 
 		fgl::TouchElement* overlayElement;
 

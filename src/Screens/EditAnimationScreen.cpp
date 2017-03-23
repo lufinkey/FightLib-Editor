@@ -330,12 +330,7 @@ namespace flui
 		{
 			return false;
 		}
-		getParentScreen()->dismissChildScreen([=]{
-			if(closeHandler)
-			{
-				closeHandler();
-			}
-		});
+		getParentScreen()->dismissChildScreen();
 		return true;
 	}
 	
@@ -383,16 +378,6 @@ namespace flui
 			overlayElement->removeFromParentElement();
 			addingMetaPoint = false;
 		});
-	}
-	
-	void EditAnimationScreen::setCloseHandler(const std::function<void()>& closeHandler_arg)
-	{
-		closeHandler = closeHandler_arg;
-	}
-	
-	const std::function<void()>& EditAnimationScreen::getCloseHandler() const
-	{
-		return closeHandler;
 	}
 	
 	fgl::String EditAnimationScreen::getFrameIndexLabelString() const

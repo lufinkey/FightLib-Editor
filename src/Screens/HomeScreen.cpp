@@ -16,11 +16,10 @@ namespace flui
 				{
 					//TODO delete this animation sometime
 					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
-					editScreen->setCloseHandler([=]{
+					presentChildScreen(editScreen, nullptr, [=]{
 						delete editScreen;
 						delete animData;
 					});
-					presentChildScreen(editScreen);
 				}
 				else
 				{
@@ -47,11 +46,10 @@ namespace flui
 				{
 					//TODO delete this animation sometime
 					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
-					editScreen->setCloseHandler([=]{
+					presentChildScreen(editScreen, nullptr, [=]{
 						delete editScreen;
 						delete animData;
 					});
-					presentChildScreen(editScreen);
 				}
 				else
 				{
