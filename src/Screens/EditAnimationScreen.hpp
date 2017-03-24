@@ -50,6 +50,7 @@ namespace flui
 		fgl::TextElement* frameIndexLabel;
 		fgl::ButtonElement* nextFrameButton;
 		fgl::ButtonElement* prevFrameButton;
+		fgl::ButtonElement* addFramesButton;
 		fgl::ButtonElement* addMetapointButton;
 		fgl::TextElement* metapointCheckboxHeaderLabel;
 		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, LabeledCheckboxElement*> metapointCheckboxElements;

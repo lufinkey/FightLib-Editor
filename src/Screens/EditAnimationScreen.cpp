@@ -1,5 +1,6 @@
 
 #include "EditAnimationScreen.hpp"
+#include "AddFramesScreen.hpp"
 
 namespace flui
 {
@@ -173,6 +174,23 @@ namespace flui
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
 		rOffsetY += 40;
+		
+		addFramesButton = new fgl::ButtonElement();
+		addFramesButton->setBorderWidth(1);
+		addFramesButton->setTitle("Add Frames", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		addFramesButton->getTitleElement()->setFontSize(14);
+		addFramesButton->setTapHandler([=]{
+			auto addFramesScreen = new AddFramesScreen(animationData->getAnimation());
+			presentChildScreen(addFramesScreen, nullptr, [=]{
+				delete addFramesScreen;
+			});
+		});
+		rOffsetY += 16;
+		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		rOffsetY += 20;
 
 		addMetapointButton = new fgl::ButtonElement();
 		addMetapointButton->setBorderWidth(1);
@@ -181,7 +199,7 @@ namespace flui
 		addMetapointButton->setTapHandler([=]{
 			beginUserAddMetaPoint();
 		});
-		rOffsetY += 16;
+		rOffsetY += 10;
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
@@ -232,6 +250,7 @@ namespace flui
 		rightSidebarContainer->addChildElement(frameIndexLabel);
 		rightSidebarContainer->addChildElement(nextFrameButton);
 		rightSidebarContainer->addChildElement(prevFrameButton);
+		rightSidebarContainer->addChildElement(addFramesButton);
 		rightSidebarContainer->addChildElement(addMetapointButton);
 		rightSidebarContainer->addChildElement(metapointCheckboxHeaderLabel);
 		for(auto checkboxPair : metapointCheckboxElements)
@@ -277,6 +296,7 @@ namespace flui
 		delete frameIndexLabel;
 		delete nextFrameButton;
 		delete prevFrameButton;
+		delete addFramesButton;
 		delete addMetapointButton;
 		delete metaPointInfoElement;
 		delete metapointCheckboxHeaderLabel;
