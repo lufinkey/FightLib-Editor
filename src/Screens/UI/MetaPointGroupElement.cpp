@@ -10,7 +10,7 @@ namespace flui
 
 	MetaPointGroupElement::MetaPointGroupElement(const fgl::RectangleD& frame) : ScreenElement(frame),
 		horizontalMirroringEnabled(false),
-		boundsDrawingEnabled(false)
+		boundsDrawingEnabled(true)
 	{
 		//
 	}
