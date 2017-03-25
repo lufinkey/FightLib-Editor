@@ -57,6 +57,9 @@
     <ClCompile Include="..\..\src\Screens\UI\ToolboxContainerElement.cpp">
       <Filter>src\Screens\UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Screens\AddFramesScreen.cpp">
+      <Filter>src\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\UI\ToolboxContainerElement.hpp">
       <Filter>src\Screens\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\AddFramesScreen.hpp">
+      <Filter>src\Screens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

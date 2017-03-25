@@ -1,22 +1,27 @@
 
 #include <GameLibrary/GameLibrary.hpp>
+#include "UI/NumberAdjustElement.hpp"
 
 namespace flui
 {
 	class AddFramesScreen : public fgl::PopupScreen
 	{
 	public:
-		AddFramesScreen(fgl::Animation* animation);
+		AddFramesScreen(fgl::AssetManager* assetManager, fgl::Animation* animation);
 		virtual ~AddFramesScreen();
 		
 	private:
+		fgl::AssetManager assetManager;
+		fgl::Animation editingAnimation;
+		fgl::Animation* animation;
+
 		fgl::ButtonElement* browseButton;
 		fgl::TextElement* filePathElement;
 		
 		fgl::TextElement* rowsLabel;
-		fgl::TextInputElement* rowsInputElement;
+		NumberAdjustElement* rowsAdjuster;
 		fgl::TextElement* columnsLabel;
-		fgl::TextInputElement* columnsInputElement;
+		NumberAdjustElement* columnsAdjuster;
 		//TODO have a re-arrangeable list of the frames in the animation so sequencing works
 	};
 }

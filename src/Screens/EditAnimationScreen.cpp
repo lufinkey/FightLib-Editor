@@ -180,7 +180,7 @@ namespace flui
 		addFramesButton->setTitle("Add Frames", fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		addFramesButton->getTitleElement()->setFontSize(14);
 		addFramesButton->setTapHandler([=]{
-			auto addFramesScreen = new AddFramesScreen(animationData->getAnimation());
+			auto addFramesScreen = new AddFramesScreen(assetManager, animationData->getAnimation());
 			presentChildScreen(addFramesScreen, nullptr, [=]{
 				delete addFramesScreen;
 			});

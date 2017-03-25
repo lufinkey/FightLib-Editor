@@ -14,7 +14,7 @@ namespace flui
 		minValue(0),
 		maxValue(100)
 	{
-		//
+		updateValueLabelString();
 	}
 	
 	void NumberAdjustElement::setValue(const fgl::Number& value_arg)

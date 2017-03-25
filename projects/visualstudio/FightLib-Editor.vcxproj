@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\MainApplication.cpp" />
+    <ClCompile Include="..\..\src\Screens\AddFramesScreen.cpp" />
     <ClCompile Include="..\..\src\Screens\EditAnimationScreen.cpp" />
     <ClCompile Include="..\..\src\Screens\HomeScreen.cpp" />
     <ClCompile Include="..\..\src\Screens\UI\AnimationEditorElement.cpp" />
@@ -37,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp" />
+    <ClInclude Include="..\..\src\Screens\AddFramesScreen.hpp" />
     <ClInclude Include="..\..\src\Screens\EditAnimationScreen.hpp" />
     <ClInclude Include="..\..\src\Screens\HomeScreen.hpp" />
     <ClInclude Include="..\..\src\Screens\UI\AnimationEditorElement.hpp" />
