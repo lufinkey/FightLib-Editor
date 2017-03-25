@@ -15,7 +15,6 @@ namespace flui
 
 		fgl::AssetManager assetManager;
 		fgl::Animation editingAnimation;
-		fgl::Animation* animation;
 
 		fgl::ButtonElement* browseButton;
 		fgl::TextElement* filePathElement;
@@ -28,6 +27,9 @@ namespace flui
 		fgl::AnimationElement* animationElement;
 
 		NumberAdjustElement* frameAdjuster;
+
+		fgl::ButtonElement* cancelButton;
+		fgl::ButtonElement* addButton;
 
 		//TODO have a re-arrangeable list of the frames in the animation so sequencing works
 	};

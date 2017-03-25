@@ -115,7 +115,7 @@ namespace flui
 		animationElement->setBorderWidth(1);
 		offsetY += 20;
 		animationElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
-		animationElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 40);
+		animationElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 50);
 		animationElement->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
 		animationElement->setLayoutRule(fgl::LAYOUTRULE_ASPECTRATIO, 1.0);
 
@@ -137,6 +137,30 @@ namespace flui
 		frameAdjuster->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		frameAdjuster->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 60);
 		frameAdjuster->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+
+		cancelButton = new fgl::ButtonElement();
+		cancelButton->setTitle("Cancel", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		cancelButton->setBackgroundColor(fgl::Color::LIGHTGRAY, fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		cancelButton->setTapHandler([=]{
+			getParentScreen()->dismissChildScreen();
+		});
+		cancelButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		cancelButton->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
+		cancelButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
+		cancelButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 28);
+
+		addButton = new fgl::ButtonElement();
+		addButton->setTitle("Add", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		addButton->setBackgroundColor(fgl::Color::LIGHTGRAY, fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		addButton->setTapHandler([=]{
+			animation_arg->addFrames(editingAnimation.getFrames());
+			assetManager_arg->moveAssetsFrom(assetManager);
+			getParentScreen()->dismissChildScreen();
+		});
+		addButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 100);
+		addButton->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
+		addButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
+		addButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 28);
 		
 		containerElement->addChildElement(browseButton);
 		containerElement->addChildElement(filePathElement);
@@ -146,6 +170,8 @@ namespace flui
 		containerElement->addChildElement(columnsAdjuster);
 		containerElement->addChildElement(animationElement);
 		containerElement->addChildElement(frameAdjuster);
+		containerElement->addChildElement(cancelButton);
+		containerElement->addChildElement(addButton);
 	}
 	
 	AddFramesScreen::~AddFramesScreen()
@@ -157,6 +183,8 @@ namespace flui
 		delete rowsAdjuster;
 		delete columnsAdjuster;
 		delete animationElement;
+		delete cancelButton;
+		delete addButton;
 	}
 
 	void AddFramesScreen::updateAnimation()
