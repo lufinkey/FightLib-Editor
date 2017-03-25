@@ -185,6 +185,7 @@ namespace flui
 			auto addFramesScreen = new AddFramesScreen(assetManager, animationData->getAnimation());
 			presentChildScreen(addFramesScreen, nullptr, [=]{
 				delete addFramesScreen;
+				animationEditorElement->layoutChildElements();
 			});
 		});
 		rOffsetY += 16;

@@ -14,7 +14,6 @@ namespace flui
 				fgl::String error;
 				if(animData->loadFromFile(animationPath, assetManager, &error))
 				{
-					//TODO delete this animation sometime
 					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
 					presentChildScreen(editScreen, nullptr, [=]{
 						delete editScreen;
@@ -41,21 +40,11 @@ namespace flui
 			{
 				fl::AnimationData* animData = new fl::AnimationData();
 				animData->setName("Untitled");
-				fgl::String error;
-				if(animData->saveToFile(animationPath, &error))
-				{
-					//TODO delete this animation sometime
-					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
-					presentChildScreen(editScreen, nullptr, [=]{
-						delete editScreen;
-						delete animData;
-					});
-				}
-				else
-				{
+				EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
+				presentChildScreen(editScreen, nullptr, [=]{
+					delete editScreen;
 					delete animData;
-					fgl::MessageBox::show(getWindow(), "Error", error);
-				}
+				});
 			}
 		});
 		newAnimationButton->setBorderWidth(1);
