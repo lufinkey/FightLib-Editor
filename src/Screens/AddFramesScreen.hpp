@@ -22,6 +22,8 @@ namespace flui
 		NumberAdjustElement* rowsAdjuster;
 		fgl::TextElement* columnsLabel;
 		NumberAdjustElement* columnsAdjuster;
+
+		fgl::AnimationElement* animationElement;
 		//TODO have a re-arrangeable list of the frames in the animation so sequencing works
 	};
 }
