@@ -25,21 +25,17 @@ namespace flui
 				fgl::AssetManager newAssetManager(assetManager.getWindow(), assetManager.getRootDirectory());
 				fgl::Animation newEditingAnimation;
 				fgl::String error;
-				unsigned int rows = rowsAdjuster->getValue();
-				unsigned int cols = columnsAdjuster->getValue();
-				if(newEditingAnimation.addFrames(&newAssetManager, imagePath, rows, cols, &error))
+				if(newEditingAnimation.addFrames(&newAssetManager, imagePath, rowsAdjuster->getValue(), columnsAdjuster->getValue(), &error))
 				{
 					assetManager.unload();
 					assetManager.moveAssetsFrom(newAssetManager);
 					editingAnimation = newEditingAnimation;
-					animationElement->setAnimationFrameIndex(0);
-					filePathElement->setText(imagePath);
 
-					fgl::TextureImage* image = assetManager.getTexture(imagePath);
-					double frameWidth = (double)image->getWidth() / (double)cols;
-					double frameHeight = (double)image->getHeight() / (double)rows;
-					animationElement->setLayoutRule(fgl::LAYOUTRULE_ASPECTRATIO, frameWidth/frameHeight);
-					getPopupElement()->layoutChildElements();
+					filePathElement->setText(imagePath);
+					animationElement->setAnimationFrameIndex(0);
+					frameAdjuster->setValue(1);
+
+					updateAnimation();
 				}
 				else
 				{
@@ -88,20 +84,9 @@ namespace flui
 		rowsAdjuster->setIncrement(1);
 		rowsAdjuster->setValue(1);
 		rowsAdjuster->setValueChangeHandler([=]{
-			auto& imagePath = filePathElement->getText();
-			if(imagePath.length() > 0)
+			if(filePathElement->getText().length() > 0)
 			{
-				unsigned int rows = rowsAdjuster->getValue();
-				unsigned int cols = columnsAdjuster->getValue();
-
-				editingAnimation.removeAllFrames();
-				editingAnimation.addFrames(&assetManager, filePathElement->getText(), rowsAdjuster->getValue(), columnsAdjuster->getValue());
-
-				fgl::TextureImage* image = assetManager.getTexture(imagePath);
-				double frameWidth = (double)image->getWidth() / (double)cols;
-				double frameHeight = (double)image->getHeight() / (double)rows;
-				animationElement->setLayoutRule(fgl::LAYOUTRULE_ASPECTRATIO, frameWidth/frameHeight);
-				getPopupElement()->layoutChildElements();
+				updateAnimation();
 			}
 		});
 		rowsAdjuster->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.35, fgl::LAYOUTVALUE_RATIO);
@@ -115,20 +100,9 @@ namespace flui
 		columnsAdjuster->setIncrement(1);
 		columnsAdjuster->setValue(1);
 		columnsAdjuster->setValueChangeHandler([=]{
-			auto& imagePath = filePathElement->getText();
-			if(imagePath.length() > 0)
+			if(filePathElement->getText().length() > 0)
 			{
-				unsigned int rows = rowsAdjuster->getValue();
-				unsigned int cols = columnsAdjuster->getValue();
-
-				editingAnimation.removeAllFrames();
-				editingAnimation.addFrames(&assetManager, filePathElement->getText(), rowsAdjuster->getValue(), columnsAdjuster->getValue());
-
-				fgl::TextureImage* image = assetManager.getTexture(imagePath);
-				double frameWidth = (double)image->getWidth() / (double)cols;
-				double frameHeight = (double)image->getHeight() / (double)rows;
-				animationElement->setLayoutRule(fgl::LAYOUTRULE_ASPECTRATIO, frameWidth/frameHeight);
-				getPopupElement()->layoutChildElements();
+				updateAnimation();
 			}
 		});
 		columnsAdjuster->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.65, fgl::LAYOUTVALUE_RATIO);
@@ -141,9 +115,28 @@ namespace flui
 		animationElement->setBorderWidth(1);
 		offsetY += 20;
 		animationElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
-		animationElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 20);
+		animationElement->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 40);
 		animationElement->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
 		animationElement->setLayoutRule(fgl::LAYOUTRULE_ASPECTRATIO, 1.0);
+
+		frameAdjuster = new NumberAdjustElement(assetManager_arg);
+		frameAdjuster->setMinValue(0);
+		frameAdjuster->setMaxValue(0);
+		frameAdjuster->setIncrement(1);
+		frameAdjuster->setValue(0);
+		frameAdjuster->setValueChangeHandler([=]{
+			unsigned int value = frameAdjuster->getValue();
+			if(value!=0)
+			{
+				animationElement->setAnimationFrameIndex(value-1);
+
+				updateAnimation();
+			}
+		});
+		frameAdjuster->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
+		frameAdjuster->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		frameAdjuster->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 60);
+		frameAdjuster->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
 		
 		containerElement->addChildElement(browseButton);
 		containerElement->addChildElement(filePathElement);
@@ -152,6 +145,7 @@ namespace flui
 		containerElement->addChildElement(rowsAdjuster);
 		containerElement->addChildElement(columnsAdjuster);
 		containerElement->addChildElement(animationElement);
+		containerElement->addChildElement(frameAdjuster);
 	}
 	
 	AddFramesScreen::~AddFramesScreen()
@@ -163,5 +157,31 @@ namespace flui
 		delete rowsAdjuster;
 		delete columnsAdjuster;
 		delete animationElement;
+	}
+
+	void AddFramesScreen::updateAnimation()
+	{
+		auto& imagePath = filePathElement->getText();
+
+		unsigned int rows = rowsAdjuster->getValue();
+		unsigned int cols = columnsAdjuster->getValue();
+		unsigned int totalFrames = rows*cols;
+		frameAdjuster->setMinValue(1);
+		frameAdjuster->setMaxValue(totalFrames);
+		unsigned int frameNumber = frameAdjuster->getValue()-1;
+		if(frameNumber >= totalFrames)
+		{
+			frameAdjuster->setValue(totalFrames);
+			animationElement->setAnimationFrameIndex(totalFrames-1);
+		}
+
+		editingAnimation.removeAllFrames();
+		editingAnimation.addFrames(&assetManager, imagePath, rows, cols);
+
+		fgl::TextureImage* image = assetManager.getTexture(imagePath);
+		double frameWidth = (double)image->getWidth() / (double)cols;
+		double frameHeight = (double)image->getHeight() / (double)rows;
+		animationElement->setLayoutRule(fgl::LAYOUTRULE_ASPECTRATIO, frameWidth/frameHeight);
+		getPopupElement()->layoutChildElements();
 	}
 }

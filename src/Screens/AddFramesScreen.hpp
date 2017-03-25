@@ -11,6 +11,8 @@ namespace flui
 		virtual ~AddFramesScreen();
 		
 	private:
+		void updateAnimation();
+
 		fgl::AssetManager assetManager;
 		fgl::Animation editingAnimation;
 		fgl::Animation* animation;
@@ -24,6 +26,9 @@ namespace flui
 		NumberAdjustElement* columnsAdjuster;
 
 		fgl::AnimationElement* animationElement;
+
+		NumberAdjustElement* frameAdjuster;
+
 		//TODO have a re-arrangeable list of the frames in the animation so sequencing works
 	};
 }
