@@ -257,6 +257,23 @@ namespace flui
 		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
 		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		offsetY += 20;
+
+		deleteButtonElement = new fgl::ButtonElement();
+		deleteButtonElement->setTitle("Delete", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		deleteButtonElement->setBackgroundColor(fgl::Color::LIGHTGRAY, fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		deleteButtonElement->setBorderWidth(1);
+		deleteButtonElement->setTapHandler([=]{
+			if(metaPointDeleteHandler)
+			{
+				metaPointDeleteHandler();
+			}
+		});
+		offsetY += 20;
+		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
+		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
+		offsetY += 32;
 		
 		addChildElement(typeLabel);
 		addChildElement(typeSelectorElement);
@@ -272,6 +289,7 @@ namespace flui
 		addChildElement(orientationSelector);
 		addChildElement(behindCheckbox);
 		addChildElement(visibleCheckbox);
+		addChildElement(deleteButtonElement);
 	}
 	
 	MetaPointInfoElement::~MetaPointInfoElement()
@@ -288,6 +306,7 @@ namespace flui
 		delete orientationSelector;
 		delete behindCheckbox;
 		delete visibleCheckbox;
+		delete deleteButtonElement;
 	}
 
 	fgl::String MetaPointInfoElement::getTitle() const
@@ -335,6 +354,16 @@ namespace flui
 	const std::function<void(fl::AnimationMetaPoint)>& MetaPointInfoElement::getMetaPointChangeHandler() const
 	{
 		return metaPointChangeHandler;
+	}
+
+	void MetaPointInfoElement::setMetaPointDeleteHandler(const std::function<void()>& handler)
+	{
+		metaPointDeleteHandler = handler;
+	}
+
+	const std::function<void()>& MetaPointInfoElement::getMetaPointDeleteHandler() const
+	{
+		return metaPointDeleteHandler;
 	}
 
 	void MetaPointInfoElement::setAnimationSize(const fgl::Vector2u& animationSize_arg)

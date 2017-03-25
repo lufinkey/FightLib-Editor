@@ -46,6 +46,8 @@ namespace flui
 		fgl::ArrayList<fl::AnimationMetaPoint> getMetaPoints(size_t frameIndex) const;
 		const fl::AnimationMetaPoint& getMetaPoint(size_t frameIndex, size_t metaPointIndex) const;
 
+		void removeMetaPoint(size_t frameIndex, size_t metaPointIndex);
+
 		void setMetaPointSelectHandler(const std::function<void(size_t index)>& handler);
 		const std::function<void(size_t)>& getMetaPointSelectHandler() const;
 

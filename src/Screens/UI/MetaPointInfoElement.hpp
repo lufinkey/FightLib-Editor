@@ -24,6 +24,9 @@ namespace flui
 		void setMetaPointChangeHandler(const std::function<void(fl::AnimationMetaPoint)>& handler);
 		const std::function<void(fl::AnimationMetaPoint)>& getMetaPointChangeHandler() const;
 
+		void setMetaPointDeleteHandler(const std::function<void()>& handler);
+		const std::function<void()>& getMetaPointDeleteHandler() const;
+
 		void setAnimationSize(const fgl::Vector2u& animationSize);
 		const fgl::Vector2u& getAnimationSize() const;
 
@@ -32,6 +35,7 @@ namespace flui
 	private:
 		fl::AnimationMetaPoint metaPoint;
 		std::function<void(fl::AnimationMetaPoint)> metaPointChangeHandler;
+		std::function<void()> metaPointDeleteHandler;
 		fgl::Vector2u animationSize;
 
 		fgl::TextElement* typeLabel;
@@ -48,5 +52,6 @@ namespace flui
 		fgl::SegmentedSelectorElement* orientationSelector;
 		LabeledCheckboxElement* behindCheckbox;
 		LabeledCheckboxElement* visibleCheckbox;
+		fgl::ButtonElement* deleteButtonElement;
 	};
 }

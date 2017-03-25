@@ -44,29 +44,6 @@ namespace flui
 		addChildElement(metaPointsElement);
 
 		addingMetaPointElement->setVisible(false);
-		addingMetaPointElement->setDeselectHandler([=]{
-			if(addingMetaPoint)
-			{
-				size_t frameIndex = getAnimationFrameIndex();
-				fl::AnimationMetaPoint metaPoint = addingMetaPointElement->getMetaPoint();
-				size_t metaPointIndex = animationData->addMetaPoint(frameIndex, metaPoint);
-				addingMetaPointElement->clearMetaPoint();
-				addingMetaPointElement->setVisible(false);
-				updateMetaPoints();
-				auto completion = addingMetaPointCompletionHandler;
-				addingMetaPointCompletionHandler = nullptr;
-				addingMetaPoint = false;
-				auto& selectHandler = metaPointsElement->getMetaPointSelectHandler();
-				if(selectHandler)
-				{
-					selectHandler(metaPointIndex);
-				}
-				if(completion)
-				{
-					completion(metaPoint);
-				}
-			}
-		});
 		addChildElement(addingMetaPointElement);
 	}
 
@@ -266,6 +243,15 @@ namespace flui
 		return animationData->getMetaPoint(frameIndex, metaPointIndex);
 	}
 
+	void AnimationEditorElement::removeMetaPoint(size_t frameIndex, size_t metaPointIndex)
+	{
+		animationData->removeMetaPoint(frameIndex, metaPointIndex);
+		if(frameIndex==getAnimationFrameIndex())
+		{
+			updateMetaPoints();
+		}
+	}
+
 	void AnimationEditorElement::beginUserAddMetaPoint(const std::function<void(fl::AnimationMetaPoint)>& completion)
 	{
 		if(addingMetaPoint)
@@ -275,6 +261,29 @@ namespace flui
 		addingMetaPoint = true;
 		addingMetaPointCompletionHandler = completion;
 		addingMetaPointElement->setVisible(true);
+		addingMetaPointElement->setDeselectHandler([=]{
+			if(addingMetaPoint)
+			{
+				size_t frameIndex = getAnimationFrameIndex();
+				fl::AnimationMetaPoint metaPoint = addingMetaPointElement->getMetaPoint();
+				size_t metaPointIndex = animationData->addMetaPoint(frameIndex, metaPoint);
+				addingMetaPointElement->clearMetaPoint();
+				addingMetaPointElement->setVisible(false);
+				updateMetaPoints();
+				auto completion = addingMetaPointCompletionHandler;
+				addingMetaPointCompletionHandler = nullptr;
+				addingMetaPoint = false;
+				auto& selectHandler = metaPointsElement->getMetaPointSelectHandler();
+				if(selectHandler)
+				{
+					selectHandler(metaPointIndex);
+				}
+				if(completion)
+				{
+					completion(metaPoint);
+				}
+			}
+		});
 	}
 
 	void AnimationEditorElement::updateMetaPoints()

@@ -288,6 +288,15 @@ namespace flui
 				animationEditorElement->setMetaPoint(selectedMetaPointFrameIndex, selectedMetaPointIndex, metaPoint);
 			}
 		});
+		metaPointInfoElement->setMetaPointDeleteHandler([=]{
+			if(selectedMetaPointFrameIndex!=-1 && selectedMetaPointIndex!=-1)
+			{
+				animationEditorElement->removeMetaPoint(selectedMetaPointFrameIndex, selectedMetaPointIndex);
+				leftSidebarContainer->setToolboxElement(nullptr);
+				selectedMetaPointFrameIndex = -1;
+				selectedMetaPointIndex = -1;
+			}
+		});
 		
 		getElement()->addChildElement(closeButtonElement);
 		getElement()->addChildElement(saveButtonElement);
