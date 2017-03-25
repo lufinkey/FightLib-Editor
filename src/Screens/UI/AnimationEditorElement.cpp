@@ -93,6 +93,12 @@ namespace flui
 		}
 	}
 
+	void AnimationEditorElement::refresh()
+	{
+		layoutChildElements();
+		updateMetaPoints();
+	}
+
 	void AnimationEditorElement::setAnimationData(fl::AnimationData* animationData_arg)
 	{
 		animationData = animationData_arg;

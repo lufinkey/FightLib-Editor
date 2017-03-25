@@ -185,7 +185,7 @@ namespace flui
 			auto addFramesScreen = new AddFramesScreen(assetManager, animationData->getAnimation());
 			presentChildScreen(addFramesScreen, nullptr, [=]{
 				delete addFramesScreen;
-				animationEditorElement->layoutChildElements();
+				animationEditorElement->refresh();
 			});
 		});
 		rOffsetY += 16;
@@ -200,7 +200,14 @@ namespace flui
 		addMetapointButton->setTitle("Add Meta Point", fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		addMetapointButton->getTitleElement()->setFontSize(14);
 		addMetapointButton->setTapHandler([=]{
-			beginUserAddMetaPoint();
+			if(animationData->getAnimation()->getTotalFrames() > 0)
+			{
+				beginUserAddMetaPoint();
+			}
+			else
+			{
+				fgl::MessageBox::show(getWindow(), "Error", "No frames added");
+			}
 		});
 		rOffsetY += 10;
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);

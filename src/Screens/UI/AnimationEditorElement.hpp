@@ -17,6 +17,8 @@ namespace flui
 		virtual void layoutChildElements() override;
 		virtual void update(fgl::ApplicationData appData) override;
 
+		void refresh();
+
 		void setAnimationData(fl::AnimationData* animationData);
 		fl::AnimationData* getAnimationData() const;
 
