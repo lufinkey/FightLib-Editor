@@ -18,6 +18,8 @@ namespace flui
 		}
 		
 		lastSavedAnimationData = new fl::AnimationData(*animationData);
+
+		getElement()->setBackgroundColor(fgl::Color::WHITE);
 		
 		overlayElement = new fgl::TouchElement();
 		overlayElement->setBackgroundColor(fgl::Color::BLACK);
