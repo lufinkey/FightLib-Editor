@@ -34,6 +34,9 @@ namespace flui
 		
 		void setDrawnOrientation(fl::AnimationOrientation orientation);
 		fl::AnimationOrientation getDrawnOrientation() const;
+
+		void setBoundsDrawingEnabled(bool enabled);
+		bool isBoundsDrawingEnabled() const;
 		
 		void setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible);
 		bool isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const;

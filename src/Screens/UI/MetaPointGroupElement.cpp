@@ -9,7 +9,8 @@ namespace flui
 	}
 
 	MetaPointGroupElement::MetaPointGroupElement(const fgl::RectangleD& frame) : ScreenElement(frame),
-		horizontalMirroringEnabled(false)
+		horizontalMirroringEnabled(false),
+		boundsDrawingEnabled(false)
 	{
 		//
 	}
@@ -30,6 +31,22 @@ namespace flui
 			graphics.scale(fgl::Vector2d(-1, 1), fgl::Vector2d(frame.x+(frame.width/2), frame.y));
 		}
 		ScreenElement::draw(appData, graphics);
+	}
+
+	void MetaPointGroupElement::drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const
+	{
+		if(boundsDrawingEnabled && animationSize.x > 0 && animationSize.y > 0)
+		{
+			fgl::RectangleD frame = getFrame();
+			graphics.translate(frame.x, frame.y);
+			graphics.setColor(fgl::Color::BLUE);
+			double xRatio = frame.width/(double)animationSize.x;
+			double yRatio = frame.height/(double)animationSize.y;
+			for(auto& bound : getBounds())
+			{
+				graphics.drawRect(bound.rect.x*xRatio, bound.rect.y*yRatio, bound.rect.width*xRatio, bound.rect.height*yRatio);
+			}
+		}
 	}
 
 	void MetaPointGroupElement::setMetaPoints(const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints_arg)
@@ -147,5 +164,51 @@ namespace flui
 	bool MetaPointGroupElement::isHorizontalMirroringEnabled() const
 	{
 		return horizontalMirroringEnabled;
+	}
+
+	void MetaPointGroupElement::setBoundsDrawingEnabled(bool enabled)
+	{
+		boundsDrawingEnabled = enabled;
+	}
+
+	bool MetaPointGroupElement::isBoundsDrawingEnabled() const
+	{
+		return boundsDrawingEnabled;
+	}
+
+	fgl::ArrayList<fl::AnimationData::MetaBounds> MetaPointGroupElement::getBounds() const
+	{
+		fgl::ArrayList<fl::AnimationMetaPoint> topLefts;
+		fgl::ArrayList<fl::AnimationMetaPoint> bottomRights;
+		for(auto& metaPoint : metaPoints)
+		{
+			if(metaPoint.type==fl::AnimationMetaPoint::POINTTYPE_BOUNDS_TOPLEFT)
+			{
+				topLefts.add(metaPoint);
+			}
+			else if(metaPoint.type==fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT)
+			{
+				bottomRights.add(metaPoint);
+			}
+		}
+		fgl::ArrayList<fl::AnimationData::MetaBounds> bounds;
+		while(topLefts.size()>0)
+		{
+			auto& topLeft = topLefts[0];
+			for(size_t i=0; i<bottomRights.size(); i++)
+			{
+				auto& bottomRight = bottomRights[i];
+				if(topLeft.tag==bottomRight.tag)
+				{
+					fgl::RectangleD rect = fgl::RectangleD((double)topLeft.x, (double)topLeft.y, (double)(bottomRight.x-topLeft.x), (double)(bottomRight.y - topLeft.y));
+					fl::AnimationData::MetaBounds metaBounds = { .tag=topLeft.tag, .rect=rect };
+					bounds.add(metaBounds);
+					bottomRights.remove(i);
+					break;
+				}
+			}
+			topLefts.remove(0);
+		}
+		return bounds;
 	}
 }

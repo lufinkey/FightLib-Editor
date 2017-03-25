@@ -249,6 +249,20 @@ namespace flui
 			rOffsetY += 28;
 		}
 
+		showBoundsCheckbox = new LabeledCheckboxElement();
+		showBoundsCheckbox->setText("Show Bounds");
+		showBoundsCheckbox->getLabelElement()->setFontSize(14);
+		showBoundsCheckbox->setToggle(animationEditorElement->isBoundsDrawingEnabled());
+		showBoundsCheckbox->setToggleHandler([=](bool value){
+			animationEditorElement->setBoundsDrawingEnabled(value);
+		});
+		rOffsetY += 10;
+		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_LEFT, 4);
+		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 26);
+		rOffsetY += 26;
+
 		rightSidebarContainer->addChildElement(frameIndexLabel);
 		rightSidebarContainer->addChildElement(nextFrameButton);
 		rightSidebarContainer->addChildElement(prevFrameButton);
@@ -259,6 +273,7 @@ namespace flui
 		{
 			rightSidebarContainer->addChildElement(checkboxPair.second);
 		}
+		rightSidebarContainer->addChildElement(showBoundsCheckbox);
 		
 		//Left sidebar
 		
@@ -306,6 +321,7 @@ namespace flui
 		{
 			delete checkboxPair.second;
 		}
+		delete showBoundsCheckbox;
 	}
 	
 	void EditAnimationScreen::update(fgl::ApplicationData appData)

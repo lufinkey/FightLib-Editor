@@ -197,6 +197,16 @@ namespace flui
 	{
 		return drawnOrientation;
 	}
+
+	void AnimationEditorElement::setBoundsDrawingEnabled(bool enabled)
+	{
+		metaPointsElement->setBoundsDrawingEnabled(enabled);
+	}
+
+	bool AnimationEditorElement::isBoundsDrawingEnabled() const
+	{
+		return metaPointsElement->isBoundsDrawingEnabled();
+	}
 	
 	void AnimationEditorElement::setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible)
 	{

@@ -34,6 +34,14 @@ namespace flui
 		void setHorizontalMirroringEnabled(bool mirror);
 		bool isHorizontalMirroringEnabled() const;
 
+		void setBoundsDrawingEnabled(bool enabled);
+		bool isBoundsDrawingEnabled() const;
+
+		fgl::ArrayList<fl::AnimationData::MetaBounds> getBounds() const;
+
+	protected:
+		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
+
 	private:
 		fgl::ArrayList<fl::AnimationMetaPoint> metaPoints;
 		fgl::ArrayList<MetaPointElement*> metaPointElements;
@@ -42,5 +50,6 @@ namespace flui
 		fgl::Vector2u animationSize;
 		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, bool> enabledMetaPointTypes;
 		bool horizontalMirroringEnabled;
+		bool boundsDrawingEnabled;
 	};
 }
