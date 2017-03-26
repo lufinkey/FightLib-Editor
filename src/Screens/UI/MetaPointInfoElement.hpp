@@ -6,6 +6,7 @@
 #include "CarouselSelectorElement.hpp"
 #include "LabeledCheckboxElement.hpp"
 #include "NumberAdjustElement.hpp"
+#include "TagAdjustElement.hpp"
 
 namespace flui
 {
@@ -40,6 +41,8 @@ namespace flui
 
 		fgl::TextElement* typeLabel;
 		CarouselSelectorElement* typeSelectorElement;
+		fgl::TextElement* tagLabel;
+		TagAdjustElement* tagAdjustElement;
 		fgl::TextElement* xLabel;
 		NumberAdjustElement* xAdjustElement;
 		fgl::TextElement* yLabel;
@@ -52,6 +55,6 @@ namespace flui
 		fgl::SegmentedSelectorElement* orientationSelector;
 		LabeledCheckboxElement* behindCheckbox;
 		LabeledCheckboxElement* visibleCheckbox;
-		fgl::ButtonElement* deleteButtonElement;
+		fgl::ButtonElement* deleteButton;
 	};
 }

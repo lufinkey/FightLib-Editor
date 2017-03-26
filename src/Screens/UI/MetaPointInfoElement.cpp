@@ -53,6 +53,38 @@ namespace flui
 		typeSelectorElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
 		offsetY += 14;
 
+		tagLabel = new fgl::TextElement();
+		tagLabel->setText("Tag");
+		tagLabel->setFontSize(14);
+		tagLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		tagLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		offsetY += 10;
+		tagLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		tagLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		tagLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		tagLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		offsetY += 16;
+
+		tagAdjustElement = new TagAdjustElement(assetManager);
+		tagAdjustElement->getValueLabel()->setFontSize(12);
+		tagAdjustElement->setValue(-1);
+		tagAdjustElement->setMinValue(-1);
+		tagAdjustElement->setMaxValue(999);
+		tagAdjustElement->setIncrement(1);
+		tagAdjustElement->setValueChangeHandler([=]{
+			metaPoint.tag = tagAdjustElement->getValue().toArithmeticValue<size_t>();
+			if(metaPointChangeHandler)
+			{
+				metaPointChangeHandler(metaPoint);
+			}
+		});
+		offsetY += 1;
+		tagAdjustElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		tagAdjustElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		tagAdjustElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		tagAdjustElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 14);
+		offsetY += 14;
+
 		xLabel = new fgl::TextElement();
 		xLabel->setText("X");
 		xLabel->setFontSize(14);
@@ -71,7 +103,7 @@ namespace flui
 		xAdjustElement->setMinValue(0);
 		xAdjustElement->setMaxValue(0);
 		xAdjustElement->setIncrement(0.5);
-		xAdjustElement->setValueChangeHandler([=] {
+		xAdjustElement->setValueChangeHandler([=]{
 			metaPoint.x = xAdjustElement->getValue().toArithmeticValue<float>();
 			if(metaPointChangeHandler)
 			{
@@ -258,25 +290,27 @@ namespace flui
 		visibleCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		offsetY += 20;
 
-		deleteButtonElement = new fgl::ButtonElement();
-		deleteButtonElement->setTitle("Delete", fgl::ButtonElement::BUTTONSTATE_NORMAL);
-		deleteButtonElement->setBackgroundColor(fgl::Color::LIGHTGRAY, fgl::ButtonElement::BUTTONSTATE_NORMAL);
-		deleteButtonElement->setBorderWidth(1);
-		deleteButtonElement->setTapHandler([=]{
+		deleteButton = new fgl::ButtonElement();
+		deleteButton->setTitle("Delete", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		deleteButton->setBackgroundColor(fgl::Color::LIGHTGRAY, fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		deleteButton->setBorderWidth(1);
+		deleteButton->setTapHandler([=]{
 			if(metaPointDeleteHandler)
 			{
 				metaPointDeleteHandler();
 			}
 		});
 		offsetY += 20;
-		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
-		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
-		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
-		deleteButtonElement->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
+		deleteButton->setLayoutRule(fgl::LAYOUTRULE_TOP, offsetY);
+		deleteButton->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		deleteButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
+		deleteButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 32);
 		offsetY += 32;
 		
 		addChildElement(typeLabel);
 		addChildElement(typeSelectorElement);
+		addChildElement(tagLabel);
+		addChildElement(tagAdjustElement);
 		addChildElement(xLabel);
 		addChildElement(xAdjustElement);
 		addChildElement(yLabel);
@@ -289,13 +323,15 @@ namespace flui
 		addChildElement(orientationSelector);
 		addChildElement(behindCheckbox);
 		addChildElement(visibleCheckbox);
-		addChildElement(deleteButtonElement);
+		addChildElement(deleteButton);
 	}
 	
 	MetaPointInfoElement::~MetaPointInfoElement()
 	{
 		delete typeLabel;
 		delete typeSelectorElement;
+		delete tagLabel;
+		delete tagAdjustElement;
 		delete xAdjustElement;
 		delete yAdjustElement;
 		delete radiusLabel;
@@ -306,7 +342,7 @@ namespace flui
 		delete orientationSelector;
 		delete behindCheckbox;
 		delete visibleCheckbox;
-		delete deleteButtonElement;
+		delete deleteButton;
 	}
 
 	fgl::String MetaPointInfoElement::getTitle() const

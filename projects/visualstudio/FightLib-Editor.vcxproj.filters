@@ -60,6 +60,9 @@
     <ClCompile Include="..\..\src\Screens\AddFramesScreen.cpp">
       <Filter>src\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\Screens\UI\TagAdjustElement.cpp">
+      <Filter>src\Screens\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\MainApplication.hpp">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Screens\AddFramesScreen.hpp">
       <Filter>src\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Screens\UI\TagAdjustElement.hpp">
+      <Filter>src\Screens\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
