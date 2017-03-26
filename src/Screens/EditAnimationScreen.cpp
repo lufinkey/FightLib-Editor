@@ -144,14 +144,14 @@ namespace flui
 
 		frameIndexLabel = new fgl::TextElement();
 		frameIndexLabel->setText(getFrameIndexLabelString());
-		frameIndexLabel->setFontSize(24);
+		frameIndexLabel->setFontSize(18);
 		frameIndexLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
 		frameIndexLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
-		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_Y, rOffsetY+(40/2));
+		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_Y, rOffsetY+(24/2));
 		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
-		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
-		rOffsetY += 40;
+		frameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+		rOffsetY += 24;
 		
 		assetManager->loadTexture("assets/images/arrow_button.png");
 		
@@ -162,8 +162,8 @@ namespace flui
 		});
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.5, fgl::LAYOUTVALUE_RATIO);
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
-		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
+		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 24);
+		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
 		
 		prevFrameButton = new fgl::ButtonElement();
 		prevFrameButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
@@ -173,9 +173,9 @@ namespace flui
 		});
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.5, fgl::LAYOUTVALUE_RATIO);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 40);
-		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 40);
-		rOffsetY += 40;
+		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 24);
+		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+		rOffsetY += 24;
 		
 		addFramesButton = new fgl::ButtonElement();
 		addFramesButton->setBorderWidth(1);
@@ -188,18 +188,88 @@ namespace flui
 				animationEditorElement->refresh();
 			});
 		});
-		rOffsetY += 16;
+		rOffsetY += 8;
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		rOffsetY += 20;
 
+		tracingFrameLabel = new fgl::TextElement();
+		tracingFrameLabel->setText("Tracing Frame");
+		tracingFrameLabel->setFontSize(18);
+		tracingFrameLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		tracingFrameLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		rOffsetY += 10;
+		tracingFrameLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		tracingFrameLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		tracingFrameLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		tracingFrameLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+		rOffsetY += 24;
+
+		tracingFrameCheckbox = new LabeledCheckboxElement();
+		tracingFrameCheckbox->setText("visible");
+		tracingFrameCheckbox->getLabelElement()->setFontSize(14);
+		tracingFrameCheckbox->setToggle(animationEditorElement->isTracingAnimationVisible());
+		tracingFrameCheckbox->setToggleHandler([=](bool value){
+			animationEditorElement->setTracingAnimationVisible(value);
+		});
+		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_LEFT, 4);
+		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 18);
+		rOffsetY += 18;
+
+		tracingFrameIndexLabel = new fgl::TextElement();
+		tracingFrameIndexLabel->setText(getTracingFrameIndexLabelString());
+		tracingFrameIndexLabel->setFontSize(18);
+		tracingFrameIndexLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		tracingFrameIndexLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		tracingFrameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		tracingFrameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_Y, rOffsetY+(24/2));
+		tracingFrameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 80);
+		tracingFrameIndexLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+		rOffsetY += 24;
+
+		nextTracingFrameButton = new fgl::ButtonElement();
+		nextTracingFrameButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		nextTracingFrameButton->setTapHandler([=] {
+			nextTracingFrame();
+		});
+		nextTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.5, fgl::LAYOUTVALUE_RATIO);
+		nextTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		nextTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 24);
+		nextTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+
+		prevTracingFrameButton = new fgl::ButtonElement();
+		prevTracingFrameButton->setImage(assetManager->getTexture("assets/images/arrow_button.png"), fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		prevTracingFrameButton->getImageElement()->setHorizontalImageMirroringEnabled(true);
+		prevTracingFrameButton->setTapHandler([=] {
+			previousTracingFrame();
+		});
+		prevTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.5, fgl::LAYOUTVALUE_RATIO);
+		prevTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		prevTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 24);
+		prevTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+		rOffsetY += 24;
+		
+		metapointCheckboxHeaderLabel = new fgl::TextElement();
+		metapointCheckboxHeaderLabel->setText("Meta Points");
+		metapointCheckboxHeaderLabel->setFontSize(18);
+		metapointCheckboxHeaderLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		metapointCheckboxHeaderLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		rOffsetY += 8;
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
+		rOffsetY += 24;
+
 		addMetapointButton = new fgl::ButtonElement();
 		addMetapointButton->setBorderWidth(1);
 		addMetapointButton->setTitle("Add Meta Point", fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		addMetapointButton->getTitleElement()->setFontSize(14);
-		addMetapointButton->setTapHandler([=]{
+		addMetapointButton->setTapHandler([=] {
 			if(animationData->getAnimation()->getTotalFrames() > 0)
 			{
 				beginUserAddMetaPoint();
@@ -209,24 +279,11 @@ namespace flui
 				fgl::MessageBox::show(getWindow(), "Error", "No frames added");
 			}
 		});
-		rOffsetY += 10;
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		rOffsetY += 20;
-		
-		metapointCheckboxHeaderLabel = new fgl::TextElement();
-		metapointCheckboxHeaderLabel->setFontSize(18);
-		metapointCheckboxHeaderLabel->setText("Meta Points");
-		metapointCheckboxHeaderLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
-		metapointCheckboxHeaderLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
-		rOffsetY += 16;
-		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
-		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
-		metapointCheckboxHeaderLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
-		rOffsetY += 24;
 
 		fgl::ArrayList<fl::AnimationMetaPoint::Type> metaPointTypes = {
 			fl::AnimationMetaPoint::POINTTYPE_HITBOX,
@@ -238,6 +295,7 @@ namespace flui
 			fl::AnimationMetaPoint::POINTTYPE_HANDLE
 		};
 
+		rOffsetY += 5;
 		for(auto metaPointType : metaPointTypes)
 		{
 			auto metapointCheckbox = new LabeledCheckboxElement();
@@ -250,11 +308,11 @@ namespace flui
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_LEFT, 4);
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
-			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 26);
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 18);
 
 			metapointCheckboxElements[metaPointType] = metapointCheckbox;
 
-			rOffsetY += 28;
+			rOffsetY += 20;
 		}
 
 		showBoundsCheckbox = new LabeledCheckboxElement();
@@ -275,8 +333,13 @@ namespace flui
 		rightSidebarContainer->addChildElement(nextFrameButton);
 		rightSidebarContainer->addChildElement(prevFrameButton);
 		rightSidebarContainer->addChildElement(addFramesButton);
-		rightSidebarContainer->addChildElement(addMetapointButton);
+		rightSidebarContainer->addChildElement(tracingFrameLabel);
+		rightSidebarContainer->addChildElement(tracingFrameCheckbox);
+		rightSidebarContainer->addChildElement(tracingFrameIndexLabel);
+		rightSidebarContainer->addChildElement(nextTracingFrameButton);
+		rightSidebarContainer->addChildElement(prevTracingFrameButton);
 		rightSidebarContainer->addChildElement(metapointCheckboxHeaderLabel);
+		rightSidebarContainer->addChildElement(addMetapointButton);
 		for(auto checkboxPair : metapointCheckboxElements)
 		{
 			rightSidebarContainer->addChildElement(checkboxPair.second);
@@ -331,9 +394,14 @@ namespace flui
 		delete nextFrameButton;
 		delete prevFrameButton;
 		delete addFramesButton;
+		delete tracingFrameLabel;
+		delete tracingFrameCheckbox;
+		delete tracingFrameIndexLabel;
+		delete nextTracingFrameButton;
+		delete prevTracingFrameButton;
+		delete metapointCheckboxHeaderLabel;
 		delete addMetapointButton;
 		delete metaPointInfoElement;
-		delete metapointCheckboxHeaderLabel;
 		for(auto checkboxPair : metapointCheckboxElements)
 		{
 			delete checkboxPair.second;
@@ -345,6 +413,7 @@ namespace flui
 	{
 		Screen::update(appData);
 		frameIndexLabel->setText(getFrameIndexLabelString());
+		tracingFrameIndexLabel->setText(getTracingFrameIndexLabelString());
 		animationData->setName(nameInputElement->getText());
 	}
 	
@@ -420,6 +489,35 @@ namespace flui
 		}
 	}
 
+	void EditAnimationScreen::nextTracingFrame()
+	{
+		fgl::Animation* animation = animationData->getAnimation();
+		if(animation!=nullptr || animation->getTotalFrames() > 0)
+		{
+			size_t frameIndex = animationEditorElement->getTracingAnimationFrameIndex();
+			size_t frameCount = animation->getTotalFrames();
+			frameIndex++;
+			if(frameIndex < frameCount)
+			{
+				animationEditorElement->setTracingAnimationFrameIndex(frameIndex);
+			}
+		}
+	}
+
+	void EditAnimationScreen::previousTracingFrame()
+	{
+		fgl::Animation* animation = animationData->getAnimation();
+		if(animation!=nullptr || animation->getTotalFrames() > 0)
+		{
+			size_t frameIndex = animationEditorElement->getTracingAnimationFrameIndex();
+			frameIndex--;
+			if(frameIndex != -1)
+			{
+				animationEditorElement->setTracingAnimationFrameIndex(frameIndex);
+			}
+		}
+	}
+
 	void EditAnimationScreen::beginUserAddMetaPoint()
 	{
 		if(addingMetaPoint)
@@ -443,6 +541,18 @@ namespace flui
 			return "0/0";
 		}
 		size_t frameIndex = animationEditorElement->getAnimationFrameIndex();
+		size_t frameCount = animation->getTotalFrames();
+		return (fgl::String)""+(frameIndex+1)+"/"+frameCount;
+	}
+
+	fgl::String EditAnimationScreen::getTracingFrameIndexLabelString() const
+	{
+		fgl::Animation* animation = animationData->getAnimation();
+		if(animation==nullptr || animation->getTotalFrames()==0)
+		{
+			return "0/0";
+		}
+		size_t frameIndex = animationEditorElement->getTracingAnimationFrameIndex();
 		size_t frameCount = animation->getTotalFrames();
 		return (fgl::String)""+(frameIndex+1)+"/"+frameCount;
 	}

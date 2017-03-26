@@ -23,10 +23,14 @@ namespace flui
 		void nextFrame();
 		void previousFrame();
 
+		void nextTracingFrame();
+		void previousTracingFrame();
+
 		void beginUserAddMetaPoint();
 		
 	private:
 		fgl::String getFrameIndexLabelString() const;
+		fgl::String getTracingFrameIndexLabelString() const;
 		
 		fl::AnimationData* animationData;
 		fgl::String savePath;
@@ -46,13 +50,20 @@ namespace flui
 		ToolboxContainerElement* leftSidebarContainer;
 		fgl::ScreenElement* rightSidebarContainer;
 
-		//right sidebar
+		//right sidebar - frame changer
 		fgl::TextElement* frameIndexLabel;
 		fgl::ButtonElement* nextFrameButton;
 		fgl::ButtonElement* prevFrameButton;
 		fgl::ButtonElement* addFramesButton;
-		fgl::ButtonElement* addMetapointButton;
+		//right sidebar - tracing frame
+		fgl::TextElement* tracingFrameLabel;
+		LabeledCheckboxElement* tracingFrameCheckbox;
+		fgl::TextElement* tracingFrameIndexLabel;
+		fgl::ButtonElement* nextTracingFrameButton;
+		fgl::ButtonElement* prevTracingFrameButton;
+		//right sidebar - metapoint checkboxes
 		fgl::TextElement* metapointCheckboxHeaderLabel;
+		fgl::ButtonElement* addMetapointButton;
 		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, LabeledCheckboxElement*> metapointCheckboxElements;
 		LabeledCheckboxElement* showBoundsCheckbox;
 		
