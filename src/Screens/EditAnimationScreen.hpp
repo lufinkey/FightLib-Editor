@@ -54,6 +54,7 @@ namespace flui
 		fgl::TextElement* frameIndexLabel;
 		fgl::ButtonElement* nextFrameButton;
 		fgl::ButtonElement* prevFrameButton;
+		fgl::ButtonElement* playToggleButton;
 		fgl::ButtonElement* addFramesButton;
 		//right sidebar - tracing frame
 		fgl::TextElement* tracingFrameLabel;

@@ -160,8 +160,8 @@ namespace flui
 		nextFrameButton->setTapHandler([=] {
 			nextFrame();
 		});
-		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.5, fgl::LAYOUTVALUE_RATIO);
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0.5, fgl::LAYOUTVALUE_RATIO);
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 24);
 		nextFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
 		
@@ -171,11 +171,34 @@ namespace flui
 		prevFrameButton->setTapHandler([=]{
 			previousFrame();
 		});
-		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.5, fgl::LAYOUTVALUE_RATIO);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0.5, fgl::LAYOUTVALUE_RATIO);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 24);
 		prevFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
 		rOffsetY += 24;
+
+		playToggleButton = new fgl::ButtonElement();
+		playToggleButton->setBorderWidth(1);
+		playToggleButton->setTitle("Play", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		playToggleButton->getTitleElement()->setFontSize(14);
+		playToggleButton->setTapHandler([=]{
+			if(animationEditorElement->getAnimationDirection() == fgl::Animation::STOPPED)
+			{
+				animationEditorElement->setAnimationDirection(fgl::Animation::FORWARD);
+				playToggleButton->setTitle("Pause", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+			}
+			else
+			{
+				animationEditorElement->setAnimationDirection(fgl::Animation::STOPPED);
+				playToggleButton->setTitle("Play", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+			}
+		});
+		rOffsetY += 4;
+		playToggleButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		playToggleButton->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		playToggleButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 60);
+		playToggleButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		rOffsetY += 20;
 		
 		addFramesButton = new fgl::ButtonElement();
 		addFramesButton->setBorderWidth(1);
@@ -188,7 +211,7 @@ namespace flui
 				animationEditorElement->refresh();
 			});
 		});
-		rOffsetY += 8;
+		rOffsetY += 4;
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 100);
@@ -363,6 +386,7 @@ namespace flui
 		rightSidebarContainer->addChildElement(frameIndexLabel);
 		rightSidebarContainer->addChildElement(nextFrameButton);
 		rightSidebarContainer->addChildElement(prevFrameButton);
+		rightSidebarContainer->addChildElement(playToggleButton);
 		rightSidebarContainer->addChildElement(addFramesButton);
 		rightSidebarContainer->addChildElement(tracingFrameLabel);
 		rightSidebarContainer->addChildElement(tracingFrameCheckbox);
@@ -518,10 +542,6 @@ namespace flui
 			{
 				animationEditorElement->setAnimationFrameIndex(frameIndex);
 				metaPointInfoElement->setAnimationSize(animationData->getSize(frameIndex));
-				if(leftSidebarContainer->getToolboxElement()==metaPointInfoElement)
-				{
-					leftSidebarContainer->setToolboxElement(nullptr);
-				}
 			}
 		}
 	}
@@ -537,10 +557,6 @@ namespace flui
 			if(frameIndex < frameCount)
 			{
 				animationEditorElement->setTracingAnimationFrameIndex(frameIndex);
-				if(leftSidebarContainer->getToolboxElement()==metaPointInfoElement)
-				{
-					leftSidebarContainer->setToolboxElement(nullptr);
-				}
 			}
 		}
 	}

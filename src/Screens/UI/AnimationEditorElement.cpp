@@ -85,8 +85,7 @@ namespace flui
 		{
 			if(animationElement->getAnimationDirection()!=fgl::Animation::STOPPED)
 			{
-				metaPointsElement->setFrame(animationElement->getImageElement()->getImageDisplayFrame());
-				updateMetaPoints();
+				refresh();
 			}
 			animationElement->getImageElement()->setHorizontalImageMirroringEnabled(animationData->isMirrored(drawnOrientation));
 			metaPointsElement->setHorizontalMirroringEnabled(animationData->isMirrored(drawnOrientation));
