@@ -61,6 +61,7 @@ namespace flui
 		fgl::TextElement* tracingFrameIndexLabel;
 		fgl::ButtonElement* nextTracingFrameButton;
 		fgl::ButtonElement* prevTracingFrameButton;
+		fgl::ButtonElement* cloneMetaPointsButton;
 		//right sidebar - metapoint checkboxes
 		fgl::TextElement* metapointCheckboxHeaderLabel;
 		fgl::ButtonElement* addMetapointButton;

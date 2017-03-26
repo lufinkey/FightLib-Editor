@@ -252,6 +252,37 @@ namespace flui
 		prevTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 24);
 		prevTracingFrameButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 24);
 		rOffsetY += 24;
+
+		cloneMetaPointsButton = new fgl::ButtonElement();
+		cloneMetaPointsButton->setTitle("Clone Meta Points", fgl::ButtonElement::BUTTONSTATE_NORMAL);
+		cloneMetaPointsButton->setBorderWidth(1);
+		cloneMetaPointsButton->getTitleElement()->setFontSize(14);
+		cloneMetaPointsButton->setTapHandler([=]{
+			if(animationData->getAnimation()->getTotalFrames() > 0)
+			{
+				unsigned int choice = fgl::MessageBox::show(getWindow(), "Clone Meta Points", "This will overwrite any existing meta points for this frame. Continue?", {"Yes", "Cancel"});
+				if(choice==0)
+				{
+					size_t tracingFrameIndex = animationEditorElement->getTracingAnimationFrameIndex();
+					size_t frameIndex = animationEditorElement->getAnimationFrameIndex();
+					animationEditorElement->setMetaPoints(frameIndex, animationEditorElement->getMetaPoints(tracingFrameIndex));
+					if(leftSidebarContainer->getToolboxElement()==metaPointInfoElement)
+					{
+						leftSidebarContainer->setToolboxElement(nullptr);
+					}
+				}
+			}
+			else
+			{
+				fgl::MessageBox::show(getWindow(), "Error", "No frames have been added");
+			}
+		});
+		rOffsetY += 4;
+		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
+		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		rOffsetY += 20;
 		
 		metapointCheckboxHeaderLabel = new fgl::TextElement();
 		metapointCheckboxHeaderLabel->setText("Meta Points");
@@ -269,14 +300,14 @@ namespace flui
 		addMetapointButton->setBorderWidth(1);
 		addMetapointButton->setTitle("Add Meta Point", fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		addMetapointButton->getTitleElement()->setFontSize(14);
-		addMetapointButton->setTapHandler([=] {
+		addMetapointButton->setTapHandler([=]{
 			if(animationData->getAnimation()->getTotalFrames() > 0)
 			{
 				beginUserAddMetaPoint();
 			}
 			else
 			{
-				fgl::MessageBox::show(getWindow(), "Error", "No frames added");
+				fgl::MessageBox::show(getWindow(), "Error", "No frames have been added");
 			}
 		});
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
@@ -338,6 +369,7 @@ namespace flui
 		rightSidebarContainer->addChildElement(tracingFrameIndexLabel);
 		rightSidebarContainer->addChildElement(nextTracingFrameButton);
 		rightSidebarContainer->addChildElement(prevTracingFrameButton);
+		rightSidebarContainer->addChildElement(cloneMetaPointsButton);
 		rightSidebarContainer->addChildElement(metapointCheckboxHeaderLabel);
 		rightSidebarContainer->addChildElement(addMetapointButton);
 		for(auto checkboxPair : metapointCheckboxElements)
@@ -399,6 +431,7 @@ namespace flui
 		delete tracingFrameIndexLabel;
 		delete nextTracingFrameButton;
 		delete prevTracingFrameButton;
+		delete cloneMetaPointsButton;
 		delete metapointCheckboxHeaderLabel;
 		delete addMetapointButton;
 		delete metaPointInfoElement;
@@ -485,6 +518,10 @@ namespace flui
 			{
 				animationEditorElement->setAnimationFrameIndex(frameIndex);
 				metaPointInfoElement->setAnimationSize(animationData->getSize(frameIndex));
+				if(leftSidebarContainer->getToolboxElement()==metaPointInfoElement)
+				{
+					leftSidebarContainer->setToolboxElement(nullptr);
+				}
 			}
 		}
 	}
@@ -500,6 +537,10 @@ namespace flui
 			if(frameIndex < frameCount)
 			{
 				animationEditorElement->setTracingAnimationFrameIndex(frameIndex);
+				if(leftSidebarContainer->getToolboxElement()==metaPointInfoElement)
+				{
+					leftSidebarContainer->setToolboxElement(nullptr);
+				}
 			}
 		}
 	}
