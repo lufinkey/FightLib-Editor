@@ -190,8 +190,8 @@ namespace flui
 		});
 		rOffsetY += 8;
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
-		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 100);
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		rOffsetY += 20;
 
@@ -215,8 +215,8 @@ namespace flui
 			animationEditorElement->setTracingAnimationVisible(value);
 		});
 		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_LEFT, 4);
-		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 110);
 		tracingFrameCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 18);
 		rOffsetY += 18;
 
@@ -256,7 +256,7 @@ namespace flui
 		cloneMetaPointsButton = new fgl::ButtonElement();
 		cloneMetaPointsButton->setTitle("Clone Meta Points", fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		cloneMetaPointsButton->setBorderWidth(1);
-		cloneMetaPointsButton->getTitleElement()->setFontSize(14);
+		cloneMetaPointsButton->getTitleElement()->setFontSize(12);
 		cloneMetaPointsButton->setTapHandler([=]{
 			if(animationData->getAnimation()->getTotalFrames() > 0)
 			{
@@ -279,8 +279,8 @@ namespace flui
 		});
 		rOffsetY += 4;
 		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
-		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 110);
 		cloneMetaPointsButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		rOffsetY += 20;
 		
@@ -311,8 +311,8 @@ namespace flui
 			}
 		});
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_LEFT, 10);
-		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
+		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 110);
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		rOffsetY += 20;
 
@@ -337,8 +337,8 @@ namespace flui
 				animationEditorElement->setMetaPointTypeVisible(metaPointType, value);
 			});
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_LEFT, 4);
-			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 110);
 			metapointCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 18);
 
 			metapointCheckboxElements[metaPointType] = metapointCheckbox;
@@ -355,8 +355,8 @@ namespace flui
 		});
 		rOffsetY += 10;
 		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
-		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_LEFT, 4);
-		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 110);
 		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 26);
 		rOffsetY += 26;
 
