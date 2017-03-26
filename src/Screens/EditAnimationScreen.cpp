@@ -218,6 +218,32 @@ namespace flui
 		addFramesButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		rOffsetY += 20;
 
+		fpsLabel = new fgl::TextElement();
+		fpsLabel->setText("FPS");
+		fpsLabel->setFontSize(14);
+		fpsLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		fpsLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		rOffsetY += 2;
+		fpsLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		fpsLabel->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		fpsLabel->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 100);
+		fpsLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 16);
+		rOffsetY += 16;
+
+		fpsAdjuster = new NumberAdjustElement(assetManager);
+		fpsAdjuster->setMinValue(1);
+		fpsAdjuster->setMaxValue(999);
+		fpsAdjuster->setIncrement(0.25);
+		fpsAdjuster->setValue(animationData->getAnimation()->getFPS());
+		fpsAdjuster->setValueChangeHandler([=]{
+			animationData->getAnimation()->setFPS(fpsAdjuster->getValue());
+		});
+		fpsAdjuster->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		fpsAdjuster->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		fpsAdjuster->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 60);
+		fpsAdjuster->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		rOffsetY += 20;
+
 		tracingFrameLabel = new fgl::TextElement();
 		tracingFrameLabel->setText("Tracing Frame");
 		tracingFrameLabel->setFontSize(18);
@@ -388,6 +414,8 @@ namespace flui
 		rightSidebarContainer->addChildElement(prevFrameButton);
 		rightSidebarContainer->addChildElement(playToggleButton);
 		rightSidebarContainer->addChildElement(addFramesButton);
+		rightSidebarContainer->addChildElement(fpsLabel);
+		rightSidebarContainer->addChildElement(fpsAdjuster);
 		rightSidebarContainer->addChildElement(tracingFrameLabel);
 		rightSidebarContainer->addChildElement(tracingFrameCheckbox);
 		rightSidebarContainer->addChildElement(tracingFrameIndexLabel);
@@ -449,7 +477,10 @@ namespace flui
 		delete frameIndexLabel;
 		delete nextFrameButton;
 		delete prevFrameButton;
+		delete playToggleButton;
 		delete addFramesButton;
+		delete fpsLabel;
+		delete fpsAdjuster;
 		delete tracingFrameLabel;
 		delete tracingFrameCheckbox;
 		delete tracingFrameIndexLabel;

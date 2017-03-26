@@ -56,6 +56,8 @@ namespace flui
 		fgl::ButtonElement* prevFrameButton;
 		fgl::ButtonElement* playToggleButton;
 		fgl::ButtonElement* addFramesButton;
+		fgl::TextElement* fpsLabel;
+		NumberAdjustElement* fpsAdjuster;
 		//right sidebar - tracing frame
 		fgl::TextElement* tracingFrameLabel;
 		LabeledCheckboxElement* tracingFrameCheckbox;
