@@ -164,8 +164,8 @@ namespace flui
 		rotationAdjustElement = new NumberAdjustElement(assetManager);
 		rotationAdjustElement->getValueLabel()->setFontSize(12);
 		rotationAdjustElement->setValue(0);
-		rotationAdjustElement->setMinValue(0);
-		rotationAdjustElement->setMaxValue(160);
+		rotationAdjustElement->setMinValue(-180);
+		rotationAdjustElement->setMaxValue(180);
 		rotationAdjustElement->setIncrement(1);
 		rotationAdjustElement->setValueChangeHandler([=]{
 			metaPoint.rotation = rotationAdjustElement->getValue().toArithmeticValue<float>();
