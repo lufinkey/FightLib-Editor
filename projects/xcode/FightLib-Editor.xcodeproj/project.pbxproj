@@ -43,6 +43,7 @@
 		F199D4A01E76CCB5008627BE /* assets in Resources */ = {isa = PBXBuildFile; fileRef = F199D49F1E76CCB5008627BE /* assets */; };
 		F1A1FAB61E80136900D55FFC /* ToolboxContainerElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A1FAB21E80136900D55FFC /* ToolboxContainerElement.cpp */; };
 		F1A1FAB71E80136900D55FFC /* ToolboxElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A1FAB41E80136900D55FFC /* ToolboxElement.cpp */; };
+		F1A7DF461E893E1000472DB2 /* TagAdjustElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A7DF441E893E1000472DB2 /* TagAdjustElement.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,6 +113,8 @@
 		F1A1FAB31E80136900D55FFC /* ToolboxContainerElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolboxContainerElement.hpp; sourceTree = "<group>"; };
 		F1A1FAB41E80136900D55FFC /* ToolboxElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolboxElement.cpp; sourceTree = "<group>"; };
 		F1A1FAB51E80136900D55FFC /* ToolboxElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolboxElement.hpp; sourceTree = "<group>"; };
+		F1A7DF441E893E1000472DB2 /* TagAdjustElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TagAdjustElement.cpp; sourceTree = "<group>"; };
+		F1A7DF451E893E1000472DB2 /* TagAdjustElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TagAdjustElement.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +241,8 @@
 				F160BB171E7C4D19005162EB /* MetaPointInfoElement.hpp */,
 				F160BB1F1E7C635C005162EB /* NumberAdjustElement.cpp */,
 				F160BB201E7C635C005162EB /* NumberAdjustElement.hpp */,
+				F1A7DF441E893E1000472DB2 /* TagAdjustElement.cpp */,
+				F1A7DF451E893E1000472DB2 /* TagAdjustElement.hpp */,
 				F1A1FAB21E80136900D55FFC /* ToolboxContainerElement.cpp */,
 				F1A1FAB31E80136900D55FFC /* ToolboxContainerElement.hpp */,
 				F1A1FAB41E80136900D55FFC /* ToolboxElement.cpp */,
@@ -318,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A7DF461E893E1000472DB2 /* TagAdjustElement.cpp in Sources */,
 				F11DFDB21E72FDE900465715 /* EditAnimationScreen.cpp in Sources */,
 				F15F5A431E71E14600FAFD86 /* main.cpp in Sources */,
 				F15F5A441E71E14600FAFD86 /* MainApplication.cpp in Sources */,

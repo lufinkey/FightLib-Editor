@@ -37,6 +37,8 @@
 		F1A1FAED1E80361100D55FFC /* NumberAdjustElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A1FADD1E80361100D55FFC /* NumberAdjustElement.cpp */; };
 		F1A1FAEE1E80361100D55FFC /* ToolboxContainerElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A1FADF1E80361100D55FFC /* ToolboxContainerElement.cpp */; };
 		F1A1FAEF1E80361100D55FFC /* ToolboxElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A1FAE11E80361100D55FFC /* ToolboxElement.cpp */; };
+		F1A7DF231E893C6B00472DB2 /* AddFramesScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A7DF211E893C6B00472DB2 /* AddFramesScreen.cpp */; };
+		F1A7DF261E893C7800472DB2 /* TagAdjustElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F1A7DF241E893C7800472DB2 /* TagAdjustElement.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,10 @@
 		F1A1FAE01E80361100D55FFC /* ToolboxContainerElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolboxContainerElement.hpp; sourceTree = "<group>"; };
 		F1A1FAE11E80361100D55FFC /* ToolboxElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ToolboxElement.cpp; sourceTree = "<group>"; };
 		F1A1FAE21E80361100D55FFC /* ToolboxElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ToolboxElement.hpp; sourceTree = "<group>"; };
+		F1A7DF211E893C6B00472DB2 /* AddFramesScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AddFramesScreen.cpp; sourceTree = "<group>"; };
+		F1A7DF221E893C6B00472DB2 /* AddFramesScreen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = AddFramesScreen.hpp; sourceTree = "<group>"; };
+		F1A7DF241E893C7800472DB2 /* TagAdjustElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TagAdjustElement.cpp; sourceTree = "<group>"; };
+		F1A7DF251E893C7800472DB2 /* TagAdjustElement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TagAdjustElement.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				F1A1FACC1E80361100D55FFC /* UI */,
+				F1A7DF211E893C6B00472DB2 /* AddFramesScreen.cpp */,
+				F1A7DF221E893C6B00472DB2 /* AddFramesScreen.hpp */,
 				F1A1FAC81E80361100D55FFC /* EditAnimationScreen.cpp */,
 				F1A1FAC91E80361100D55FFC /* EditAnimationScreen.hpp */,
 				F1A1FACA1E80361100D55FFC /* HomeScreen.cpp */,
@@ -205,6 +213,8 @@
 				F1A1FADC1E80361100D55FFC /* MetaPointInfoElement.hpp */,
 				F1A1FADD1E80361100D55FFC /* NumberAdjustElement.cpp */,
 				F1A1FADE1E80361100D55FFC /* NumberAdjustElement.hpp */,
+				F1A7DF241E893C7800472DB2 /* TagAdjustElement.cpp */,
+				F1A7DF251E893C7800472DB2 /* TagAdjustElement.hpp */,
 				F1A1FADF1E80361100D55FFC /* ToolboxContainerElement.cpp */,
 				F1A1FAE01E80361100D55FFC /* ToolboxContainerElement.hpp */,
 				F1A1FAE11E80361100D55FFC /* ToolboxElement.cpp */,
@@ -283,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A7DF261E893C7800472DB2 /* TagAdjustElement.cpp in Sources */,
 				F1A1FAE41E80361100D55FFC /* HomeScreen.cpp in Sources */,
 				F1A1FAE71E80361100D55FFC /* CarouselSelectorElement.cpp in Sources */,
 				F1A1FAE31E80361100D55FFC /* EditAnimationScreen.cpp in Sources */,
@@ -294,6 +305,7 @@
 				F1A1FAE61E80361100D55FFC /* ArrowAdjustElement.cpp in Sources */,
 				F1A1FAE51E80361100D55FFC /* AnimationEditorElement.cpp in Sources */,
 				F1A1FAED1E80361100D55FFC /* NumberAdjustElement.cpp in Sources */,
+				F1A7DF231E893C6B00472DB2 /* AddFramesScreen.cpp in Sources */,
 				F17D97BE1E6DCBF6003F4D85 /* MainApplication.cpp in Sources */,
 				F1A1FAE81E80361100D55FFC /* CheckerboardElement.cpp in Sources */,
 				F1A1FAEE1E80361100D55FFC /* ToolboxContainerElement.cpp in Sources */,
