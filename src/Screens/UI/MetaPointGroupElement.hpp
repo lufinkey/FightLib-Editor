@@ -37,7 +37,7 @@ namespace flui
 		void setBoundsDrawingEnabled(bool enabled);
 		bool isBoundsDrawingEnabled() const;
 
-		fgl::ArrayList<fl::AnimationData::MetaBounds> getBounds() const;
+		fgl::ArrayList<fl::TaggedBox> getBounds() const;
 
 	protected:
 		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;

@@ -176,7 +176,7 @@ namespace flui
 		return boundsDrawingEnabled;
 	}
 
-	fgl::ArrayList<fl::AnimationData::MetaBounds> MetaPointGroupElement::getBounds() const
+	fgl::ArrayList<fl::TaggedBox> MetaPointGroupElement::getBounds() const
 	{
 		fgl::ArrayList<fl::AnimationMetaPoint> topLefts;
 		fgl::ArrayList<fl::AnimationMetaPoint> bottomRights;
@@ -191,7 +191,7 @@ namespace flui
 				bottomRights.add(metaPoint);
 			}
 		}
-		fgl::ArrayList<fl::AnimationData::MetaBounds> bounds;
+		fgl::ArrayList<fl::TaggedBox> bounds;
 		while(topLefts.size()>0)
 		{
 			auto& topLeft = topLefts[0];
@@ -201,7 +201,7 @@ namespace flui
 				if(topLeft.tag==bottomRight.tag)
 				{
 					fgl::RectangleD rect = fgl::RectangleD((double)topLeft.x, (double)topLeft.y, (double)(bottomRight.x-topLeft.x), (double)(bottomRight.y - topLeft.y));
-					fl::AnimationData::MetaBounds metaBounds = { .tag=topLeft.tag, .rect=rect };
+					fl::TaggedBox metaBounds = { .tag=topLeft.tag, .rect=rect };
 					bounds.add(metaBounds);
 					bottomRights.remove(i);
 					break;
