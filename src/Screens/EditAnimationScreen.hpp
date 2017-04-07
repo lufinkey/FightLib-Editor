@@ -68,7 +68,7 @@ namespace flui
 		//right sidebar - metapoint checkboxes
 		fgl::TextElement* metapointCheckboxHeaderLabel;
 		fgl::ButtonElement* addMetapointButton;
-		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, LabeledCheckboxElement*> metapointCheckboxElements;
+		fgl::BasicDictionary<fl::MetaPointType, LabeledCheckboxElement*> metapointCheckboxElements;
 		LabeledCheckboxElement* showBoundsCheckbox;
 		
 		//left sidebar

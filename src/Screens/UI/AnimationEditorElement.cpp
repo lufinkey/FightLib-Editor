@@ -190,12 +190,12 @@ namespace flui
 		return metaPointsElement->isBoundsDrawingEnabled();
 	}
 	
-	void AnimationEditorElement::setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible)
+	void AnimationEditorElement::setMetaPointTypeVisible(fl::MetaPointType metaPointType, bool visible)
 	{
 		metaPointsElement->setMetaPointTypeVisible(metaPointType, visible);
 	}
 	
-	bool AnimationEditorElement::isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const
+	bool AnimationEditorElement::isMetaPointTypeVisible(fl::MetaPointType metaPointType) const
 	{
 		return metaPointsElement->isMetaPointTypeVisible(metaPointType);
 	}

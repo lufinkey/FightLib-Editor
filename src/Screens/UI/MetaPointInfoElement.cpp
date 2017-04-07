@@ -26,21 +26,21 @@ namespace flui
 		offsetY += 16;
 		
 		fgl::ArrayList<fgl::Number> typeOptionList = {
-									fl::AnimationMetaPoint::POINTTYPE_HITBOX,
-									fl::AnimationMetaPoint::POINTTYPE_HEAD,
-									fl::AnimationMetaPoint::POINTTYPE_LEFTHAND,
-									fl::AnimationMetaPoint::POINTTYPE_RIGHTHAND,
-									fl::AnimationMetaPoint::POINTTYPE_BOUNDS_TOPLEFT,
-									fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT,
-									fl::AnimationMetaPoint::POINTTYPE_HANDLE };
+									fl::METAPOINT_HITBOX,
+									fl::METAPOINT_HEAD,
+									fl::METAPOINT_LEFTHAND,
+									fl::METAPOINT_RIGHTHAND,
+									fl::METAPOINT_BOUNDS_TOPLEFT,
+									fl::METAPOINT_BOUNDS_BOTTOMRIGHT,
+									fl::METAPOINT_HANDLE };
 		typeSelectorElement = new CarouselSelectorElement(assetManager, typeOptionList);
 		typeSelectorElement->getValueLabel()->setFontSize(12);
 		typeSelectorElement->setOptionTitleResolver([=](fgl::Number value) -> fgl::String {
-			return getMetaPointTypeName(value.toArithmeticValue<fl::AnimationMetaPoint::Type>());
+			return getMetaPointTypeName(value.toArithmeticValue<fl::MetaPointType>());
 		});
 		typeSelectorElement->setSelectedOptionIndex(0);
 		typeSelectorElement->setValueChangeHandler([=]{
-			metaPoint.type = typeSelectorElement->getOptionList()[typeSelectorElement->getSelectedOptionIndex()].toArithmeticValue<fl::AnimationMetaPoint::Type>();
+			metaPoint.type = typeSelectorElement->getOptionList()[typeSelectorElement->getSelectedOptionIndex()].toArithmeticValue<fl::MetaPointType>();
 			if(metaPointChangeHandler)
 			{
 				metaPointChangeHandler(metaPoint);
@@ -414,29 +414,29 @@ namespace flui
 		return animationSize;
 	}
 
-	fgl::String MetaPointInfoElement::getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType)
+	fgl::String MetaPointInfoElement::getMetaPointTypeName(fl::MetaPointType metaPointType)
 	{
 		switch(metaPointType)
 		{
-			case fl::AnimationMetaPoint::POINTTYPE_HITBOX:
+			case fl::METAPOINT_HITBOX:
 			return "hitbox";
 
-			case fl::AnimationMetaPoint::POINTTYPE_HEAD:
+			case fl::METAPOINT_HEAD:
 			return "head";
 
-			case fl::AnimationMetaPoint::POINTTYPE_LEFTHAND:
+			case fl::METAPOINT_LEFTHAND:
 			return "hand (L)";
 
-			case fl::AnimationMetaPoint::POINTTYPE_RIGHTHAND:
+			case fl::METAPOINT_RIGHTHAND:
 			return "hand (R)";
 
-			case fl::AnimationMetaPoint::POINTTYPE_BOUNDS_TOPLEFT:
+			case fl::METAPOINT_BOUNDS_TOPLEFT:
 			return "bounds (TL)";
 
-			case fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT:
+			case fl::METAPOINT_BOUNDS_BOTTOMRIGHT:
 			return "bounds (BR)";
 
-			case fl::AnimationMetaPoint::POINTTYPE_HANDLE:
+			case fl::METAPOINT_HANDLE:
 			return "handle";
 		}
 		return (fgl::String)""+metaPointType;

@@ -40,8 +40,8 @@ namespace flui
 		void setBoundsDrawingEnabled(bool enabled);
 		bool isBoundsDrawingEnabled() const;
 		
-		void setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible);
-		bool isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const;
+		void setMetaPointTypeVisible(fl::MetaPointType metaPointType, bool visible);
+		bool isMetaPointTypeVisible(fl::MetaPointType metaPointType) const;
 
 		void setMetaPoints(size_t frameIndex, const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints);
 		void setMetaPoint(size_t frameIndex, size_t metaPointIndex, const fl::AnimationMetaPoint& metaPoint);

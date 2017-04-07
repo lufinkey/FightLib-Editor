@@ -31,7 +31,7 @@ namespace flui
 		void setAnimationSize(const fgl::Vector2u& animationSize);
 		const fgl::Vector2u& getAnimationSize() const;
 
-		static fgl::String getMetaPointTypeName(fl::AnimationMetaPoint::Type metaPointType);
+		static fgl::String getMetaPointTypeName(fl::MetaPointType metaPointType);
 		
 	private:
 		fl::AnimationMetaPoint metaPoint;

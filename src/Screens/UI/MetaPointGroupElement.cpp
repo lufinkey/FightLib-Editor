@@ -139,7 +139,7 @@ namespace flui
 		return animationSize;
 	}
 
-	void MetaPointGroupElement::setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible)
+	void MetaPointGroupElement::setMetaPointTypeVisible(fl::MetaPointType metaPointType, bool visible)
 	{
 		enabledMetaPointTypes[metaPointType] = visible;
 		for(auto metaPointElement : metaPointElements)
@@ -151,7 +151,7 @@ namespace flui
 		}
 	}
 
-	bool MetaPointGroupElement::isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const
+	bool MetaPointGroupElement::isMetaPointTypeVisible(fl::MetaPointType metaPointType) const
 	{
 		return enabledMetaPointTypes.get(metaPointType, true);
 	}
@@ -182,11 +182,11 @@ namespace flui
 		fgl::ArrayList<fl::AnimationMetaPoint> bottomRights;
 		for(auto& metaPoint : metaPoints)
 		{
-			if(metaPoint.type==fl::AnimationMetaPoint::POINTTYPE_BOUNDS_TOPLEFT)
+			if(metaPoint.type==fl::METAPOINT_BOUNDS_TOPLEFT)
 			{
 				topLefts.add(metaPoint);
 			}
-			else if(metaPoint.type==fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT)
+			else if(metaPoint.type==fl::METAPOINT_BOUNDS_BOTTOMRIGHT)
 			{
 				bottomRights.add(metaPoint);
 			}

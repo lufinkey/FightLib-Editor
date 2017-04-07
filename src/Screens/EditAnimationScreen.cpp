@@ -365,14 +365,14 @@ namespace flui
 		addMetapointButton->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
 		rOffsetY += 20;
 
-		fgl::ArrayList<fl::AnimationMetaPoint::Type> metaPointTypes = {
-			fl::AnimationMetaPoint::POINTTYPE_HITBOX,
-			fl::AnimationMetaPoint::POINTTYPE_HEAD,
-			fl::AnimationMetaPoint::POINTTYPE_LEFTHAND,
-			fl::AnimationMetaPoint::POINTTYPE_RIGHTHAND,
-			fl::AnimationMetaPoint::POINTTYPE_BOUNDS_TOPLEFT,
-			fl::AnimationMetaPoint::POINTTYPE_BOUNDS_BOTTOMRIGHT,
-			fl::AnimationMetaPoint::POINTTYPE_HANDLE
+		fgl::ArrayList<fl::MetaPointType> metaPointTypes = {
+			fl::METAPOINT_HITBOX,
+			fl::METAPOINT_HEAD,
+			fl::METAPOINT_LEFTHAND,
+			fl::METAPOINT_RIGHTHAND,
+			fl::METAPOINT_BOUNDS_TOPLEFT,
+			fl::METAPOINT_BOUNDS_BOTTOMRIGHT,
+			fl::METAPOINT_HANDLE
 		};
 
 		rOffsetY += 5;

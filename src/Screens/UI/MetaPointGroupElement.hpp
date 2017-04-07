@@ -28,8 +28,8 @@ namespace flui
 		void setAnimationSize(const fgl::Vector2u& animationSize);
 		const fgl::Vector2u& getAnimationSize() const;
 
-		void setMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType, bool visible);
-		bool isMetaPointTypeVisible(fl::AnimationMetaPoint::Type metaPointType) const;
+		void setMetaPointTypeVisible(fl::MetaPointType metaPointType, bool visible);
+		bool isMetaPointTypeVisible(fl::MetaPointType metaPointType) const;
 
 		void setHorizontalMirroringEnabled(bool mirror);
 		bool isHorizontalMirroringEnabled() const;
@@ -48,7 +48,7 @@ namespace flui
 		std::function<void(size_t)> metaPointChangeHandler;
 		std::function<void(size_t)> metaPointSelectHandler;
 		fgl::Vector2u animationSize;
-		fgl::BasicDictionary<fl::AnimationMetaPoint::Type, bool> enabledMetaPointTypes;
+		fgl::BasicDictionary<fl::MetaPointType, bool> enabledMetaPointTypes;
 		bool horizontalMirroringEnabled;
 		bool boundsDrawingEnabled;
 	};
