@@ -11,7 +11,7 @@ namespace flui
 	MetaPointInfoElement::MetaPointInfoElement(fgl::AssetManager* assetManager, const fgl::RectangleD& frame)
 		: ToolboxElement(frame)
 	{
-		double offsetY = 10;
+		double offsetY = 0;
 
 		typeLabel = new fgl::TextElement();
 		typeLabel->setText("Type");
