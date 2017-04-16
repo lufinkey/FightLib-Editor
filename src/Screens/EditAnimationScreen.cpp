@@ -231,7 +231,7 @@ namespace flui
 		rOffsetY += 16;
 
 		fpsAdjuster = new NumberAdjustElement(assetManager);
-		fpsAdjuster->setMinValue(1);
+		fpsAdjuster->setMinValue(0.25);
 		fpsAdjuster->setMaxValue(999);
 		fpsAdjuster->setIncrement(0.25);
 		fpsAdjuster->setValue(animationData->getAnimation()->getFPS());
