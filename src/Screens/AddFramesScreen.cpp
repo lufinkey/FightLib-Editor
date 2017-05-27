@@ -155,7 +155,7 @@ namespace flui
 		addButton->setTapHandler([=]{
 			animation_arg->addFrames(editingAnimation.getFrames());
 			assetManager_arg->moveAssetsFrom(assetManager);
-			getParentScreen()->dismissPresentedScreen();
+			getPresentingScreen()->dismissPresentedScreen();
 		});
 		addButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 100);
 		addButton->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
