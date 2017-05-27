@@ -206,7 +206,7 @@ namespace flui
 		addFramesButton->getTitleElement()->setFontSize(14);
 		addFramesButton->setTapHandler([=]{
 			auto addFramesScreen = new AddFramesScreen(assetManager, animationData->getAnimation());
-			presentChildScreen(addFramesScreen, nullptr, [=]{
+			presentScreen(addFramesScreen, nullptr, [=]{
 				delete addFramesScreen;
 				animationEditorElement->refresh();
 			});
@@ -538,11 +538,11 @@ namespace flui
 				return false;
 			}
 		}
-		if(getParentScreen()==nullptr)
+		if(getPresentingScreen()==nullptr)
 		{
 			return false;
 		}
-		getParentScreen()->dismissChildScreen();
+		getPresentingScreen()->dismissPresentedScreen();
 		return true;
 	}
 	

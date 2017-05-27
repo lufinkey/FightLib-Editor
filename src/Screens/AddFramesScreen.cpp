@@ -142,7 +142,7 @@ namespace flui
 		cancelButton->setTitle("Cancel", fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		cancelButton->setBackgroundColor(fgl::Color::LIGHTGRAY, fgl::ButtonElement::BUTTONSTATE_NORMAL);
 		cancelButton->setTapHandler([=]{
-			getParentScreen()->dismissChildScreen();
+			getPresentingScreen()->dismissPresentedScreen();
 		});
 		cancelButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 10);
 		cancelButton->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);
@@ -155,7 +155,7 @@ namespace flui
 		addButton->setTapHandler([=]{
 			animation_arg->addFrames(editingAnimation.getFrames());
 			assetManager_arg->moveAssetsFrom(assetManager);
-			getParentScreen()->dismissChildScreen();
+			getParentScreen()->dismissPresentedScreen();
 		});
 		addButton->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 100);
 		addButton->setLayoutRule(fgl::LAYOUTRULE_BOTTOM, 10);

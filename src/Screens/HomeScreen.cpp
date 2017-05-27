@@ -15,7 +15,7 @@ namespace flui
 				if(animData->loadFromFile(animationPath, assetManager, &error))
 				{
 					EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
-					presentChildScreen(editScreen, nullptr, [=]{
+					presentScreen(editScreen, nullptr, [=]{
 						delete editScreen;
 						delete animData;
 					});
@@ -41,7 +41,7 @@ namespace flui
 				fl::AnimationData* animData = new fl::AnimationData();
 				animData->setName("Untitled");
 				EditAnimationScreen* editScreen = new EditAnimationScreen(assetManager, animData, animationPath);
-				presentChildScreen(editScreen, nullptr, [=]{
+				presentScreen(editScreen, nullptr, [=]{
 					delete editScreen;
 					delete animData;
 				});
