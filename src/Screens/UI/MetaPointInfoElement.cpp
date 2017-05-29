@@ -355,6 +355,7 @@ namespace flui
 		metaPoint = metaPoint_arg;
 		size_t metaPointTypeIndex = typeSelectorElement->getOptionList().indexOf(metaPoint.type);
 		typeSelectorElement->setSelectedOptionIndex(metaPointTypeIndex);
+		tagAdjustElement->setValue((int)metaPoint.tag);
 		xAdjustElement->setValue(metaPoint.x);
 		yAdjustElement->setValue(metaPoint.y);
 		radiusAdjustElement->setValue(metaPoint.radius);
