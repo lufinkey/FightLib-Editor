@@ -220,6 +220,16 @@ namespace flui
 		return metaPointChangeHandler;
 	}
 
+	void AnimationEditorElement::setMetaPointAnchorSize(double anchorSize)
+	{
+		metaPointsElement->setAnchorSize(anchorSize);
+	}
+
+	double AnimationEditorElement::getMetaPointAnchorSize() const
+	{
+		return metaPointsElement->getAnchorSize();
+	}
+
 	void AnimationEditorElement::setMetaPoints(size_t frameIndex, const fgl::ArrayList<fl::AnimationMetaPoint>& metaPoints)
 	{
 		animationData->setMetaPoints(frameIndex, metaPoints);

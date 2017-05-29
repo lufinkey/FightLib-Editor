@@ -409,6 +409,33 @@ namespace flui
 		showBoundsCheckbox->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 26);
 		rOffsetY += 26;
 
+		anchorSizeLabel = new fgl::TextElement();
+		anchorSizeLabel->setText("Anchor Size");
+		anchorSizeLabel->setFontSize(14);
+		anchorSizeLabel->setTextAlignment(fgl::TEXTALIGN_CENTER);
+		anchorSizeLabel->setVerticalTextAlignment(fgl::VERTICALALIGN_CENTER);
+		rOffsetY += 4;
+		anchorSizeLabel->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		anchorSizeLabel->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
+		anchorSizeLabel->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
+		anchorSizeLabel->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 18);
+		rOffsetY += 18;
+
+		anchorSizeAdjuster = new NumberAdjustElement(assetManager);
+		anchorSizeAdjuster->setMinValue(1.0);
+		anchorSizeAdjuster->setMaxValue(10.0);
+		anchorSizeAdjuster->setIncrement(1.0);
+		anchorSizeAdjuster->setValue(animationEditorElement->getMetaPointAnchorSize());
+		anchorSizeAdjuster->setValueChangeHandler([=] {
+			animationEditorElement->setMetaPointAnchorSize(anchorSizeAdjuster->getValue().toArithmeticValue<double>());
+		});
+		rOffsetY += 2;
+		anchorSizeAdjuster->setLayoutRule(fgl::LAYOUTRULE_TOP, rOffsetY);
+		anchorSizeAdjuster->setLayoutRule(fgl::LAYOUTRULE_CENTER_X, 0.5, fgl::LAYOUTVALUE_RATIO);
+		anchorSizeAdjuster->setLayoutRule(fgl::LAYOUTRULE_WIDTH, 60);
+		anchorSizeAdjuster->setLayoutRule(fgl::LAYOUTRULE_HEIGHT, 20);
+		rOffsetY += 20;
+
 		rightSidebarContainer->addChildElement(frameIndexLabel);
 		rightSidebarContainer->addChildElement(nextFrameButton);
 		rightSidebarContainer->addChildElement(prevFrameButton);
@@ -429,6 +456,8 @@ namespace flui
 			rightSidebarContainer->addChildElement(checkboxPair.second);
 		}
 		rightSidebarContainer->addChildElement(showBoundsCheckbox);
+		rightSidebarContainer->addChildElement(anchorSizeLabel);
+		rightSidebarContainer->addChildElement(anchorSizeAdjuster);
 		
 		//Left sidebar
 		
@@ -495,6 +524,8 @@ namespace flui
 			delete checkboxPair.second;
 		}
 		delete showBoundsCheckbox;
+		delete anchorSizeLabel;
+		delete anchorSizeAdjuster;
 	}
 	
 	void EditAnimationScreen::update(fgl::ApplicationData appData)

@@ -9,6 +9,7 @@ namespace flui
 	}
 
 	MetaPointGroupElement::MetaPointGroupElement(const fgl::RectangleD& frame) : ScreenElement(frame),
+		anchorSize(1.0),
 		horizontalMirroringEnabled(false),
 		boundsDrawingEnabled(true)
 	{
@@ -79,6 +80,7 @@ namespace flui
 				}
 			});
 			metaPointElement->setVisible(isMetaPointTypeVisible(metaPoint.type));
+			metaPointElement->setAnchorSize(anchorSize);
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_LEFT, 0);
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_TOP, 0);
 			metaPointElement->setLayoutRule(fgl::LAYOUTRULE_RIGHT, 0);
@@ -154,6 +156,20 @@ namespace flui
 	bool MetaPointGroupElement::isMetaPointTypeVisible(fl::MetaPointType metaPointType) const
 	{
 		return enabledMetaPointTypes.get(metaPointType, true);
+	}
+
+	void MetaPointGroupElement::setAnchorSize(double anchorSize_arg)
+	{
+		anchorSize = anchorSize_arg;
+		for(auto metaPointElement : metaPointElements)
+		{
+			metaPointElement->setAnchorSize(anchorSize_arg);
+		}
+	}
+
+	double MetaPointGroupElement::getAnchorSize() const
+	{
+		return anchorSize;
 	}
 
 	void MetaPointGroupElement::setHorizontalMirroringEnabled(bool mirror)

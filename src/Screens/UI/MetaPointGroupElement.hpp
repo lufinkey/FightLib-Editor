@@ -31,6 +31,9 @@ namespace flui
 		void setMetaPointTypeVisible(fl::MetaPointType metaPointType, bool visible);
 		bool isMetaPointTypeVisible(fl::MetaPointType metaPointType) const;
 
+		void setAnchorSize(double anchorSize);
+		double getAnchorSize() const;
+
 		void setHorizontalMirroringEnabled(bool mirror);
 		bool isHorizontalMirroringEnabled() const;
 
@@ -49,6 +52,7 @@ namespace flui
 		std::function<void(size_t)> metaPointSelectHandler;
 		fgl::Vector2u animationSize;
 		fgl::BasicDictionary<fl::MetaPointType, bool> enabledMetaPointTypes;
+		double anchorSize;
 		bool horizontalMirroringEnabled;
 		bool boundsDrawingEnabled;
 	};

@@ -56,6 +56,9 @@ namespace flui
 		void setMetaPointChangeHandler(const std::function<void(size_t index)>& handler);
 		const std::function<void(size_t)>& getMetaPointChangeHandler() const;
 
+		void setMetaPointAnchorSize(double pointSize);
+		double getMetaPointAnchorSize() const;
+
 		void beginUserAddMetaPoint(const std::function<void(fl::AnimationMetaPoint)>& completion);
 
 	private:

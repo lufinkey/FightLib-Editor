@@ -29,6 +29,9 @@ namespace flui
 		void setDeselectHandler(const std::function<void()>& handler);
 		const std::function<void()>& getDeselectHandler() const;
 
+		void setAnchorSize(double pointSize);
+		double getAnchorSize() const;
+
 	protected:
 		virtual void drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const override;
 		
@@ -49,6 +52,7 @@ namespace flui
 		std::function<void()> selectHandler;
 		std::function<void()> deselectHandler;
 		fgl::Vector2d initialPointTouchOffset;
+		double anchorSize;
 		bool createdPoint;
 		bool trackingPoint;
 	};

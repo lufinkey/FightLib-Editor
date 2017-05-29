@@ -9,6 +9,7 @@ namespace flui
 	}
 	
 	MetaPointElement::MetaPointElement(const fgl::RectangleD& frame) : TouchElement(frame),
+		anchorSize(1.0),
 		createdPoint(false),
 		trackingPoint(false)
 	{
@@ -26,7 +27,7 @@ namespace flui
 			fgl::Vector2d metaPointCenter = getMetaPointCenter();
 			double xoff = metaPointCenter.x-point.x;
 			double yoff = metaPointCenter.y-point.y;
-			if(fgl::Math::abs(xoff) <= 10 && fgl::Math::abs(yoff) <= 10)
+			if(fgl::Math::abs(xoff) <= (anchorSize/2) && fgl::Math::abs(yoff) <= (anchorSize/2))
 			{
 				return true;
 			}
@@ -41,7 +42,7 @@ namespace flui
 			fgl::RectangleD frame = getFrame();
 			graphics.translate(frame.x, frame.y);
 			graphics.scale(frame.width/(double)animationSize.x, frame.height/(double)animationSize.y);
-			metaPoint.draw(graphics);
+			metaPoint.draw(graphics, anchorSize);
 		}
 	}
 
@@ -100,6 +101,16 @@ namespace flui
 	const std::function<void()>& MetaPointElement::getDeselectHandler() const
 	{
 		return deselectHandler;
+	}
+
+	void MetaPointElement::setAnchorSize(double anchorSize_arg)
+	{
+		anchorSize = anchorSize_arg;
+	}
+
+	double MetaPointElement::getAnchorSize() const
+	{
+		return anchorSize;
 	}
 	
 	fgl::Vector2d MetaPointElement::getMetaPointCenter() const

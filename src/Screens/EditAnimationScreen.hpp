@@ -70,6 +70,8 @@ namespace flui
 		fgl::ButtonElement* addMetapointButton;
 		fgl::BasicDictionary<fl::MetaPointType, LabeledCheckboxElement*> metapointCheckboxElements;
 		LabeledCheckboxElement* showBoundsCheckbox;
+		fgl::TextElement* anchorSizeLabel;
+		NumberAdjustElement* anchorSizeAdjuster;
 		
 		//left sidebar
 		MetaPointInfoElement* metaPointInfoElement;
