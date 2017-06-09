@@ -27,7 +27,10 @@ namespace flui
 			fgl::Vector2d metaPointCenter = getMetaPointCenter();
 			double xoff = metaPointCenter.x-point.x;
 			double yoff = metaPointCenter.y-point.y;
-			if(fgl::Math::abs(xoff) <= (anchorSize/2) && fgl::Math::abs(yoff) <= (anchorSize/2))
+			auto frame = getFrame();
+			double xMult = (frame.width/(double)animationSize.x);
+			double yMult = (frame.height/(double)animationSize.y);
+			if(fgl::Math::abs(xoff) <= (anchorSize*xMult/2) && fgl::Math::abs(yoff) <= (anchorSize*yMult/2))
 			{
 				return true;
 			}
@@ -37,6 +40,7 @@ namespace flui
 	
 	void MetaPointElement::drawMain(fgl::ApplicationData appData, fgl::Graphics graphics) const
 	{
+		TouchElement::drawMain(appData, graphics);
 		if(createdPoint && animationSize.x != 0 && animationSize.y != 0)
 		{
 			fgl::RectangleD frame = getFrame();
@@ -121,8 +125,7 @@ namespace flui
 		}
 		else
 		{
-			fgl::RectangleD frame = getFrame();
-			return fgl::Vector2d(metaPoint.x*(frame.width/(double)animationSize.x), metaPoint.y*(frame.height/(double)animationSize.y));
+			return fromMetaPointCoordinates(fgl::Vector2d(metaPoint.x, metaPoint.y));
 		}
 	}
 	
