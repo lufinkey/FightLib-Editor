@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="FightLib-Editor" />
+		<Option pch_mode="2" />
+		<Option compiler="clang" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/FightLib-Editor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="clang" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="../../external/FightLib/projects/codeblocks/bin/Debug/libFightLib.a" />
+					<Add library="../../external/FightLib/external/GameLibrary/projects/codeblocks/bin/Debug/libGameLibrary.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/FightLib-Editor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="clang" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="../../external/FightLib/projects/codeblocks/bin/Release/libFightLib.a" />
+					<Add library="../../external/FightLib/external/GameLibrary/projects/codeblocks/bin/Release/libGameLibrary.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++14" />
+			<Add directory="../../external/FightLib/include" />
+			<Add directory="../../external/FightLib/external/GameLibrary/include" />
+		</Compiler>
+		<Linker>
+			<Add option="-lSDL2" />
+			<Add option="-lSDL2_image" />
+			<Add option="-lSDL2_mixer" />
+			<Add option="-lSDL2_ttf" />
+			<Add option="-lSDL2_gfx" />
+			<Add option="-lpthread" />
+		</Linker>
+		<Unit filename="../../src/MainApplication.cpp" />
+		<Unit filename="../../src/MainApplication.hpp" />
+		<Unit filename="../../src/Screens/AddFramesScreen.cpp" />
+		<Unit filename="../../src/Screens/AddFramesScreen.hpp" />
+		<Unit filename="../../src/Screens/EditAnimationScreen.cpp" />
+		<Unit filename="../../src/Screens/EditAnimationScreen.hpp" />
+		<Unit filename="../../src/Screens/HomeScreen.cpp" />
+		<Unit filename="../../src/Screens/HomeScreen.hpp" />
+		<Unit filename="../../src/Screens/UI/AnimationEditorElement.cpp" />
+		<Unit filename="../../src/Screens/UI/AnimationEditorElement.hpp" />
+		<Unit filename="../../src/Screens/UI/ArrowAdjustElement.cpp" />
+		<Unit filename="../../src/Screens/UI/ArrowAdjustElement.hpp" />
+		<Unit filename="../../src/Screens/UI/CarouselSelectorElement.cpp" />
+		<Unit filename="../../src/Screens/UI/CarouselSelectorElement.hpp" />
+		<Unit filename="../../src/Screens/UI/CheckerboardElement.cpp" />
+		<Unit filename="../../src/Screens/UI/CheckerboardElement.hpp" />
+		<Unit filename="../../src/Screens/UI/LabeledCheckboxElement.cpp" />
+		<Unit filename="../../src/Screens/UI/LabeledCheckboxElement.hpp" />
+		<Unit filename="../../src/Screens/UI/MetaPointElement.cpp" />
+		<Unit filename="../../src/Screens/UI/MetaPointElement.hpp" />
+		<Unit filename="../../src/Screens/UI/MetaPointGroupElement.cpp" />
+		<Unit filename="../../src/Screens/UI/MetaPointGroupElement.hpp" />
+		<Unit filename="../../src/Screens/UI/MetaPointInfoElement.cpp" />
+		<Unit filename="../../src/Screens/UI/MetaPointInfoElement.hpp" />
+		<Unit filename="../../src/Screens/UI/NumberAdjustElement.cpp" />
+		<Unit filename="../../src/Screens/UI/NumberAdjustElement.hpp" />
+		<Unit filename="../../src/Screens/UI/TagAdjustElement.cpp" />
+		<Unit filename="../../src/Screens/UI/TagAdjustElement.hpp" />
+		<Unit filename="../../src/Screens/UI/ToolboxContainerElement.cpp" />
+		<Unit filename="../../src/Screens/UI/ToolboxContainerElement.hpp" />
+		<Unit filename="../../src/Screens/UI/ToolboxElement.cpp" />
+		<Unit filename="../../src/Screens/UI/ToolboxElement.hpp" />
+		<Unit filename="../../src/main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

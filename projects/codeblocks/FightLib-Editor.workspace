@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="FightLib-Editor.cbp">
+			<Depends filename="../../external/FightLib/projects/codeblocks/FightLib.cbp" />
+			<Depends filename="../../external/FightLib/external/GameLibrary/projects/codeblocks/GameLibrary.cbp" />
+		</Project>
+		<Project filename="../../external/FightLib/projects/codeblocks/FightLib.cbp">
+			<Depends filename="../../external/FightLib/external/GameLibrary/projects/codeblocks/GameLibrary.cbp" />
+		</Project>
+		<Project filename="../../external/FightLib/external/GameLibrary/projects/codeblocks/GameLibrary.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
