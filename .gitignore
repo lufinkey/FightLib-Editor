@@ -22,3 +22,11 @@
 /projects/codeblocks/obj
 /projects/codeblocks/bin
 
+#CodeLite
+/projects/codelite/.*
+/projects/codelite/Debug
+/projects/codelite/Release
+/projects/codelite/Makefile
+/projects/codelite/*.txt
+/projects/codelite/*.mk
+
